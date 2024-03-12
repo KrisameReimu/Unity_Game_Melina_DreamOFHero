@@ -61,12 +61,12 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isRun", false);
 
-        x_movement = Input.GetAxis("Horizontal");
-        y_movement = Input.GetAxis("Vertical");
-
-        if (Input.GetAxisRaw("Horizontal") != 0 && !isAttacking)
+        if (Input.GetAxisRaw("Horizontal") != 0 && !isAttacking && !isInvincible)
         //moving
         {
+            x_movement = Input.GetAxis("Horizontal");
+            y_movement = Input.GetAxis("Vertical");
+
             if (Input.GetAxisRaw("Horizontal") < 0)
                 direction = -1;
             if (Input.GetAxisRaw("Horizontal") > 0)
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isAttacking)
+        if (isAttacking || isInvincible)
             return;
         if (Input.GetKeyDown(KeyCode.Space) && !anim.GetBool("isJump"))
         {
@@ -147,14 +147,20 @@ public class PlayerController : MonoBehaviour
 
     //-------------------------------------------------------------------------
     //public methods
-    public void ChangeHP(int amount)
-    {
+
+    public void ChangeHP(int amount, int knockBackDirection)
+    {   //knockBackDirection: change the player direction before knockback
+        //can be calculated by the following code in the enemyController script
+        //int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
         if (amount < 0)
         {
             if (isInvincible)
                 return;
 
             anim.SetTrigger("hurt");
+            direction = knockBackDirection;
+            transform.localScale = new Vector3(direction * 0.5f, 0.5f, 1f);
+            Debug.Log(knockBackDirection);
             if (direction == 1)
                 rb.AddForce(new Vector2(-5f, 3f), ForceMode2D.Impulse);
             else

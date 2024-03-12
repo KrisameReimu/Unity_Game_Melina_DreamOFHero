@@ -89,7 +89,8 @@ public class EnemyController : MonoBehaviour
 
             if (player != null)
             {
-                player.ChangeHP(-1);
+                int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
+                player.ChangeHP(-1, playerDirection);
             }
         }
     }
@@ -103,7 +104,8 @@ public class EnemyController : MonoBehaviour
 
             if (player != null)
             {
-                player.ChangeHP(-1);
+                int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
+                player.ChangeHP(-1, playerDirection);
             }
         }
     }
