@@ -5,11 +5,13 @@ using UnityEngine;
 public class Bolt : MonoBehaviour
 {
     Rigidbody2D rb;
+    public float damage { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        damage = 5f;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class Bolt : MonoBehaviour
         EnemyController e = other.collider.GetComponent<EnemyController>();
         if (e != null)
         {
-            Debug.Log("Hit");
+            e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
         }
         */
 
