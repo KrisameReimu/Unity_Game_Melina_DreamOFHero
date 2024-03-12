@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4382140672099678676}
   m_Layer: 0
   m_Name: enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,8 @@ MonoBehaviour:
   changeTime: 3
   smokeEffect: {fileID: 1448962625143387902, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
   fixedClip: {fileID: 8300000, guid: f38af96448784414a8788ef222c85ce6, type: 3}
+  maxHP: 10
+  HP: 0
 --- !u!95 &4502103080044122090
 Animator:
   serializedVersion: 3
@@ -292,11 +294,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448962625143387901, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.09134093
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1448962625143387901, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8348911
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 1448962625143387901, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
       propertyPath: m_LocalPosition.z

@@ -16,6 +16,9 @@ public class EnemyController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip fixedClip;
 
+    public float maxHP = 10f;
+    public float HP;
+
 
 
 
@@ -25,6 +28,11 @@ public class EnemyController : MonoBehaviour
         timer = changeTime;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Awake()
+    {
+        HP = maxHP;
     }
 
     void Update()
@@ -41,6 +49,9 @@ public class EnemyController : MonoBehaviour
             timer = changeTime;
             //vertical = !vertical;
         }
+
+        if (HP == 0)
+            Fix();
     }
 
     void FixedUpdate()
@@ -108,5 +119,11 @@ public class EnemyController : MonoBehaviour
         audioSource.PlayOneShot(fixedClip);
     }
 
+    public void ChangeHP(float amount)
+    {
+        HP += amount;
+        HP = Mathf.Clamp(HP, 0, maxHP);
+        Debug.Log("HP: "+HP);
+    }
 
 }

@@ -31,16 +31,17 @@ public class Bolt : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         //Debug.Log("Bolt Collision with " + other.gameObject);
+        Destroy(gameObject);
 
-        /*
+        if (other.gameObject.tag != "Enemy")
+            return;
         EnemyController e = other.collider.GetComponent<EnemyController>();
         if (e != null)
         {
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
         }
-        */
+        
 
-        Destroy(gameObject);
     }
 
 }
