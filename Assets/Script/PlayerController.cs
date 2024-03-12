@@ -19,9 +19,10 @@ public class PlayerController : MonoBehaviour
     bool isAttacking;
     float attackInterval = 0.5f;
     float attackTimer = 0f;
-
     private int direction = 1;
     bool isJumping = false;
+    bool isGettingHurt = false;
+    float gettingHurtTimer = 0.3f;
     
 
     public GameObject boltPrefab;
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isRun", false);
 
-        if (Input.GetAxisRaw("Horizontal") != 0 && !isAttacking && !isInvincible)
+        if (Input.GetAxisRaw("Horizontal") != 0 && !isAttacking && !isGettingHurt)
         //moving
         {
             x_movement = Input.GetAxis("Horizontal");
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isAttacking || isInvincible)
+        if (isAttacking || isGettingHurt)
             return;
         if (Input.GetKeyDown(KeyCode.Space) && !anim.GetBool("isJump"))
         {
@@ -136,6 +137,13 @@ public class PlayerController : MonoBehaviour
                 isInvincible = false;
         }
 
+        if (isGettingHurt)
+        {
+            gettingHurtTimer -= Time.fixedDeltaTime;
+            if (gettingHurtTimer <= 0)
+                isGettingHurt = false;
+        }
+
         if (isAttacking)
         {
             attackTimer -= Time.fixedDeltaTime;
@@ -168,6 +176,8 @@ public class PlayerController : MonoBehaviour
             //PlaySound(damageClip);
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            isGettingHurt = true;
+            gettingHurtTimer = 0.3f;
         }
 
         HP += amount;
