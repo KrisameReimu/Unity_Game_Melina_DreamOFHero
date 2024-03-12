@@ -17,7 +17,7 @@ public class Bolt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.magnitude > 50.0f)
+        if (transform.position.magnitude > 10.0f)
         {
             Destroy(gameObject);
         }
