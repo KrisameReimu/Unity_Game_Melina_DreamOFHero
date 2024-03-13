@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShootBolt() 
     {
-        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction, 1.3f), Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
+        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction, 2.5f*transform.localScale.x), Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
         Bolt bolt = boltObject.GetComponent<Bolt>();
         bolt.Shoot(new Vector2(direction, 0), 300);
     }
