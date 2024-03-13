@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -154,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeDirection()
     {
-        transform.localScale = new Vector3(direction * 0.5f, 0.5f, 1f);
+        transform.localScale = new Vector3(direction * Math.Abs(transform.localScale.x), transform.localScale.y, 1f);
     }
 
     //-------------------------------------------------------------------------
