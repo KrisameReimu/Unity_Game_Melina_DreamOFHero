@@ -12,6 +12,11 @@ public class EnemyMaleZombie : Enemy
     GameObject myPlayer;
     public int enemyLife;
 
+    SpriteRenderer mySr;
+    [SerializeField]
+    protected AudioClip[] myAudioClip;
+    protected AudioSource myAudioSource;
+
 
 
 
@@ -25,8 +30,10 @@ public class EnemyMaleZombie : Enemy
         myAnim = GetComponent<Animator>();
         originPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         myPlayer = GameObject.Find("Player");
+        mySr = GetComponent<SpriteRenderer>();
+        myAudioSource = GetComponent<AudioSource>();
 
-        enemyLife = 3;
+        enemyLife = 15;
     }
     void Start()
     {
@@ -52,6 +59,7 @@ public class EnemyMaleZombie : Enemy
             {
                 return;
             }
+            myAudioSource.PlayOneShot(myAudioClip[1]);
             myAnim.SetTrigger("Attact");
             return;
         }
@@ -87,9 +95,11 @@ public class EnemyMaleZombie : Enemy
     }
     public override void ChangeHP(float amount)
     {
+        Debug.Log("HP: " + enemyLife);
+        enemyLife += (int)amount;
+        myAudioSource.PlayOneShot(myAudioClip[0]);
         {
-            Debug.Log("HP: "+enemyLife);
-            enemyLife += (int)amount;
+            enemyLife--;
             if(enemyLife >= 1)
             {
                 myAnim.SetTrigger("Hurt");
@@ -97,7 +107,17 @@ public class EnemyMaleZombie : Enemy
             else if (enemyLife < 1)
             {
                 myAnim.SetTrigger("Die");
+                StartCoroutine("AfterDie");
             }
         }
+    }
+    IEnumerator AfterDie()
+    {
+        yield return new WaitForSeconds(1.0f);
+        mySr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        yield return new WaitForSeconds(1.0f);
+        mySr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+        yield return new WaitForSeconds(1.0f);
+        Destroy(this.gameObject);
     }
 }
