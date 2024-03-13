@@ -72,8 +72,7 @@ public class PlayerController : MonoBehaviour
                 direction = -1;
             if (Input.GetAxisRaw("Horizontal") > 0)
                 direction = 1;
-            transform.localScale = new Vector3(direction * 0.5f, 0.5f, 1f);
-
+            ChangeDirection();
             if (!anim.GetBool("isJump"))
                 anim.SetBool("isRun", true);
         }
@@ -153,6 +152,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void ChangeDirection()
+    {
+        transform.localScale = new Vector3(direction * 0.5f, 0.5f, 1f);
+    }
+
     //-------------------------------------------------------------------------
     //public methods
 
@@ -167,8 +171,8 @@ public class PlayerController : MonoBehaviour
 
             anim.SetTrigger("hurt");
             direction = knockBackDirection;
-            transform.localScale = new Vector3(direction * 0.5f, 0.5f, 1f);
-            Debug.Log(knockBackDirection);
+            ChangeDirection();
+            //Debug.Log(knockBackDirection);
             if (direction == 1)
                 rb.AddForce(new Vector2(-5f, 3f), ForceMode2D.Impulse);
             else

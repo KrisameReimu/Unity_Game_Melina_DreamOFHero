@@ -35,7 +35,7 @@ public class Bolt : MonoBehaviour
 
         if (other.gameObject.tag != "Enemy")
             return;
-        EnemyController e = other.collider.GetComponent<EnemyController>();
+        Enemy e = other.collider.GetComponent<Enemy>();
         if (e != null)
         {
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP

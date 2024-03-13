@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : Enemy
 {
     public float speed;
     public bool vertical;
@@ -121,7 +121,7 @@ public class EnemyController : MonoBehaviour
         audioSource.PlayOneShot(fixedClip);
     }
 
-    public void ChangeHP(float amount)
+    public override void ChangeHP(float amount)
     {
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
