@@ -33,6 +33,7 @@ public class EnemyController : Enemy
     private void Awake()
     {
         HP = maxHP;
+        damage = 7;
     }
 
     void Update()
@@ -79,36 +80,7 @@ public class EnemyController : Enemy
         rigidbody2D.MovePosition(position);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            //RubyController player = other.gameObject.GetComponent<RubyController>();
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
-
-
-            if (player != null)
-            {
-                int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
-                player.ChangeHP(-1, playerDirection);
-            }
-        }
-    }
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            //RubyController player = other.gameObject.GetComponent<RubyController>();
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
-
-
-            if (player != null)
-            {
-                int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
-                player.ChangeHP(-1, playerDirection);
-            }
-        }
-    }
+    
 
     //Public because we want to call it from elsewhere like the projectile script
     public void Fix()
@@ -128,4 +100,21 @@ public class EnemyController : Enemy
         Debug.Log("HP: "+HP);
     }
 
+    //Override test
+    /*
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+
+            if (player != null)
+            {
+                Debug.Log("Override");
+                int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
+                player.ChangeHP(-1 * damage, playerDirection);
+            }
+        }
+    }
+    */
 }

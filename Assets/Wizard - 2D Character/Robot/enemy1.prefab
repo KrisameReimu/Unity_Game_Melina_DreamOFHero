@@ -104,7 +104,7 @@ BoxCollider2D:
   m_Offset: {x: -0.09090209, y: 0.6476766}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f6b5935cc9f7b4a977c1372c65bacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   speed: 1
   vertical: 0
   changeTime: 3
@@ -298,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448962625143387901, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 1448962625143387901, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
       propertyPath: m_LocalPosition.z

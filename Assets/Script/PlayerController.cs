@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float timeInvincible = 0.5f;
     bool isInvincible;
     float invincibleTimer;
-    public int maxHP = 50;
+    public int maxHP { get; private set; } = 50;
     public int HP;
     bool isAttacking;
     float attackInterval = 0.5f;
@@ -24,20 +24,21 @@ public class PlayerController : MonoBehaviour
     bool isJumping = false;
     bool isGettingHurt = false;
     float gettingHurtTimer = 0.3f;
-    
 
     public GameObject boltPrefab;
-
-
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
+    private void Awake()
+    {
         HP = maxHP;
         speed = 5;
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -166,15 +167,14 @@ public class PlayerController : MonoBehaviour
             if (isInvincible)
                 return;
 
+            int upperForce = anim.GetBool("isJump") ? 0 : 1;
             anim.SetTrigger("hurt");
-            //Debug.Log(knockBackDirection);
             isInvincible = true;
             invincibleTimer = timeInvincible;
             isGettingHurt = true;
             gettingHurtTimer = 0.3f;
             direction = knockBackDirection;
             ChangeDirection();
-            int upperForce = isGettingHurt ? 0 : 1;
             rb.AddForce(new Vector2(direction*-5f, 3f*upperForce), ForceMode2D.Impulse);
             //PlaySound(damageClip);
             
