@@ -84,28 +84,24 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isAttacking || isGettingHurt)
+        if (isAttacking || isGettingHurt || isJumping)
             return;
         if (Input.GetKeyDown(KeyCode.Space) && !anim.GetBool("isJump"))
         {
             isJumping = true;
             anim.SetBool("isJump", true);
-        }
-        if (!isJumping)
-        {
-            return;
-        }
-
-        rb.velocity = Vector2.zero;
-        rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
-
-        isJumping = false;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+        } 
     }
 
     //step on ground
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Enemy")
+            return;
         anim.SetBool("isJump", false);
+        isJumping = false;
     }
 
     private void Attack() 
@@ -123,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShootBolt() 
     {
-        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction, 2.5f*transform.localScale.x), Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
+        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction, 2.5f*transform.localScale.y), Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
         Bolt bolt = boltObject.GetComponent<Bolt>();
         bolt.Shoot(new Vector2(direction, 0), 300);
     }
@@ -171,23 +167,22 @@ public class PlayerController : MonoBehaviour
                 return;
 
             anim.SetTrigger("hurt");
-            direction = knockBackDirection;
-            ChangeDirection();
             //Debug.Log(knockBackDirection);
-            if (direction == 1)
-                rb.AddForce(new Vector2(-5f, 3f), ForceMode2D.Impulse);
-            else
-                rb.AddForce(new Vector2(5f, 3f), ForceMode2D.Impulse);
-            //PlaySound(damageClip);
             isInvincible = true;
             invincibleTimer = timeInvincible;
             isGettingHurt = true;
             gettingHurtTimer = 0.3f;
+            direction = knockBackDirection;
+            ChangeDirection();
+            int upperForce = isGettingHurt ? 0 : 1;
+            rb.AddForce(new Vector2(direction*-5f, 3f*upperForce), ForceMode2D.Impulse);
+            //PlaySound(damageClip);
+            
         }
 
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
+        UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
         //Debug.Log("HP: " + HP + "/" + maxHP);
-        //UIHealthBar.instance.SetValue(HP / (float)maxHP);
     }
 }
