@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5003435711449414128}
   m_Layer: 0
   m_Name: EnemyMaleZombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.72, y: 2.076}
+    oldSize: {x: 0.86, y: 1.038}
     newSize: {x: 1.72, y: 2.076}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: -3, z: 0}
   mySpeed: 1
+  enemyLife: 0
 --- !u!61 &5003435711449414128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.72, y: 2.076}
+    oldSize: {x: 0.86, y: 1.038}
     newSize: {x: 1.72, y: 2.076}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

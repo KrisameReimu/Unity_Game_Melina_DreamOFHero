@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMaleZombie : MonoBehaviour
+public class EnemyMaleZombie : Enemy
 {
 
     public Vector3 targetPosition;
@@ -85,11 +85,11 @@ public class EnemyMaleZombie : MonoBehaviour
         }
         
     }
-    public void OnTriggerEnter2D(Collider2D collision)
+    public override void ChangeHP(float amount)
     {
-        if (collision.tag == "PlayerAttack")
         {
-            enemyLife--;
+            Debug.Log("HP: "+enemyLife);
+            enemyLife += (int)amount;
             if(enemyLife >= 1)
             {
                 myAnim.SetTrigger("Hurt");
