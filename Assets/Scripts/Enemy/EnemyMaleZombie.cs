@@ -10,6 +10,8 @@ public class EnemyMaleZombie : MonoBehaviour
     Animator myAnim;
     Vector3 originPosition, turnPoint;
     GameObject myPlayer;
+    public int enemyLife;
+
 
 
 
@@ -23,6 +25,8 @@ public class EnemyMaleZombie : MonoBehaviour
         myAnim = GetComponent<Animator>();
         originPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         myPlayer = GameObject.Find("Player");
+
+        enemyLife = 3;
     }
     void Start()
     {
@@ -80,5 +84,20 @@ public class EnemyMaleZombie : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, turnPoint, mySpeed * Time.deltaTime);
         }
         
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerAttack")
+        {
+            enemyLife--;
+            if(enemyLife >= 1)
+            {
+                myAnim.SetTrigger("Hurt");
+            }
+            else if (enemyLife < 1)
+            {
+                myAnim.SetTrigger("Die");
+            }
+        }
     }
 }
