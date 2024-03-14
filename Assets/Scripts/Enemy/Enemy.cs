@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int damage = 5;//default
+    public int damage = 0;//default no damage
     //set the damage value in the awake function in each enemy script
     public virtual void ChangeHP(float amount) { }
     private void OnCollisionEnter2D(Collision2D c)

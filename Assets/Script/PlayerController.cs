@@ -162,7 +162,8 @@ public class PlayerController : MonoBehaviour
     {   //knockBackDirection: change the player direction before knockback
         //can be calculated by the following code in the enemyController script
         //int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
-        if (amount < 0)
+
+        if (amount < 0) //damage
         {
             if (isInvincible)
                 return;
