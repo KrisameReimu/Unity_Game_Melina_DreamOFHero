@@ -1624,6 +1624,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4059783393698661846, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.45597324
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059783393698661846, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.14192814
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059783393698661846, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.18416297
       objectReference: {fileID: 0}
@@ -1659,6 +1667,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5467976840027593710, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9995734
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467976840027593710, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467976840027593710, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467976840027593710, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.029206097
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467976840027593710, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6842832601826005117, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.65980107
@@ -1676,6 +1704,46 @@ PrefabInstance:
       value: -0.7514404
       objectReference: {fileID: 0}
     - target: {fileID: 6842832601826005117, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100758825538999474, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.68030983
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100758825538999474, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100758825538999474, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100758825538999474, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7329247
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100758825538999474, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680453811908506610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.072321385
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680453811908506610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6728711
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680453811908506610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.2274332
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680453811908506610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9737937
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680453811908506610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}

@@ -153,9 +153,10 @@ public class PlayerController : MonoBehaviour
     private void ShootBolt() 
     {
         float hight = anim.GetBool("squatDown") ? 1f : 0f;
-        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction*(1+0.4f*hight), 1-0.6f*hight), Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
+        float upperAngle = anim.GetBool("isLookUp") ? 1f : 0f;
+        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction*(1+0.4f*hight), 1-0.6f*hight+0.4f * upperAngle), Quaternion.Euler(new Vector3(0, 0, 90 + (90+upperAngle*30) * direction)));
         Bolt bolt = boltObject.GetComponent<Bolt>();
-        bolt.Shoot(new Vector2(direction, 0), 300);
+        bolt.Shoot(new Vector2(direction, upperAngle*0.3f), 300);
     }
 
     private void Cooldown()
