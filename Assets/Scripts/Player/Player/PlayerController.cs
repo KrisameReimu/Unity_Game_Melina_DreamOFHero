@@ -11,14 +11,14 @@ public class PlayerController : MonoBehaviour
     [Range(0, 10f)]
     public float speed;
     float x_movement;
-    float y_movement;
+    //float y_movement;
     public float timeInvincible = 0.5f;
     bool isInvincible;
     float invincibleTimer;
     public int maxHP { get; private set; } = 50;
     public int HP;
     bool isAttacking;
-    float attackInterval = 0.4f;
+    float attackInterval = 0.5f;
     float attackTimer = 0f;
     private int direction = 1;
     bool isJumping = false;
@@ -63,29 +63,49 @@ public class PlayerController : MonoBehaviour
     private void Move() 
     {
         anim.SetBool("isRun", false);
+        x_movement = 0;
 
-        if (Input.GetAxisRaw("Horizontal") != 0 && !isAttacking && !isGettingHurt)
+        if (isAttacking || isGettingHurt)
+            return;
+
+
+        anim.SetBool("squatDown", false);
+        anim.SetBool("isLookUp", false);
+
+        if (Input.GetAxisRaw("Horizontal") < 0)
+            direction = -1;
+        if (Input.GetAxisRaw("Horizontal") > 0)
+            direction = 1;
+        ChangeDirection();
+
+
+        if (Input.GetKey(KeyCode.S) && !anim.GetBool("isJump"))
+        {
+            anim.SetBool("squatDown", true);
+            return;
+        }
+
+        if (Input.GetKey(KeyCode.W) && !anim.GetBool("isJump"))
+        {
+            anim.SetBool("isLookUp", true);
+            return;
+        }
+
+
+        if (Input.GetAxisRaw("Horizontal") != 0)
         //moving
         {
             x_movement = Input.GetAxis("Horizontal");
-            y_movement = Input.GetAxis("Vertical");
+            //y_movement = Input.GetAxis("Vertical");
 
-            if (Input.GetAxisRaw("Horizontal") < 0)
-                direction = -1;
-            if (Input.GetAxisRaw("Horizontal") > 0)
-                direction = 1;
-            ChangeDirection();
             if (!anim.GetBool("isJump"))
                 anim.SetBool("isRun", true);
-        }
-        else {
-            x_movement = 0; 
         }
     }
 
     private void Jump()
     {
-        if (isAttacking || isGettingHurt || isJumping)
+        if (isAttacking || isGettingHurt || isJumping )
             return;
         if (Input.GetKeyDown(KeyCode.Space) && !anim.GetBool("isJump"))
         {
@@ -107,9 +127,10 @@ public class PlayerController : MonoBehaviour
 
     private void Attack() 
     {
+        Burst();//highest priority
         if (isAttacking)
             return;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))
         {
             Invoke("ShootBolt", 0.3f);
             anim.SetTrigger("attack");
@@ -118,9 +139,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Burst()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            anim.SetTrigger("burst");
+            isAttacking = true;
+            attackTimer = 1.2f;
+        }
+
+    }
+
     private void ShootBolt() 
     {
-        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction, 2.5f*transform.localScale.y), Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
+        float hight = anim.GetBool("squatDown") ? 1f : 0f;
+        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction*(1+0.4f*hight), 1-0.6f*hight), Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
         Bolt bolt = boltObject.GetComponent<Bolt>();
         bolt.Shoot(new Vector2(direction, 0), 300);
     }
