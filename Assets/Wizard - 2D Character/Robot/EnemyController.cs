@@ -34,6 +34,7 @@ public class EnemyController : Enemy
     {
         HP = maxHP;
         damage = 7;
+        smokeEffect = transform.Find("SmokeEffect").gameObject.GetComponent<ParticleSystem>();
     }
 
     void Update()

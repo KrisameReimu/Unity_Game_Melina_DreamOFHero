@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public int maxHP { get; private set; } = 50;
     public int HP;
     bool isAttacking;
-    float attackInterval = 0.5f;
+    float attackInterval = 0.4f;
     float attackTimer = 0f;
     private int direction = 1;
     bool isJumping = false;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Cooldown();
-        transform.position = (Vector2)transform.position + new Vector2(x_movement, 0) * speed * Time.fixedDeltaTime;
+        transform.position = (Vector2)rb.position + new Vector2(x_movement, 0) * speed * Time.fixedDeltaTime;
         //rb.MovePosition(position);
     }
 
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             return;
         if (Input.GetMouseButtonDown(0))
         {
-            Invoke("ShootBolt", 0.4f);
+            Invoke("ShootBolt", 0.3f);
             anim.SetTrigger("attack");
             isAttacking = true;
             attackTimer = attackInterval;
