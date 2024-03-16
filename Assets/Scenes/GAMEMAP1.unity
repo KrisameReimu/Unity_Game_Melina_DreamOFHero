@@ -3363,7 +3363,7 @@ GameObject:
   - component: {fileID: 1590068686}
   m_Layer: 0
   m_Name: EnemyPumpkinMan
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3397,7 +3397,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08805996, y: -0.1494991}
@@ -3490,10 +3490,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca468862039a62448e5d85bda279fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   isAlive: 0
   isIdle: 0
   jumpAttact: 0
   isJumpUp: 0
+  slideAttact: 0
+  isHurt: 0
+  Life: 0
 --- !u!1001 &1718818711
 PrefabInstance:
   m_ObjectHideFlags: 0

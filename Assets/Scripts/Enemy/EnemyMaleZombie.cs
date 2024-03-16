@@ -44,7 +44,7 @@ public class EnemyMaleZombie : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(myPlayer.transform.position, transform.position) < 1.5f)
+        if(Vector3.Distance(myPlayer.transform.position, transform.position) < 0.75f)
         {
             if(myPlayer.transform.position.x <= transform.position.x)
             {
