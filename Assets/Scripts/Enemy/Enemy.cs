@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     {
         AttackPlayer(c);
     }
-    private void AttackPlayer(Collision2D other)
+    public void AttackPlayer(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
         {

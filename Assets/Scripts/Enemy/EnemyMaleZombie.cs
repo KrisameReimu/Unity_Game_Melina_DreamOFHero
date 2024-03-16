@@ -34,6 +34,7 @@ public class EnemyMaleZombie : Enemy
         myAudioSource = GetComponent<AudioSource>();
 
         enemyLife = 15;
+        damage = 50;
     }
     void Start()
     {
@@ -95,7 +96,7 @@ public class EnemyMaleZombie : Enemy
     }
     public override void ChangeHP(float amount)
     {
-        Debug.Log("HP: " + enemyLife);
+        //Debug.Log("HP: " + enemyLife);
         enemyLife += (int)amount;
         myAudioSource.PlayOneShot(myAudioClip[0]);
         {
@@ -111,6 +112,7 @@ public class EnemyMaleZombie : Enemy
             }
         }
     }
+    
     IEnumerator AfterDie()
     {
         yield return new WaitForSeconds(1.0f);

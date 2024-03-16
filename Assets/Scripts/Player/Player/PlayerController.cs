@@ -218,6 +218,6 @@ public class PlayerController : MonoBehaviour
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
-        //Debug.Log("HP: " + HP + "/" + maxHP);
+        Debug.Log("HP: " + HP + "/" + maxHP);
     }
 }

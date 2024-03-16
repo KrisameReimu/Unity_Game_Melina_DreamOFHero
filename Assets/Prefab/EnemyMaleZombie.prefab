@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07088673, y: -0.15595096}
+  m_Offset: {x: -0.017187595, y: -0.045867443}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.124551, y: 1.764098}
+  m_Size: {x: 0.5231199, y: 0.9210191}
   m_EdgeRadius: 0
 --- !u!95 &5003435711449414127
 Animator:
@@ -144,9 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7cc21e9bc85604db52cce7164314cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   targetPosition: {x: 0, y: -3, z: 0}
   mySpeed: 1
   enemyLife: 0
+  myAudioClip: []
 --- !u!61 &5003435711449414128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +162,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.13424802, y: -0.053699374}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -171,7 +173,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.72, y: 2.076}
+  m_Size: {x: 1.0219102, y: 1.0664537}
   m_EdgeRadius: 0
 --- !u!1 &5003435711636630565
 GameObject:
@@ -198,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5003435711636630565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.317, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5003435711449414130}
@@ -217,7 +219,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0634478, y: -0.09523392}
+  m_Offset: {x: 0.72782755, y: -0.06569922}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -228,5 +230,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.68255305, y: 1.4444256}
+  m_Size: {x: 0.27980804, y: 0.93428254}
   m_EdgeRadius: 0
