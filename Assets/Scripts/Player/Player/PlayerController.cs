@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         Move();
         Attack();
+        //Debug.Log(anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"));
     }
 
     private void FixedUpdate()
