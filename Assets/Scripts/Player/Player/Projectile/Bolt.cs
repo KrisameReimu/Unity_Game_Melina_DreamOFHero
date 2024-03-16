@@ -5,12 +5,14 @@ using UnityEngine;
 public class Bolt : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator anim;
     public float damage { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         damage = 5f;
     }
 
@@ -31,8 +33,8 @@ public class Bolt : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         //Debug.Log("Bolt Collision with " + other.gameObject);
-        Destroy(gameObject);
-
+        anim.SetTrigger("hit");
+        //Destroy(gameObject);
         if (other.gameObject.tag != "Enemy")
             return;
         Enemy e = other.collider.GetComponent<Enemy>();
@@ -40,8 +42,10 @@ public class Bolt : MonoBehaviour
         {
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
         }
-        
-
     }
 
+    private void Vanish()
+    {
+        Destroy(gameObject);
+    }
 }
