@@ -16,7 +16,7 @@ public class EnemyController : Enemy
     private AudioSource audioSource;
     public AudioClip fixedClip;
 
-    public float maxHP = 10f;
+    public float maxHP = 30f;
     public float HP;
 
 
@@ -78,7 +78,7 @@ public class EnemyController : Enemy
             animator.SetFloat("Move Y", 0);
         }
 
-        rigidbody2D.MovePosition(position);
+        transform.position = (position);
     }
 
     
@@ -98,7 +98,7 @@ public class EnemyController : Enemy
     {
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
-        Debug.Log("HP: "+HP);
+        //Debug.Log("HP: "+HP);
     }
 
     //Override test

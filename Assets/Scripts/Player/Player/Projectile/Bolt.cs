@@ -34,13 +34,15 @@ public class Bolt : MonoBehaviour
     {
         //Debug.Log("Bolt Collision with " + other.gameObject);
         anim.SetTrigger("hit");
-        //Destroy(gameObject);
+        rb.simulated = false; //Disable the bolt
         if (other.gameObject.tag != "Enemy")
             return;
         Enemy e = other.collider.GetComponent<Enemy>();
         if (e != null)
         {
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
+            int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
+            e.Knockback(25f, knockbackDirection);
         }
     }
 

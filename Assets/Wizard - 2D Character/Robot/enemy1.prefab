@@ -148,12 +148,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  isAttacking: 1
   speed: 1
   vertical: 0
   changeTime: 3
   smokeEffect: {fileID: 1448962625143387902, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
   fixedClip: {fileID: 8300000, guid: f38af96448784414a8788ef222c85ce6, type: 3}
-  maxHP: 10
+  maxHP: 30
   HP: 0
 --- !u!95 &4502103080044122090
 Animator:
