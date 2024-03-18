@@ -5,27 +5,38 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    Animator anim;
+    private Rigidbody2D rb;
+    private Animator anim;
 
     [Range(0, 10f)]
+    private int direction = 1;
     public float speed;
     float x_movement;
     //float y_movement;
     public float timeInvincible = 0.5f;
-    bool isInvincible;
-    float invincibleTimer;
+    private bool isInvincible;
+    private bool isUsingBurst = false;
     public int maxHP { get; private set; } = 50;
     public int HP;
+    public float maxSP { get; private set; } = 20;
+    public float SP;
+    public float maxEX { get; private set; } = 100;
+    public float EX;
+
+
     bool isAttacking;
     float attackInterval = 0.5f;
     float attackTimer = 0f;
-    private int direction = 1;
+    private float invincibleTimer;
+
     bool isJumping = false;
     bool isGettingHurt = false;
     float gettingHurtTimer = 0.3f;
 
     public GameObject boltPrefab;
+    public GameObject burstImpulsePrefab;
+    public GameObject barrierPrefab;
+
 
 
     // Start is called before the first frame update
@@ -39,6 +50,8 @@ public class PlayerController : MonoBehaviour
     {
         HP = maxHP;
         speed = 5;
+        SP = maxSP;
+        EX = 0;
     }
 
     // Update is called once per frame
@@ -47,12 +60,13 @@ public class PlayerController : MonoBehaviour
         Jump();
         Move();
         Attack();
-        //Debug.Log(anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"));
+        Status();
     }
 
     private void FixedUpdate()
     {
         Cooldown();
+
         transform.position = (Vector2)rb.position + new Vector2(x_movement, 0) * speed * Time.fixedDeltaTime;
         //rb.MovePosition(position);
     }
@@ -118,12 +132,20 @@ public class PlayerController : MonoBehaviour
     }
 
     //step on ground
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
             return;
         anim.SetBool("isJump", false);
         isJumping = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+            return;
+        anim.SetBool("isJump", true);
+        isJumping = true;
     }
 
     private void Attack() 
@@ -140,19 +162,55 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Status() 
+    {
+        if (SP < maxSP)
+            SP += Time.deltaTime;
+        UIStatusBar.instance.SetSPValue(SP / (float)maxSP);
+        UIStatusBar.instance.SetBurstValue(EX / (float)maxEX);
+    }
+
     private void Burst()
     {
+        if (isUsingBurst) 
+        {
+            EX -= Time.deltaTime*10;
+            if(EX <= 0)
+                isUsingBurst = false;
+        }
+        if (EX < maxEX)
+            return;
         if (Input.GetKeyDown(KeyCode.R))
         {
+            if (isGettingHurt)
+                EX -= 30f;//penalty
+            isInvincible = true;
+            invincibleTimer = EX/10f;
             anim.SetTrigger("burst");
             isAttacking = true;
             attackTimer = 1.2f;
+            isUsingBurst = true;
         }
 
     }
 
+    private void ActiveImpulse()
+    {
+        GameObject burstImpulse = Instantiate(burstImpulsePrefab, rb.position + new Vector2(direction, 1), Quaternion.Euler(new Vector3(0, 0, 90)));
+    }
+
+    private void ActiveBarrier()
+    {
+        GameObject barrier = Instantiate(barrierPrefab, rb.position + new Vector2(0, 0.8f), Quaternion.identity);
+    }
+
     private void ShootBolt() 
     {
+        //make suring the motion was not stopped
+        if (!(anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("SquatAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("LookUpAttack")))
+            return;
+
+
         float hight = anim.GetBool("squatDown") ? 1f : 0f;
         float upperAngle = anim.GetBool("isLookUp") ? 1f : 0f;
         GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction*(1+0.4f*hight), 1-0.6f*hight+0.4f * upperAngle), Quaternion.Euler(new Vector3(0, 0, 90 + (90+upperAngle*30) * direction)));
@@ -185,6 +243,15 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void increaseEX(float amount, bool hurt) 
+    {//amount: the value of damage       hurt: getting hurt or hitting enemy
+        if (hurt)
+            amount = -1 * amount / maxHP * maxEX * 2;
+        else
+            amount = amount / maxHP * maxEX / 2;
+        EX += amount;
+    }
+
     private void ChangeDirection()
     {
         transform.localScale = new Vector3(direction * Math.Abs(transform.localScale.x), transform.localScale.y, 1f);
@@ -209,11 +276,13 @@ public class PlayerController : MonoBehaviour
             invincibleTimer = timeInvincible;
             isGettingHurt = true;
             gettingHurtTimer = 0.3f;
+
             direction = knockBackDirection;
             ChangeDirection();
             rb.AddForce(new Vector2(direction*-5f, 3f*upperForce), ForceMode2D.Impulse);
+
+            increaseEX(amount, true);
             //PlaySound(damageClip);
-            
         }
 
         HP += amount;

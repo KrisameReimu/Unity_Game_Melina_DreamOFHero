@@ -116,7 +116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.47889197}
+  m_Size: {x: 0.5, y: 0.64}
   m_EdgeRadius: 0
 --- !u!114 &3897462973123541106
 MonoBehaviour:
@@ -135,6 +135,7 @@ MonoBehaviour:
   timeInvincible: 0.5
   HP: 0
   boltPrefab: {fileID: 1023113784580169632, guid: fb581aa3b890f374e9831bf27c84aa77, type: 3}
+  burstImpulsePrefab: {fileID: 829670003038648496, guid: 39ccfa229c6060e4cbb8326a57e02fd2, type: 3}
 --- !u!1001 &1076285776066780549
 PrefabInstance:
   m_ObjectHideFlags: 0

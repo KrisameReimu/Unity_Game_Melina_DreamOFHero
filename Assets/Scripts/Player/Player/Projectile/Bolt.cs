@@ -43,6 +43,9 @@ public class Bolt : MonoBehaviour
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
             int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
             e.Knockback(25f, knockbackDirection);
+
+            PlayerController player = FindObjectOfType<PlayerController>();
+            player.increaseEX(damage, false);
         }
     }
 

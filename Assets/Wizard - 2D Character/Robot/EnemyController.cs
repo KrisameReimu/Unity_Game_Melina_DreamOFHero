@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyController : Enemy
 {
@@ -96,6 +97,10 @@ public class EnemyController : Enemy
 
     public override void ChangeHP(float amount)
     {
+        Renderer r = gameObject.GetComponent<Renderer>();
+        r.material.SetColor("_Color", Color.red);
+        r.material.DOColor(Color.white, 0.5f);
+
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
         //Debug.Log("HP: "+HP);

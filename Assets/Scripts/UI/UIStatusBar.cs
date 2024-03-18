@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
 
 public class UIStatusBar : MonoBehaviour
 {
@@ -26,6 +28,7 @@ public class UIStatusBar : MonoBehaviour
         BurstOriginalSize = BurstMask.rectTransform.rect.width;
     }
 
+    
     public void SetHPValue(float value)
     {
         HPMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, HPOriginalSize * value);
