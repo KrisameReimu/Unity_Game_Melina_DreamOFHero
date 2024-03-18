@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isAttacking || isGettingHurt || isJumping )
             return;
-        if (Input.GetKeyDown(KeyCode.Space) && !anim.GetBool("isJump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isJumping = true;
             anim.SetBool("isJump", true);
@@ -219,6 +219,6 @@ public class PlayerController : MonoBehaviour
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
-        Debug.Log("HP: " + HP + "/" + maxHP);
+        //Debug.Log("HP: " + HP + "/" + maxHP);
     }
 }
