@@ -307,6 +307,9 @@ MonoBehaviour:
   HPMask: {fileID: 495842168}
   SPMask: {fileID: 17456289}
   BurstMask: {fileID: 1396783319}
+  burstBar: {fileID: 141088674}
+  BurstNotReady: {fileID: 21300000, guid: bb825e083314efc4eb79f836884c631f, type: 3}
+  BurstReady: {fileID: 21300000, guid: 99faaece9eea2204e9068c5229943378, type: 3}
 --- !u!1 &141088672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1011767454
 MonoBehaviour:
   m_ObjectHideFlags: 0

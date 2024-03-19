@@ -12,6 +12,9 @@ public class UIStatusBar : MonoBehaviour
     public Image HPMask;
     public Image SPMask;
     public Image BurstMask;
+    public Image burstBar;
+    public Sprite BurstNotReady;
+    public Sprite BurstReady;
     float HPOriginalSize;
     float SPOriginalSize;
     float BurstOriginalSize;
@@ -19,6 +22,7 @@ public class UIStatusBar : MonoBehaviour
     void Awake()
     {
         instance = this;
+        //burstBar = BurstMask.transform.Find("Burst bar").gameObject.GetComponent<Image>();
     }
 
     void Start()
@@ -28,7 +32,19 @@ public class UIStatusBar : MonoBehaviour
         BurstOriginalSize = BurstMask.rectTransform.rect.width;
     }
 
-    
+    private void Update()
+    {
+        if (Mathf.Approximately(BurstMask.rectTransform.rect.width, BurstOriginalSize))
+        {
+            burstBar.sprite = BurstReady;
+        }
+        else
+        {
+            burstBar.sprite = BurstNotReady;
+        }
+    }
+
+
     public void SetHPValue(float value)
     {
         HPMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, HPOriginalSize * value);

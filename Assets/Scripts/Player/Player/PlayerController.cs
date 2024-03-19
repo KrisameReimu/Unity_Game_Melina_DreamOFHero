@@ -94,15 +94,18 @@ public class PlayerController : MonoBehaviour
         ChangeDirection();
 
 
-        if (Input.GetKey(KeyCode.S) && !anim.GetBool("isJump"))
+        
+
+        if (Input.GetKey(KeyCode.W) && !isJumping)
         {
-            anim.SetBool("squatDown", true);
+            anim.SetBool("isLookUp", true);
             return;
         }
 
-        if (Input.GetKey(KeyCode.W) && !anim.GetBool("isJump"))
+        if (Input.GetKey(KeyCode.S) && !isJumping)
         {
-            anim.SetBool("isLookUp", true);
+            anim.SetBool("isLookUp", false);
+            anim.SetBool("squatDown", true);
             return;
         }
 
@@ -164,8 +167,11 @@ public class PlayerController : MonoBehaviour
 
     private void Status() 
     {
-        if (SP < maxSP)
+        if (SP < maxSP) 
+        {
             SP += Time.deltaTime;
+            SP = Mathf.Clamp(SP, 0, maxSP);
+        }
         UIStatusBar.instance.SetSPValue(SP / (float)maxSP);
         UIStatusBar.instance.SetBurstValue(EX / (float)maxEX);
     }
@@ -174,8 +180,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isUsingBurst) 
         {
-            EX -= Time.deltaTime*10;
-            if(EX <= 0)
+            EX -= Time.deltaTime*20;
+            EX = Mathf.Clamp(EX, 0, maxEX);
+            if (EX <= 0)
                 isUsingBurst = false;
         }
         if (EX < maxEX)
@@ -184,8 +191,9 @@ public class PlayerController : MonoBehaviour
         {
             if (isGettingHurt)
                 EX -= 30f;//penalty
+
             isInvincible = true;
-            invincibleTimer = EX/10f;
+            invincibleTimer = EX/20f;
             anim.SetTrigger("burst");
             isAttacking = true;
             attackTimer = 1.2f;
@@ -207,7 +215,7 @@ public class PlayerController : MonoBehaviour
     private void ShootBolt() 
     {
         //make suring the motion was not stopped
-        if (!(anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("SquatAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("LookUpAttack")))
+        if (!isAttacking)
             return;
 
 
@@ -245,11 +253,14 @@ public class PlayerController : MonoBehaviour
 
     public void increaseEX(float amount, bool hurt) 
     {//amount: the value of damage       hurt: getting hurt or hitting enemy
+        if (isUsingBurst)
+            return;
         if (hurt)
             amount = -1 * amount / maxHP * maxEX * 2;
         else
             amount = amount / maxHP * maxEX / 2;
         EX += amount;
+        EX = Mathf.Clamp(EX, 0, maxEX);
     }
 
     private void ChangeDirection()
@@ -276,6 +287,7 @@ public class PlayerController : MonoBehaviour
             invincibleTimer = timeInvincible;
             isGettingHurt = true;
             gettingHurtTimer = 0.3f;
+            isAttacking = false;
 
             direction = knockBackDirection;
             ChangeDirection();
