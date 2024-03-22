@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Enemy
   - PlayerAttack
+  - Card
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Character
   - Projectile
   - Confiner
-  - 
-  - 
+  - Card
+  - Enemy
   - 
   - 
   - 

@@ -10,6 +10,11 @@ public class Enemy : MonoBehaviour
     //set the damage value in the awake function in each enemy script
     public bool isAttacking = true;//default
     //may set it to false if attack animation is not playing
+    public GameObject cardPrefab;
+
+
+
+
     public virtual void ChangeHP(float amount) { }
     private void OnCollisionEnter2D(Collision2D c)
     {
@@ -42,10 +47,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    
     /*
     private void OnDestroy()
     {
-        Debug.Log("Destroy");
+        if (cardPrefab != null)
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            GameObject cardItem = Instantiate(cardPrefab, rb.position + new Vector2(0, 0.5f), Quaternion.identity);
+        }
     }
+    
     */
+
+    public void DropCard()
+    {
+        if (cardPrefab != null)
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            GameObject cardItem = Instantiate(cardPrefab, rb.position + new Vector2(0, 0.5f), Quaternion.Euler(new Vector3(0, 0, 30)));
+            rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
+
+        }
+    }
 }

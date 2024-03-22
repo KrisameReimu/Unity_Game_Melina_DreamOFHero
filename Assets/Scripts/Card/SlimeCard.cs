@@ -10,5 +10,4 @@ public class SlimeCard : Card
         cardName = "Slime";
         cardText = "Sample text";
     }
-
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2373582354622009934}
   - component: {fileID: 4502103080044122090}
   - component: {fileID: 4382140672099678676}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   isAttacking: 1
+  cardPrefab: {fileID: 0}
   speed: 1
   vertical: 0
   changeTime: 3
@@ -281,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 1448962625143387896, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
       propertyPath: m_Name
       value: SmokeEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448962625143387896, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1448962625143387901, guid: acf7e283b35ba7945b3aa7e7c90dd363, type: 3}
       propertyPath: m_RootOrder

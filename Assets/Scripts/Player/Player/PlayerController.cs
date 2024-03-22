@@ -136,14 +136,16 @@ public class PlayerController : MonoBehaviour
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {
-        anim.SetBool("isJump", false);
         if (other.gameObject.tag == "Enemy")
             return;
+        anim.SetBool("isJump", false);
         isJumping = false;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Enemy")
+            return;
         anim.SetBool("isJump", true);
         isJumping = true;
     }

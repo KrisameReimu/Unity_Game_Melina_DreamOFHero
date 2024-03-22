@@ -91,6 +91,7 @@ public class Slime : Enemy
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.simulated = false;
             anim.SetTrigger("Die");
+            DropCard();
         }
 
     }
