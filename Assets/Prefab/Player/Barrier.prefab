@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6181756507964000183}
   - component: {fileID: 6181756507964000177}
   - component: {fileID: 1520793351389018047}
+  - component: {fileID: -2308947187874096251}
   m_Layer: 7
   m_Name: Barrier
   m_TagString: Projectile
@@ -112,3 +113,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c58a23b7d78fa54e882c27ba9b4dca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &-2308947187874096251
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6181756507964000180}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

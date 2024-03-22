@@ -5,19 +5,32 @@ using UnityEngine.XR;
 
 public class Barrier : MonoBehaviour
 {
-    GameObject player;
-    PlayerController pc;
+    GameObject playerObject;
+    PlayerController player;
     private void Awake()
     {
-        player = GameObject.Find("Player");
-        pc = player.GetComponent<PlayerController>();
+        playerObject = GameObject.Find("Player");
+        player = playerObject.GetComponent<PlayerController>();
     }
     // Update is called once per frame
     void Update()
     {
-        transform.position = (Vector2)player.transform.position + new Vector2(0, 0.8f);
-        if(pc.EX<=0)
+        transform.position = (Vector2)playerObject.transform.position + new Vector2(0, 0.8f);
+        if(player.EX<=0)
             Destroy(gameObject);
+    }
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag != "Enemy")
+            return;
+        Enemy e = other.gameObject.GetComponent<Enemy>();
+        if (e != null)
+        {
+            e.ChangeHP(0); //call the function to decrease enemies' HP
+            int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
+            e.Knockback(50f, knockbackDirection);
+        }
     }
 
 

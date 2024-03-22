@@ -32,7 +32,7 @@ public class UIStatusBar : MonoBehaviour
         BurstOriginalSize = BurstMask.rectTransform.rect.width;
     }
 
-    private void Update()
+    public void changeGaugeColor()
     {
         if (Mathf.Approximately(BurstMask.rectTransform.rect.width, BurstOriginalSize))
         {

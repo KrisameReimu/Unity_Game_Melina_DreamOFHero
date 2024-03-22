@@ -6,6 +6,8 @@ public class BurstImpulse : MonoBehaviour
 {
     private CircleCollider2D c;
     private float damage;
+    private Vector2 offset;
+    private PlayerController player;
 
 
 
@@ -14,9 +16,15 @@ public class BurstImpulse : MonoBehaviour
     {
         c = GetComponent<CircleCollider2D>();
         damage = 30f;
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        offset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        transform.position = (Vector2)player.transform.position + offset;
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -27,7 +35,7 @@ public class BurstImpulse : MonoBehaviour
         {
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
             int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
-            e.Knockback(50f, knockbackDirection);
+            e.Knockback(75f, knockbackDirection);
         }
     }
     private void Vanish()

@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null) {
             rb.AddForce(new Vector2(direction * -force, 10f), ForceMode2D.Impulse);
-            Debug.Log("knockback");
         }
     }
 

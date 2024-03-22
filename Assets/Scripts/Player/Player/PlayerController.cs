@@ -94,7 +94,12 @@ public class PlayerController : MonoBehaviour
         ChangeDirection();
 
 
-        
+
+        if (Input.GetKey(KeyCode.S) && !isJumping)
+        {
+            anim.SetBool("squatDown", true);
+            return;
+        }
 
         if (Input.GetKey(KeyCode.W) && !isJumping)
         {
@@ -102,13 +107,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetKey(KeyCode.S) && !isJumping)
-        {
-            anim.SetBool("isLookUp", false);
-            anim.SetBool("squatDown", true);
-            return;
-        }
-
+        
 
         if (Input.GetAxisRaw("Horizontal") != 0)
         //moving
@@ -137,16 +136,14 @@ public class PlayerController : MonoBehaviour
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {
+        anim.SetBool("isJump", false);
         if (other.gameObject.tag == "Enemy")
             return;
-        anim.SetBool("isJump", false);
         isJumping = false;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
-            return;
         anim.SetBool("isJump", true);
         isJumping = true;
     }
@@ -154,7 +151,7 @@ public class PlayerController : MonoBehaviour
     private void Attack() 
     {
         Burst();//highest priority
-        if (isAttacking)
+        if (isAttacking || isGettingHurt)
             return;
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))
         {
@@ -261,6 +258,9 @@ public class PlayerController : MonoBehaviour
             amount = amount / maxHP * maxEX / 2;
         EX += amount;
         EX = Mathf.Clamp(EX, 0, maxEX);
+
+        UIStatusBar.instance.SetBurstValue(EX / (float)maxEX);
+        UIStatusBar.instance.changeGaugeColor();
     }
 
     private void ChangeDirection()
