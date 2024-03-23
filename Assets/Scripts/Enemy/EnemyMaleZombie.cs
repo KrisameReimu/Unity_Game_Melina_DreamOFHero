@@ -108,18 +108,25 @@ public class EnemyMaleZombie : Enemy
             else if (enemyLife < 1)
             {
                 myAnim.SetTrigger("Die");
-                StartCoroutine("AfterDie");
+                Die();
+                //StartCoroutine("AfterDie");
             }
         }
     }
     
-    IEnumerator AfterDie()
+    //IEnumerator AfterDie()
+    //{
+        //yield return new WaitForSeconds(1.0f);
+        //mySr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        //yield return new WaitForSeconds(1.0f);
+        //mySr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+        //yield return new WaitForSeconds(1.0f);
+        //GetComponent<LootBag>().InstantiateLoot(transform.position);
+        //Destroy(this.gameObject);
+    //}
+    void Die()
     {
-        yield return new WaitForSeconds(1.0f);
-        mySr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-        yield return new WaitForSeconds(1.0f);
-        mySr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.2f);
-        yield return new WaitForSeconds(1.0f);
+        GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(this.gameObject);
     }
 }

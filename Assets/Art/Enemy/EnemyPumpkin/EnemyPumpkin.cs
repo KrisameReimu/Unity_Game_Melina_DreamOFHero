@@ -9,6 +9,9 @@ public class EnemyPumpkin : Enemy
     Animator myAnim;
     Vector3 slideTargetPosition;
     SpriteRenderer mySr;
+    [SerializeField]
+    protected AudioClip[] myAudioClip;
+    protected AudioSource myAudioSource;
 
 
     //new added
@@ -30,6 +33,7 @@ public class EnemyPumpkin : Enemy
         //new added
         Life = 15;
         damage = 50;
+        myAudioSource = GetComponent<AudioSource>();
 
 
 
