@@ -9,11 +9,19 @@ public class Card : MonoBehaviour
     public Sprite cardImage;
     public string cardText;
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }
+    }
+
+
+
+    public void effect()
+    {
+        //
     }
 }

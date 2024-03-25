@@ -6,14 +6,14 @@ public class Bolt : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
-    public float damage { get; private set; }
+    public float damage { get; private set; } // = playerAtk
 
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        damage = 5f;
+        //damage = 5f;
     }
 
     // Update is called once per frame
@@ -25,8 +25,9 @@ public class Bolt : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector2 direction, float force)
+    public void Shoot(Vector2 direction, float force, float playerAtk)
     {
+        damage = playerAtk;
         rb.AddForce(direction * force);
     }
 

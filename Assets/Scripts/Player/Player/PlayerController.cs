@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,8 +17,8 @@ public class PlayerController : MonoBehaviour
     public float timeInvincible = 0.5f;
     private bool isInvincible;
     private bool isUsingBurst = false;
-    public int maxHP { get; private set; } = 50;
-    public int HP;
+    public float maxHP { get; private set; } = 50;
+    public float HP;
     public float maxSP { get; private set; } = 20;
     public float SP;
     public float maxEX { get; private set; } = 100;
@@ -33,9 +34,15 @@ public class PlayerController : MonoBehaviour
     bool isGettingHurt = false;
     float gettingHurtTimer = 0.3f;
 
+    public float basicAtk = 5;
+    public float playerAtk;
+    public float playerDef = 0;
+
+
     public GameObject boltPrefab;
     public GameObject burstImpulsePrefab;
     public GameObject barrierPrefab;
+
 
 
 
@@ -52,6 +59,7 @@ public class PlayerController : MonoBehaviour
         speed = 5;
         SP = maxSP;
         EX = 0;
+        playerAtk = basicAtk;
     }
 
     // Update is called once per frame
@@ -133,10 +141,13 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+
+    //Objects not for player landing
+    string[] jumpDetectionTags = { "Enemy", "Background" };
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (jumpDetectionTags.Contains(other.gameObject.tag))
             return;
         anim.SetBool("isJump", false);
         isJumping = false;
@@ -144,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (jumpDetectionTags.Contains(other.gameObject.tag))
             return;
         anim.SetBool("isJump", true);
         isJumping = true;
@@ -222,7 +233,7 @@ public class PlayerController : MonoBehaviour
         float upperAngle = anim.GetBool("isLookUp") ? 1f : 0f;
         GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction*(1+0.4f*hight), 1-0.6f*hight+0.4f * upperAngle), Quaternion.Euler(new Vector3(0, 0, 90 + (90+upperAngle*30) * direction)));
         Bolt bolt = boltObject.GetComponent<Bolt>();
-        bolt.Shoot(new Vector2(direction, upperAngle*0.4f), 300);
+        bolt.Shoot(new Vector2(direction, upperAngle*0.4f), 300, playerAtk);
     }
 
     private void Cooldown()
@@ -303,5 +314,11 @@ public class PlayerController : MonoBehaviour
         HP = Mathf.Clamp(HP, 0, maxHP);
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
         //Debug.Log("HP: " + HP + "/" + maxHP);
+    }
+
+    public void MovePosition(Vector2 position)
+    { 
+        rb.position = position;
+        transform.position = position;
     }
 }

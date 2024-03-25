@@ -45,7 +45,7 @@ public class Slime : Enemy
 
     private void OnTriggerStay2D(Collider2D c)
     {
-        if (c.gameObject.tag != "Player")
+        if (c.gameObject.tag != "Player" || isAttacking)
             return;
         PlayerController player = c.gameObject.GetComponent<PlayerController>();
         targetPostion = player.transform.position;

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TestScene : MonoBehaviour
 {
-    public GameObject UI;
+    [SerializeField]
+    private GameObject UI;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        UI = GameObject.Find("UI");
         UI.SetActive(true);
     }
 }

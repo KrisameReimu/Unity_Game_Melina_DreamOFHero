@@ -15,8 +15,8 @@ public class BurstImpulse : MonoBehaviour
     void Awake()
     {
         c = GetComponent<CircleCollider2D>();
-        damage = 30f;
         player = GameObject.Find("Player").GetComponent<PlayerController>();
+        damage = player.playerAtk * 6;
         offset = transform.position - player.transform.position;
     }
 

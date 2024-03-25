@@ -29,7 +29,7 @@ public class Barrier : MonoBehaviour
         {
             e.ChangeHP(0); //call the function to decrease enemies' HP
             int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
-            e.Knockback(50f, knockbackDirection);
+            e.Knockback(10f, knockbackDirection);
         }
     }
 
