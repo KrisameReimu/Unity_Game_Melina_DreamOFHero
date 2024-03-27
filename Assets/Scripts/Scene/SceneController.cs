@@ -59,15 +59,13 @@ public class SceneController : MonoBehaviour
             Debug.Log("Load");
 
 
-            player.HP = PlayerPrefs.GetFloat("HP");
-            player.SP = PlayerPrefs.GetFloat("SP");
-            player.EX = PlayerPrefs.GetFloat("EX");
+            float HP = PlayerPrefs.GetFloat("HP");
+            float SP = PlayerPrefs.GetFloat("SP");
+            float EX = PlayerPrefs.GetFloat("EX");
 
             Vector2 newPosition = new Vector2(PlayerPrefs.GetFloat("pos_x"), PlayerPrefs.GetFloat("pos_y"));
             //Debug.Log(newPosition);
-            player.MovePosition(newPosition);
-            player.ChangeHP(0, 0);
-            player.increaseEX(0, false);
+            player.InitPlayerData(HP, SP, EX, newPosition);
 
             PlayerPrefs.DeleteAll();
         }

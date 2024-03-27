@@ -46,7 +46,7 @@ public class Bolt : MonoBehaviour
             e.Knockback(25f, knockbackDirection);
 
             PlayerController player = FindObjectOfType<PlayerController>();
-            player.increaseEX(damage, false);
+            player.IncreaseEX(damage, false);
         }
     }
 

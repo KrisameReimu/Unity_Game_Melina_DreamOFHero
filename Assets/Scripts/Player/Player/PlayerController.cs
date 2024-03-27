@@ -11,18 +11,25 @@ public class PlayerController : MonoBehaviour
 
     [Range(0, 10f)]
     private int direction = 1;
-    public float speed;
+    public float originalSpeed { get; private set; } = 5;
+    public float speed { get; private set; }
     float x_movement;
-    //float y_movement;
+    float y_movement;
     public float timeInvincible = 0.5f;
     private bool isInvincible;
     private bool isUsingBurst = false;
+
+    public bool isClimbing { get; private set; } = false;
+
     public float maxHP { get; private set; } = 50;
-    public float HP;
+    [SerializeField]
+    public float HP { get; private set; }
     public float maxSP { get; private set; } = 20;
-    public float SP;
+    [SerializeField]
+    public float SP { get; private set; }
     public float maxEX { get; private set; } = 100;
-    public float EX;
+    [SerializeField]
+    public float EX { get; private set; }
 
 
     bool isAttacking;
@@ -56,7 +63,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         HP = maxHP;
-        speed = 5;
+        speed = originalSpeed;
         SP = maxSP;
         EX = 0;
         playerAtk = basicAtk;
@@ -75,7 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         Cooldown();
 
-        transform.position = (Vector2)rb.position + new Vector2(x_movement, 0) * speed * Time.fixedDeltaTime;
+        transform.position = (Vector2)rb.position + new Vector2(x_movement, y_movement) * speed * Time.fixedDeltaTime;
         //rb.MovePosition(position);
     }
 
@@ -87,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isRun", false);
         x_movement = 0;
-
+        y_movement = 0;
         if (isAttacking || isGettingHurt)
             return;
 
@@ -95,12 +102,27 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("squatDown", false);
         anim.SetBool("isLookUp", false);
 
+
+
+        if (isClimbing)
+        {
+            anim.SetBool("climbing", false);
+
+            x_movement = Input.GetAxis("Horizontal");
+            y_movement = Input.GetAxis("Vertical");
+
+            if(x_movement != 0 || y_movement != 0)//moving
+                anim.SetBool("climbing", true);
+
+            return;
+        }
+
+
         if (Input.GetAxisRaw("Horizontal") < 0)
             direction = -1;
         if (Input.GetAxisRaw("Horizontal") > 0)
             direction = 1;
         ChangeDirection();
-
 
 
         if (Input.GetKey(KeyCode.S) && !isJumping)
@@ -130,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isAttacking || isGettingHurt || isJumping )
+        if (isAttacking || isGettingHurt || isJumping || isClimbing)
             return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -164,7 +186,7 @@ public class PlayerController : MonoBehaviour
     private void Attack() 
     {
         Burst();//highest priority
-        if (isAttacking || isGettingHurt)
+        if (isAttacking || isGettingHurt || isClimbing)
             return;
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))
         {
@@ -208,9 +230,19 @@ public class PlayerController : MonoBehaviour
             isAttacking = true;
             attackTimer = 1.2f;
             isUsingBurst = true;
+            ToggleClimbing(false);
+            StartCoroutine(SimulatedToggle());
         }
+    }
+
+    IEnumerator SimulatedToggle() 
+    {
+        rb.simulated = false;
+        yield return new WaitForSeconds(0.9f);
+        rb.simulated = true;
 
     }
+
 
     private void ActiveImpulse()
     {
@@ -261,7 +293,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void increaseEX(float amount, bool hurt) 
+    public void IncreaseEX(float amount, bool hurt) 
     {//amount: the value of damage       hurt: getting hurt or hitting enemy
         if (isUsingBurst)
             return;
@@ -302,11 +334,12 @@ public class PlayerController : MonoBehaviour
             gettingHurtTimer = 0.3f;
             isAttacking = false;
 
+            ToggleClimbing(false);
             direction = knockBackDirection;
             ChangeDirection();
             rb.AddForce(new Vector2(direction*-5f, 3f*upperForce), ForceMode2D.Impulse);
 
-            increaseEX(amount, true);
+            IncreaseEX(amount, true);
             //PlaySound(damageClip);
         }
 
@@ -316,9 +349,46 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("HP: " + HP + "/" + maxHP);
     }
 
+    public void ToggleClimbing(bool status) 
+    {
+        if (status && isJumping)
+        {
+             return;
+        }
+
+        isClimbing = status;
+
+        Debug.Log("isClimbing: " + isClimbing);
+        if (isClimbing)
+        {
+            rb.gravityScale = 0;
+            speed = 2;
+            anim.SetBool("climb",true);
+        }
+        else
+        {
+            rb.gravityScale = 5;
+            speed = originalSpeed;
+            anim.SetBool("climb", false);
+            anim.SetBool("climbing", false);
+        }
+    }
+
+
+
     public void MovePosition(Vector2 position)
     { 
         rb.position = position;
         transform.position = position;
+    }
+
+    public void InitPlayerData(float HP, float SP, float EX, Vector2 position)
+    {
+        this.HP = HP;
+        this.SP = SP;
+        this.EX = EX;
+        ChangeHP(0, 0);
+        IncreaseEX(0, false);
+        MovePosition(position);
     }
 }

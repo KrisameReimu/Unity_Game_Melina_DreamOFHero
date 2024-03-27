@@ -6,7 +6,7 @@ using TMPro;
 using System;
 using UnityEngine.EventSystems;
 
-public class UIItem : MonoBehaviour
+public class UIItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
 {
     [SerializeField]
     private Image itemImage;
@@ -36,12 +36,12 @@ public class UIItem : MonoBehaviour
     public void Select()
     {
         //borderImage.enabled = true;
-        background.color = new Color32(255, 105, 28, 255);
+        background.color = new Color32(227, 189, 83, 255);
     }
     public void Deselect()
     {
         //borderImage.enabled = false;
-        background.color = new Color32(106, 106, 106, 255);
+        background.color = new Color32(188, 188, 188, 255);
     }
 
     public void SetData(Sprite sprite, int quantity)
@@ -52,37 +52,44 @@ public class UIItem : MonoBehaviour
         empty = false;
     }
 
-    public void OnBeginDrag()
-    {
-        if (empty)
-            return;
-        OnItemBeginDrag?.Invoke(this);
-    }
+    
 
-    public void OnDrop()
-    {
-        OnItemDroppedOn?.Invoke(this);
-    }
+    
 
-    public void OnEndDrag()
-    {
-        OnItemEndDrag?.Invoke(this);
-    }
+   
 
-    public void OnPointerClick(BaseEventData data)
+    public void OnPointerClick(PointerEventData pointerData)
     {
-        if (empty)
-            return;
-        PointerEventData pointerData = (PointerEventData)data;
-        if(pointerData.button == PointerEventData.InputButton.Right)
+        if (pointerData.button == PointerEventData.InputButton.Right)
         {
             OnRightMouseBtnClick?.Invoke(this);
         }
-        else 
+        else
         {
             Debug.Log("Clicked");
             OnItemClicked?.Invoke(this);
         }
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (empty)
+            return;
+        OnItemBeginDrag?.Invoke(this);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        OnItemEndDrag?.Invoke(this);
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        OnItemDroppedOn?.Invoke(this);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        //
+    }
 }
