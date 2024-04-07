@@ -10,6 +10,8 @@ TagManager:
   - Card
   - PlayerDetecter
   - Background
+  - Trap
+  - SpikeBall
   layers:
   - Default
   - TransparentFX

@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
     //private methods - don't touch
 
 
-    private void Move() 
+    private void Move()
     {
         anim.SetBool("isRun", false);
         x_movement = 0;
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             x_movement = Input.GetAxis("Horizontal");
             y_movement = Input.GetAxis("Vertical");
 
-            if(x_movement != 0 || y_movement != 0)//moving
+            if (x_movement != 0 || y_movement != 0)//moving
                 anim.SetBool("climbing", true);
 
             return;
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        
+
 
         if (Input.GetAxisRaw("Horizontal") != 0)
         //moving
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isJump", true);
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
-        } 
+        }
     }
 
 
@@ -169,21 +169,62 @@ public class PlayerController : MonoBehaviour
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (other != null)
+            print("OnTriggerStay2D" + other.name);
         if (jumpDetectionTags.Contains(other.gameObject.tag))
-            return;
-        anim.SetBool("isJump", false);
-        isJumping = false;
+        {
+            anim.SetBool("isJump", false);
+            isJumping = false;
+        }
+
+
+        //Xu added for trap damage
+        if (other.gameObject.CompareTag("Trap"))
+        {
+            TakeDamageOverTime();
+        }
     }
+    //Xu added a method for trap call 
+    private void TakeDamageOverTime()
+    {
+        if (!isInvincible)
+        {
+            ChangeHP(-1, 0); // 每次调用减少1点HP，没有击退效果。
+            anim.SetTrigger("hurt"); // 播放受伤动画
+            isInvincible = true; // 设定一个短暂无敌时间防止连续受伤
+            invincibleTimer = timeInvincible; // 重置无敌时间
+        }
+    }
+    private void TakeDamageFromSpikeBall()
+    {
+        if (!isInvincible)
+        {
+            ChangeHP(-10, 0); // 假设受到10点伤害，你可以根据需要调整这个数值
+            anim.SetTrigger("hurt"); // 播放受伤动画
+            isInvincible = true; // 开始无敌时间防止连续受伤
+            invincibleTimer = timeInvincible; // 重置无敌时间
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("SpikeBall"))
+        {
+            TakeDamageFromSpikeBall();
+        }
+    }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other != null)
+            print("OnTriggerExit2D" + other.name);
         if (jumpDetectionTags.Contains(other.gameObject.tag))
             return;
         anim.SetBool("isJump", true);
         isJumping = true;
     }
 
-    private void Attack() 
+    private void Attack()
     {
         Burst();//highest priority
         if (isAttacking || isGettingHurt || isClimbing)
@@ -197,9 +238,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Status() 
+    private void Status()
     {
-        if (SP < maxSP) 
+        if (SP < maxSP)
         {
             SP += Time.deltaTime;
             SP = Mathf.Clamp(SP, 0, maxSP);
@@ -210,9 +251,9 @@ public class PlayerController : MonoBehaviour
 
     private void Burst()
     {
-        if (isUsingBurst) 
+        if (isUsingBurst)
         {
-            EX -= Time.deltaTime*20;
+            EX -= Time.deltaTime * 20;
             EX = Mathf.Clamp(EX, 0, maxEX);
             if (EX <= 0)
                 isUsingBurst = false;
@@ -225,7 +266,7 @@ public class PlayerController : MonoBehaviour
                 EX -= 30f;//penalty
 
             isInvincible = true;
-            invincibleTimer = EX/20f;
+            invincibleTimer = EX / 20f;
             anim.SetTrigger("burst");
             isAttacking = true;
             attackTimer = 1.2f;
@@ -235,7 +276,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator SimulatedToggle() 
+    IEnumerator SimulatedToggle()
     {
         rb.simulated = false;
         yield return new WaitForSeconds(0.9f);
@@ -254,7 +295,7 @@ public class PlayerController : MonoBehaviour
         GameObject barrier = Instantiate(barrierPrefab, rb.position + new Vector2(0, 0.8f), Quaternion.identity);
     }
 
-    private void ShootBolt() 
+    private void ShootBolt()
     {
         //make suring the motion was not stopped
         if (!isAttacking)
@@ -263,9 +304,9 @@ public class PlayerController : MonoBehaviour
 
         float hight = anim.GetBool("squatDown") ? 1f : 0f;
         float upperAngle = anim.GetBool("isLookUp") ? 1f : 0f;
-        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction*(1+0.4f*hight), 1-0.6f*hight+0.4f * upperAngle), Quaternion.Euler(new Vector3(0, 0, 90 + (90+upperAngle*30) * direction)));
+        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction * (1 + 0.4f * hight), 1 - 0.6f * hight + 0.4f * upperAngle), Quaternion.Euler(new Vector3(0, 0, 90 + (90 + upperAngle * 30) * direction)));
         Bolt bolt = boltObject.GetComponent<Bolt>();
-        bolt.Shoot(new Vector2(direction, upperAngle*0.4f), 300, playerAtk);
+        bolt.Shoot(new Vector2(direction, upperAngle * 0.4f), 300, playerAtk);
     }
 
     private void Cooldown()
@@ -290,10 +331,10 @@ public class PlayerController : MonoBehaviour
             if (attackTimer <= 0)
                 isAttacking = false;
         }
-        
+
     }
 
-    public void IncreaseEX(float amount, bool hurt) 
+    public void IncreaseEX(float amount, bool hurt)
     {//amount: the value of damage       hurt: getting hurt or hitting enemy
         if (isUsingBurst)
             return;
@@ -335,10 +376,11 @@ public class PlayerController : MonoBehaviour
             isAttacking = false;
 
             ToggleClimbing(false);
-            direction = knockBackDirection;
-            ChangeDirection();
-            rb.AddForce(new Vector2(direction*-5f, 3f*upperForce), ForceMode2D.Impulse);
+            if (knockBackDirection != 0)
+                direction = knockBackDirection;
 
+            rb.AddForce(new Vector2(direction * -5f, 3f * upperForce), ForceMode2D.Impulse);
+            ChangeDirection();
             IncreaseEX(amount, true);
             //PlaySound(damageClip);
         }
@@ -349,11 +391,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("HP: " + HP + "/" + maxHP);
     }
 
-    public void ToggleClimbing(bool status) 
+    public void ToggleClimbing(bool status)
     {
         if (status && isJumping)
         {
-             return;
+            return;
         }
 
         isClimbing = status;
@@ -363,7 +405,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = 0;
             speed = 2;
-            anim.SetBool("climb",true);
+            anim.SetBool("climb", true);
         }
         else
         {
@@ -377,7 +419,7 @@ public class PlayerController : MonoBehaviour
 
 
     public void MovePosition(Vector2 position)
-    { 
+    {
         rb.position = position;
         transform.position = position;
     }
