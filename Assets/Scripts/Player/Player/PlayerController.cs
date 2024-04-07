@@ -177,9 +177,10 @@ public class PlayerController : MonoBehaviour
         */
         if (jumpDetectionTags.Contains(other.gameObject.tag))
         {
-            anim.SetBool("isJump", false);
-            isJumping = false;
+            return;
         }
+        anim.SetBool("isJump", false);
+        isJumping = false;
     }
 
 

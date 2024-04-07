@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4956eae47aaa38640a77bed07c16ff98, type: 3}
-  m_Name: MysteryKey
+  m_Name: SampleCard1
   m_EditorClassIdentifier: 
-  <isStackable>k__BackingField: 0
-  <maxStackSize>k__BackingField: 1
-  <itemName>k__BackingField: Mystery Key
-  description: A key to unlock somewhere...
-  itemImage: {fileID: 21300000, guid: 0cb6fd6b39c49b24bba8870773079502, type: 3}
+  <isStackable>k__BackingField: 1
+  <maxStackSize>k__BackingField: 10
+  <itemName>k__BackingField: Sample913
+  description: kkkkkkkkkkkkkkkk
+  itemImage: {fileID: 21300000, guid: 616d9b290ad81474095cc1e01a662190, type: 3}
