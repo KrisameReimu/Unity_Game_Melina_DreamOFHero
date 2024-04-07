@@ -41,14 +41,16 @@ public class PlayerController : MonoBehaviour
     bool isGettingHurt = false;
     float gettingHurtTimer = 0.3f;
 
-    public float basicAtk = 5;
-    public float playerAtk;
-    public float playerDef = 0;
+    public float basicAtk { get; private set; } = 5;
+    public float playerAtk { get; private set; }
+    public float playerDef { get; private set; } = 0;
 
 
     public GameObject boltPrefab;
     public GameObject burstImpulsePrefab;
     public GameObject barrierPrefab;
+    [SerializeField]
+    private GameObject summonSlime;
 
 
 
@@ -169,55 +171,25 @@ public class PlayerController : MonoBehaviour
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {
+        /*
         if (other != null)
             print("OnTriggerStay2D" + other.name);
+        */
         if (jumpDetectionTags.Contains(other.gameObject.tag))
         {
             anim.SetBool("isJump", false);
             isJumping = false;
         }
+    }
 
-
-        //Xu added for trap damage
-        if (other.gameObject.CompareTag("Trap"))
-        {
-            TakeDamageOverTime();
-        }
-    }
-    //Xu added a method for trap call 
-    private void TakeDamageOverTime()
-    {
-        if (!isInvincible)
-        {
-            ChangeHP(-1, 0); // 每次调用减少1点HP，没有击退效果。
-            anim.SetTrigger("hurt"); // 播放受伤动画
-            isInvincible = true; // 设定一个短暂无敌时间防止连续受伤
-            invincibleTimer = timeInvincible; // 重置无敌时间
-        }
-    }
-    private void TakeDamageFromSpikeBall()
-    {
-        if (!isInvincible)
-        {
-            ChangeHP(-10, 0); // 假设受到10点伤害，你可以根据需要调整这个数值
-            anim.SetTrigger("hurt"); // 播放受伤动画
-            isInvincible = true; // 开始无敌时间防止连续受伤
-            invincibleTimer = timeInvincible; // 重置无敌时间
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("SpikeBall"))
-        {
-            TakeDamageFromSpikeBall();
-        }
-    }
 
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        /*
         if (other != null)
             print("OnTriggerExit2D" + other.name);
+        */
         if (jumpDetectionTags.Contains(other.gameObject.tag))
             return;
         anim.SetBool("isJump", true);
@@ -236,6 +208,20 @@ public class PlayerController : MonoBehaviour
             isAttacking = true;
             attackTimer = attackInterval;
         }
+        CardSkill();
+    }
+
+    private void CardSkill()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        {
+            GameObject slime = Instantiate(summonSlime, rb.position + new Vector2(direction, 0.8f), Quaternion.identity);
+            anim.SetTrigger("summon");
+            isAttacking = true;
+            attackTimer = 0.6f;
+        }
+
+
     }
 
     private void Status()
@@ -400,7 +386,7 @@ public class PlayerController : MonoBehaviour
 
         isClimbing = status;
 
-        Debug.Log("isClimbing: " + isClimbing);
+        //Debug.Log("isClimbing: " + isClimbing);
         if (isClimbing)
         {
             rb.gravityScale = 0;

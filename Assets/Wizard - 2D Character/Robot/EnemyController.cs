@@ -93,7 +93,15 @@ public class EnemyController : Enemy
         smokeEffect.Stop();
         audioSource.Stop();
         audioSource.PlayOneShot(fixedClip);
+        StartCoroutine(Vanish());
     }
+
+    IEnumerator Vanish()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
+
 
     public override void ChangeHP(float amount)
     {

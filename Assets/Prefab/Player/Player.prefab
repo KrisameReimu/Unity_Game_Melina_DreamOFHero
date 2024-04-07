@@ -131,14 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6759dd6615f7b84439cb8214f3cb6fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   timeInvincible: 0.5
-  basicAtk: 5
-  playerAtk: 0
-  playerDef: 0
   boltPrefab: {fileID: 1023113784580169632, guid: fb581aa3b890f374e9831bf27c84aa77, type: 3}
   burstImpulsePrefab: {fileID: 829670003038648496, guid: 39ccfa229c6060e4cbb8326a57e02fd2, type: 3}
   barrierPrefab: {fileID: 6181756507964000180, guid: 7366292e773b82b438dc9d113da4ee6a, type: 3}
+  summonSlime: {fileID: 1078137484417146823, guid: 87d912f96dd152045ab59505dd8e94de, type: 3}
 --- !u!114 &2588802949052333844
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class Slime : Enemy
     private void Move()
     {
         //attack motion
-        if (chase && Vector2.Distance(transform.position, targetPostion) >= 0)            
+        if (chase && Vector2.Distance(transform.position, targetPostion) != 0)            
             anim.SetTrigger("Attack");
         
         //move

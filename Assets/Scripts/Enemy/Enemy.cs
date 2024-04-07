@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 
 
 
-    public virtual void ChangeHP(float amount) { }
+    public virtual void ChangeHP(float amount) { }//negative value to decrease HP
     private void OnCollisionEnter2D(Collision2D c)
     {
         AttackPlayer(c);
