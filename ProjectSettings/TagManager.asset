@@ -12,6 +12,8 @@ TagManager:
   - Background
   - Trap
   - SpikeBall
+  - Summon
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - Card
   - Enemy
   - Summon
-  - 
+  - Item
   - 
   - 
   - Background
