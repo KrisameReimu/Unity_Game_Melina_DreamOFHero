@@ -6,6 +6,8 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController playerInstance;
+
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -52,23 +54,34 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject summonSlime;
 
+    private bool initialized = false;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-    }
 
     private void Awake()
     {
+        if (playerInstance == null)
+        {
+            playerInstance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        if (initialized)
+            return;
+
+
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         HP = maxHP;
         speed = originalSpeed;
         SP = maxSP;
         EX = 0;
         playerAtk = basicAtk;
+
+        initialized = true;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame

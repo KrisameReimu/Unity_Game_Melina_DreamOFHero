@@ -35,9 +35,9 @@ public class SceneController : MonoBehaviour
 
     private void SaveSceneData(Vector2 position) 
     {
-        PlayerPrefs.SetFloat("HP", player.HP);
-        PlayerPrefs.SetFloat("SP", player.SP);
-        PlayerPrefs.SetFloat("EX", player.EX);
+        //PlayerPrefs.SetFloat("HP", player.HP);
+        //PlayerPrefs.SetFloat("SP", player.SP);
+        //PlayerPrefs.SetFloat("EX", player.EX);
 
         PlayerPrefs.SetFloat("pos_x", position.x);
         PlayerPrefs.SetFloat("pos_y", position.y);
@@ -59,13 +59,14 @@ public class SceneController : MonoBehaviour
             Debug.Log("Load");
 
 
-            float HP = PlayerPrefs.GetFloat("HP");
-            float SP = PlayerPrefs.GetFloat("SP");
-            float EX = PlayerPrefs.GetFloat("EX");
+            //float HP = PlayerPrefs.GetFloat("HP");
+            //float SP = PlayerPrefs.GetFloat("SP");
+            //float EX = PlayerPrefs.GetFloat("EX");
 
             Vector2 newPosition = new Vector2(PlayerPrefs.GetFloat("pos_x"), PlayerPrefs.GetFloat("pos_y"));
             //Debug.Log(newPosition);
-            player.InitPlayerData(HP, SP, EX, newPosition);
+            //player.InitPlayerData(HP, SP, EX, newPosition);
+            player.MovePosition(newPosition);
 
             PlayerPrefs.DeleteAll();
         }

@@ -21,8 +21,16 @@ public class UIStatusBar : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(transform.root.gameObject);
+        }
         //burstBar = BurstMask.transform.Find("Burst bar").gameObject.GetComponent<Image>();
+        DontDestroyOnLoad(transform.root.gameObject);
     }
 
     void Start()
