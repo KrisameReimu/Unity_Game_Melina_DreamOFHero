@@ -60,6 +60,11 @@ namespace Inventory.UI
         }
         private void HandleShowItemActions(UIItem item)
         {
+            int index = itemList.IndexOf(item);
+            if(index == -1)
+            {
+                return;
+            }
         }
 
         private void HandleEndDrag(UIItem item)
