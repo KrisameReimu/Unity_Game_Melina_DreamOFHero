@@ -13,7 +13,7 @@ namespace Inventory.UI
         [SerializeField]
         private RectTransform contentPanel;
 
-        List<UIItem> itemList = new List<UIItem>();
+        List<UIItem> UIItemList = new List<UIItem>();
 
         [SerializeField]
         private UIInventoryDescription inventoryDescription;
@@ -41,7 +41,7 @@ namespace Inventory.UI
             {
                 UIItem uiItem = Instantiate(itemPrefab, Vector2.zero, Quaternion.identity);
                 uiItem.transform.SetParent(contentPanel); //add to the UI
-                itemList.Add(uiItem);
+                UIItemList.Add(uiItem);
                 uiItem.OnItemClicked += HandleItemSelection;
                 uiItem.OnItemBeginDrag += HandleBeginDrag;
                 uiItem.OnItemDroppedOn += HandleSwap;
@@ -53,18 +53,19 @@ namespace Inventory.UI
 
         public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
         {
-            if (itemList.Count > itemIndex)
+            if (UIItemList.Count > itemIndex)
             {
-                itemList[itemIndex].SetData(itemImage, itemQuantity);
+                UIItemList[itemIndex].SetData(itemImage, itemQuantity);
             }
         }
         private void HandleShowItemActions(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if(index == -1)
             {
                 return;
             }
+            OnItemActionRequested?.Invoke(index);
         }
 
         private void HandleEndDrag(UIItem item)
@@ -74,7 +75,7 @@ namespace Inventory.UI
 
         private void HandleSwap(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if (index == -1)
             {
                 return;
@@ -92,7 +93,7 @@ namespace Inventory.UI
 
         private void HandleBeginDrag(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if (index == -1)
                 return;
 
@@ -109,7 +110,7 @@ namespace Inventory.UI
 
         private void HandleItemSelection(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if (index == -1)
                 return;
             OnDescriptionRequested?.Invoke(index);
@@ -124,7 +125,7 @@ namespace Inventory.UI
 
         private void DeselectAllItems()
         {
-            foreach (UIItem item in itemList)
+            foreach (UIItem item in UIItemList)
             {
                 item.Deselect();
             }
@@ -145,12 +146,12 @@ namespace Inventory.UI
         {
             inventoryDescription.SetDescription(itemImage, itemName, description);
             DeselectAllItems();
-            itemList[itemIndex].Select();
+            UIItemList[itemIndex].Select();
         }
 
         internal void ResetAllItems()
         {
-            foreach(var item in itemList)
+            foreach(var item in UIItemList)
             {
                 item.ResetData();
                 item.Deselect();

@@ -32,7 +32,7 @@ namespace Inventory.Model
             return inventoryItems[index];
         }
 
-        public int AddItem(ItemSO newItem, int newQuantity)
+        public int AddItem(ItemSO newItem, int newQuantity, List<ItemParameter> itemState = null)
         {
             if (newItem.isStackable == false)
             {
@@ -40,7 +40,7 @@ namespace Inventory.Model
                 {
                     while(newQuantity>0 && !IsInventoryFull())
                     {
-                        newQuantity -= AddItemToFirstFreeSlot(newItem, 1);
+                        newQuantity -= AddItemToFirstFreeSlot(newItem, 1, itemState);
                     }
                     InformAboutChange();
                     return newQuantity;
@@ -51,12 +51,15 @@ namespace Inventory.Model
             return newQuantity;
         }
 
-        private int AddItemToFirstFreeSlot(ItemSO theItem, int theQuantity)
+        private int AddItemToFirstFreeSlot(ItemSO theItem, int theQuantity
+            , List<ItemParameter> itemState = null)
         {
             InventoryItem newItem = new InventoryItem
             {
                 item = theItem,
                 quantity = theQuantity,
+                itemState = 
+                new List<ItemParameter>(itemState==null?theItem.defaultParametersList:itemState)
             };
 
             for (int i = 0; i < inventoryItems.Count; i++)
@@ -136,6 +139,23 @@ namespace Inventory.Model
         {
             OnInventoryUpdated?.Invoke(GetCurrentInventoryState());
         }
+
+        public void RemoveItem(int itemIndex, int amount)//call when consume
+        {
+            if(inventoryItems.Count > itemIndex)//item exists
+            {
+                if (inventoryItems[itemIndex].IsEmpty)
+                    return;
+                int remainNum = inventoryItems[itemIndex].quantity - amount;
+                if(remainNum <= 0)
+                    inventoryItems[itemIndex] = InventoryItem.GetEmptyItem();
+                else
+                    inventoryItems[itemIndex] = inventoryItems[itemIndex]
+                        .ChangeQuantity(remainNum);
+
+                InformAboutChange();
+            }
+        }
     }
 
     [Serializable]
@@ -143,6 +163,7 @@ namespace Inventory.Model
     {
         public ItemSO item;
         public int quantity;
+        public List<ItemParameter> itemState;
         public bool IsEmpty => item == null;
 
         public InventoryItem ChangeQuantity(int newQuantity)
@@ -151,6 +172,7 @@ namespace Inventory.Model
             {
                 item = this.item,
                 quantity = newQuantity,
+                itemState = new List<ItemParameter>(this.itemState),
             };
         }
 
@@ -160,6 +182,7 @@ namespace Inventory.Model
             {
                 item = null,
                 quantity = 0,
+                itemState = new List<ItemParameter>(),
             };
         }
 

@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
 
     [Range(0, 10f)]
     private int direction = 1;
+
+    [field: SerializeField]
     public float originalSpeed { get; private set; } = 5;
+    [field: SerializeField]
     public float speed { get; private set; }
     float x_movement;
     float y_movement;
@@ -23,14 +26,15 @@ public class PlayerController : MonoBehaviour
 
     public bool isClimbing { get; private set; } = false;
 
+    [field: SerializeField]
     public float maxHP { get; private set; } = 50;
-    [SerializeField]
+    [field: SerializeField]
     public float HP { get; private set; }
     public float maxSP { get; private set; } = 20;
-    [SerializeField]
+    [field: SerializeField]
     public float SP { get; private set; }
     public float maxEX { get; private set; } = 100;
-    [SerializeField]
+    [field: SerializeField]
     public float EX { get; private set; }
 
 

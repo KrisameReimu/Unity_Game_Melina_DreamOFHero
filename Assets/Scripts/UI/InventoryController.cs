@@ -3,6 +3,7 @@ using Inventory.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace Inventory
@@ -78,13 +79,41 @@ namespace Inventory
                 return;
             }
             ItemSO item = inventoryItem.item;
+            string description = PrepareDescription(inventoryItem);
             inventoryUI.UpdateDescription(itemIndex,
-                item.itemImage, item.itemName, item.description);
+                item.itemImage, item.itemName, description);
+        }
+
+        private string PrepareDescription(InventoryItem inventoryItem)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(inventoryItem.item.description);
+            sb.AppendLine();//new line
+            for(int i = 0; i < inventoryItem.itemState.Count; i++)
+            {
+                sb.Append($"{inventoryItem.itemState[i].itemParameter.ParameterName} " +
+                    $": {inventoryItem.itemState[i].value} / " +
+                    $"{inventoryItem.item.defaultParametersList[i].value}");
+                sb.AppendLine();//new line
+            }
+            return sb.ToString();
         }
 
         private void HandleItemActionRequest(int itemIndex)
         {
-            throw new NotImplementedException();
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if(itemAction != null) // cast successfully
+            {
+                itemAction.PerformAction(gameObject, null);//player
+            }
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null) // cast successfully
+            {
+                inventoryData.RemoveItem(itemIndex, 1);//consume
+            }
         }
 
         private void Update()
