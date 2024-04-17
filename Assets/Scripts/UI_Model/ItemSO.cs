@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Inventory.Model
 {
-    [CreateAssetMenu(menuName = "ItemSO/ItemSO")]
-    public class ItemSO : ScriptableObject
+    //[CreateAssetMenu(menuName = "ItemSO/ItemSO")]
+    public abstract class ItemSO : ScriptableObject
     {
         public int ID => GetInstanceID();
 
