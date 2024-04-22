@@ -49,12 +49,15 @@ public class UICardSlot : MonoBehaviour
         {
             //Debug.Log("Active");
 
-            card.ActiveCardEffect(player);
-            currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
-            inventoryData.RemoveItem(currentIndex, 1);//consume
-            //call update by Action handler
+            bool result = card.ActiveCardEffect(player);
+            if(result)
+            {
+                currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
+                inventoryData.RemoveItem(currentIndex, 1);//consume
+                //call update by Action handler
+            }
 
-            return true;
+            return result;
         }
         return false;
     }

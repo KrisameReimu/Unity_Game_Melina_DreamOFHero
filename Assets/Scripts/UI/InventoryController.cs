@@ -110,8 +110,8 @@ namespace Inventory
             for(int i = 0; i < inventoryItem.itemState.Count; i++)
             {
                 sb.Append($"{inventoryItem.itemState[i].itemParameter.ParameterName} " +
-                    $": {inventoryItem.itemState[i].value} / " +
-                    $"{inventoryItem.item.defaultParametersList[i].value}");
+                    $": {inventoryItem.itemState[i].value} / ");
+                    //$"{inventoryItem.item.defaultParametersList[i].value}");
                 sb.AppendLine();//new line
             }
             return sb.ToString();
@@ -135,6 +135,8 @@ namespace Inventory
             {
                 inventoryUI.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
             }
+
+            inventoryUI.AddAction("Close", () => inventoryUI.HideItemAction());
         }
 
         private void DropItem(int itemIndex, int quantity)

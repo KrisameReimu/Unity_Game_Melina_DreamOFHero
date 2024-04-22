@@ -26,12 +26,25 @@ namespace Inventory.Model
             return false;
         }
 
-        public void ActiveCardEffect(GameObject character)
+        public bool ActiveCardEffect(GameObject character)
         {
+            PlayerController player = character.GetComponent<PlayerController>();
+            float totalCost = 0;
+            foreach (CardEffectData data in cardEffectList)
+            {
+                totalCost += data.cost;
+            }
+            if (!(player.ConsumeSP((int)totalCost)))//not enough SP to consume
+            {
+                //Debug.Log("Not enough SP");
+                return false;
+            }
+            //else
             foreach (CardEffectData data in cardEffectList)
             {
                 data.cardEffect.CardEffect(character, data.prefab);
             }
+            return true;
         }
     }
 
@@ -41,6 +54,6 @@ namespace Inventory.Model
     {
         public CardEffectSO cardEffect;
         public GameObject prefab;
-        public float value;
+        public float cost;
     }
 }

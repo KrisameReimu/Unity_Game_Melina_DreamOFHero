@@ -425,6 +425,23 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("HP: " + HP + "/" + maxHP);
     }
 
+    public void ChangeSP(int amount)
+    {
+        SP += amount;
+        SP = Mathf.Clamp(SP, 0, maxSP);
+        UIStatusBar.instance.SetSPValue(SP / (float)maxSP);
+    }
+    public bool ConsumeSP(int amount)
+    {
+        if(SP - amount <= 0) 
+            return false; //not enough SP to consume
+
+        //else
+        ChangeSP(amount * -1);
+        return true;
+    }
+
+
     public void ToggleClimbing(bool status)
     {
         if (status && isJumping)
@@ -452,7 +469,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    public void MovePosition(Vector2 position)
+    public void MoveToNewPosition(Vector2 position)
     {
         rb.position = position;
         transform.position = position;
@@ -465,6 +482,6 @@ public class PlayerController : MonoBehaviour
         this.EX = EX;
         ChangeHP(0, 0);
         IncreaseEX(0, false);
-        MovePosition(position);
+        MoveToNewPosition(position);
     }
 }

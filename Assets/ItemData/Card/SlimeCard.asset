@@ -23,4 +23,4 @@ MonoBehaviour:
   cardEffectList:
   - cardEffect: {fileID: 11400000, guid: 707856bcba3e1d74a8a22f66c6ed9a05, type: 2}
     prefab: {fileID: 1078137484417146823, guid: 87d912f96dd152045ab59505dd8e94de, type: 3}
-    value: 0
+    cost: 5
