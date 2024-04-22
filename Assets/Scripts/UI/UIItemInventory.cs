@@ -31,6 +31,8 @@ namespace Inventory.UI
 
         [SerializeField]
         private ItemActionPanel actionPanel;
+        [SerializeField]
+        private UICardSlotPopUp cardSlotPopUp;
 
 
         private void Awake()
@@ -163,6 +165,7 @@ namespace Inventory.UI
         public void Hide()
         {
             actionPanel.Toggle(false);
+            cardSlotPopUp.Toggle(false);
             gameObject.SetActive(false);
             ResetDraggedItem();
         }

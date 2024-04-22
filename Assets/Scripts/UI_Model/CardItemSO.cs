@@ -19,7 +19,7 @@ namespace Inventory.Model
             {
                 //cardSystem.SetCard(this, inventoryItem.itemState == null ?
                 //    defaultParametersList : inventoryItem.itemState);
-                cardSystem.SetCard(this, inventoryItem);
+                cardSystem.ShowCardSlotPopUp(this, inventoryItem);
                 return true;
             }
 

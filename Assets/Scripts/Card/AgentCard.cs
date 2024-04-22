@@ -22,13 +22,18 @@ public class AgentCard : MonoBehaviour
     [SerializeField]
     private int currentIndex;
     */
-
+    [SerializeField]
+    private CardItemSO tempCard;
+    [SerializeField] 
+    private InventoryItem tempInventoryItem;
     [SerializeField]
     private InventorySO inventoryData;
     [SerializeField]
     private List<UICardSlot> cards;
     [SerializeField]
     private GameObject UI;
+    [SerializeField]
+    private UICardSlotPopUp cardSlotPopUp;
 
 
 
@@ -46,11 +51,17 @@ public class AgentCard : MonoBehaviour
         {
             cards.Add(cardSlot.GetComponent<UICardSlot>());
         }
+        cardSlotPopUp = UI.GetComponentInChildren<UICardSlotPopUp>();
+        cardSlotPopUp.OnSlotChosen += SetCard;
     }
 
-    public void SetCard(CardItemSO cardSO, InventoryItem inventoryItem)  
+    public void ShowCardSlotPopUp(CardItemSO cardSO, InventoryItem inventoryItem)  
     {
-        cards[0].SetCard(cardSO, inventoryItem);
+        tempCard = cardSO;
+        tempInventoryItem = inventoryItem;
+        cardSlotPopUp.Toggle(true);
+
+        //cards[0].SetCard(cardSO, inventoryItem);
 
         /*
         this.card = cardSO;
@@ -60,9 +71,21 @@ public class AgentCard : MonoBehaviour
         */
     }
 
-    public void ActiveCardSkill()
+    public void SetCard(int index)
     {
-        cards[0].ActiveCardSkill(gameObject);
+        //check duplicate
+        foreach (UICardSlot cardSlot in cards)
+        {
+            if (cardSlot.currentIndex == inventoryData.GetInventoryIndex(tempInventoryItem))
+                cardSlot.SetCard(null, InventoryItem.GetEmptyItem());
+        }
+
+        cards[index].SetCard(tempCard, tempInventoryItem);
+    }
+
+    public bool ActiveCardSkill(int index)
+    {
+        return cards[index].ActiveCardSkill(gameObject);
 
         /*
         if (card != null)

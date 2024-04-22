@@ -18,8 +18,8 @@ public class UICardSlot : MonoBehaviour
     private Image cardImage;
     [field: SerializeField]
     private Sprite slotDefaultImage;
-    [SerializeField]
-    private int currentIndex;
+    [field: SerializeField]
+    public int currentIndex { get; private set; }
 
     private void Awake()
     {
@@ -29,21 +29,34 @@ public class UICardSlot : MonoBehaviour
     {
         this.card = cardSO;
         this.inventoryItem = inventoryItem;
-        cardImage.sprite = card.itemImage;
-        currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
+
+        if (inventoryItem.IsEmpty)
+        {
+            cardImage.sprite = slotDefaultImage;//reset
+            currentIndex = -1;
+        }
+        else
+        {
+            cardImage.sprite = card.itemImage;
+            currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
+        }
+  
     }
 
-    public void ActiveCardSkill(GameObject player)
+    public bool ActiveCardSkill(GameObject player)
     {
         if (card != null)
         {
-            Debug.Log("Active");
+            //Debug.Log("Active");
 
             card.ActiveCardEffect(player);
             currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
             inventoryData.RemoveItem(currentIndex, 1);//consume
             //call update by Action handler
+
+            return true;
         }
+        return false;
     }
 
     public void UpdateCardSlot()
@@ -54,7 +67,7 @@ public class UICardSlot : MonoBehaviour
         //update
 
         int tempIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
-        Debug.Log("temp: " + tempIndex + " curr: " + currentIndex);
+        //Debug.Log("temp: " + tempIndex + " curr: " + currentIndex);
         if (tempIndex != -1)//swapping
         {
             currentIndex = tempIndex;

@@ -235,23 +235,38 @@ public class PlayerController : MonoBehaviour
         CardSkill();
     }
 
-    /*
-    public void ActiveCardSkill()
+    public void ActiveCardSkill(int index)
     {
-        anim.SetTrigger("summon");
-        isAttacking = true;
-        attackTimer = 0.6f;
+        bool activated = cardSystem.ActiveCardSkill(index);
+
+        if(activated)//active animation if used skill only
+        {
+            anim.SetTrigger("summon");
+            isAttacking = true;
+            attackTimer = 0.6f;
+        }
     }
-    */
+    
     private void CardSkill()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
-            cardSystem.ActiveCardSkill();
+            ActiveCardSkill(0);
+        }        
 
-            anim.SetTrigger("summon");
-            isAttacking = true;
-            attackTimer = 0.6f;
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ActiveCardSkill(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ActiveCardSkill(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ActiveCardSkill(3);
         }
     }
     
