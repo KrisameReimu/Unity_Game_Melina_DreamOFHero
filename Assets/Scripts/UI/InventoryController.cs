@@ -3,12 +3,14 @@ using Inventory.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace Inventory
 {
     public class InventoryController : MonoBehaviour
     {
+        private static InventoryController inventoryControllerInstance;
         [SerializeField]
         private UIItemInventory inventoryUI;
 
@@ -17,8 +19,25 @@ namespace Inventory
 
         public List<InventoryItem> initItems = new List<InventoryItem>();
 
+        
+
         private void Awake()
         {
+            if (inventoryControllerInstance == null)
+            {
+                inventoryControllerInstance = this;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
+            if (inventoryUI != null)
+                return;
+
+            //Debug.Log("awake");
+
             inventoryUI = GameObject.Find("UI").GetComponentInChildren<UIItemInventory>();
             PrepareUI();
             PrepareInventoryData();
@@ -48,7 +67,7 @@ namespace Inventory
 
         private void PrepareUI()
         {
-            inventoryUI.InitInventoryUI(inventoryData.size);
+            inventoryUI.InitInventoryUI(inventoryData.size);    
             inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
@@ -78,14 +97,81 @@ namespace Inventory
                 return;
             }
             ItemSO item = inventoryItem.item;
+            string description = PrepareDescription(inventoryItem);
             inventoryUI.UpdateDescription(itemIndex,
-                item.itemImage, item.itemName, item.description);
+                item.itemImage, item.itemName, description);
+        }
+
+        private string PrepareDescription(InventoryItem inventoryItem)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(inventoryItem.item.description);
+            sb.AppendLine();//new line
+            for(int i = 0; i < inventoryItem.itemState.Count; i++)
+            {
+                sb.Append($"{inventoryItem.itemState[i].itemParameter.ParameterName} " +
+                    $": {inventoryItem.itemState[i].value} ");
+                    //$"/ {inventoryItem.item.defaultParametersList[i].value}");
+                sb.AppendLine();//new line
+            }
+            return sb.ToString();
         }
 
         private void HandleItemActionRequest(int itemIndex)
         {
-            throw new NotImplementedException();
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
+
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null) // cast successfully
+            {
+                inventoryUI.ShowItemAction(itemIndex);
+                inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
+            }
+
+            inventoryUI.AddAction("Close", () => inventoryUI.HideItemAction());
+
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null) // cast successfully
+            {
+                inventoryUI.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
+            }
         }
+
+        private void DropItem(int itemIndex, int quantity)
+        {
+            inventoryData.RemoveItem(itemIndex, quantity);
+            inventoryUI.ResetSelection();
+        }
+
+        public void PerformAction(int itemIndex)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
+
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null) // cast successfully
+            {
+                if (!(inventoryItem.item is CardItemSO))//no consume if is Card
+                    inventoryData.RemoveItem(itemIndex, 1);//consume
+            }
+
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null) // cast successfully
+            {                            //player
+                itemAction.PerformAction(gameObject, inventoryItem);//active effect
+                if(inventoryData.GetItemAt(itemIndex).IsEmpty)
+                {
+                    inventoryUI.ResetSelection();
+                }
+            }
+
+            inventoryUI.HideItemAction();
+        }
+
+
 
         private void Update()
         {

@@ -11,9 +11,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-    [Range(0, 10f)]
-    private int direction = 1;
+    [field: SerializeField]
+    public int direction { get; private set; } = 1;
+
+    [field: SerializeField]
     public float originalSpeed { get; private set; } = 5;
+    [field: SerializeField]
     public float speed { get; private set; }
     float x_movement;
     float y_movement;
@@ -23,14 +26,15 @@ public class PlayerController : MonoBehaviour
 
     public bool isClimbing { get; private set; } = false;
 
+    [field: SerializeField]
     public float maxHP { get; private set; } = 50;
-    [SerializeField]
+    [field: SerializeField]
     public float HP { get; private set; }
     public float maxSP { get; private set; } = 20;
-    [SerializeField]
+    [field: SerializeField]
     public float SP { get; private set; }
     public float maxEX { get; private set; } = 100;
-    [SerializeField]
+    [field: SerializeField]
     public float EX { get; private set; }
 
 
@@ -47,12 +51,16 @@ public class PlayerController : MonoBehaviour
     public float playerAtk { get; private set; }
     public float playerDef { get; private set; } = 0;
 
+    [field: SerializeField]
+    public GameObject boltPrefab { get; private set; }
+    [field: SerializeField]
+    public GameObject burstImpulsePrefab { get; private set; }
+    [field: SerializeField]
+    public GameObject barrierPrefab { get; private set; }
 
-    public GameObject boltPrefab;
-    public GameObject burstImpulsePrefab;
-    public GameObject barrierPrefab;
     [SerializeField]
-    private GameObject summonSlime;
+    private AgentCard cardSystem;
+
 
     private bool initialized = false;
 
@@ -66,6 +74,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+            return;
         }
         if (initialized)
             return;
@@ -73,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        cardSystem = GetComponent<AgentCard>();
         HP = maxHP;
         speed = originalSpeed;
         SP = maxSP;
@@ -122,6 +132,8 @@ public class PlayerController : MonoBehaviour
         if (isClimbing)
         {
             anim.SetBool("climbing", false);
+            anim.SetBool("isJump", false);
+
 
             x_movement = Input.GetAxis("Horizontal");
             y_movement = Input.GetAxis("Vertical");
@@ -225,18 +237,42 @@ public class PlayerController : MonoBehaviour
         CardSkill();
     }
 
-    private void CardSkill()
+    public void ActiveCardSkill(int index)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        bool activated = cardSystem.ActiveCardSkill(index);
+
+        if(activated)//active animation if used skill only
         {
-            GameObject slime = Instantiate(summonSlime, rb.position + new Vector2(direction, 0.8f), Quaternion.identity);
             anim.SetTrigger("summon");
             isAttacking = true;
             attackTimer = 0.6f;
         }
-
-
     }
+    
+    private void CardSkill()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        {
+            ActiveCardSkill(0);
+        }        
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ActiveCardSkill(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ActiveCardSkill(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ActiveCardSkill(3);
+        }
+    }
+    
+
 
     private void Status()
     {
@@ -391,6 +427,23 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("HP: " + HP + "/" + maxHP);
     }
 
+    public void ChangeSP(int amount)
+    {
+        SP += amount;
+        SP = Mathf.Clamp(SP, 0, maxSP);
+        UIStatusBar.instance.SetSPValue(SP / (float)maxSP);
+    }
+    public bool ConsumeSP(int amount)
+    {
+        if(SP - amount <= 0) 
+            return false; //not enough SP to consume
+
+        //else
+        ChangeSP(amount * -1);
+        return true;
+    }
+
+
     public void ToggleClimbing(bool status)
     {
         if (status && isJumping)
@@ -418,7 +471,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    public void MovePosition(Vector2 position)
+    public void MoveToNewPosition(Vector2 position)
     {
         rb.position = position;
         transform.position = position;
@@ -431,6 +484,6 @@ public class PlayerController : MonoBehaviour
         this.EX = EX;
         ChangeHP(0, 0);
         IncreaseEX(0, false);
-        MovePosition(position);
+        MoveToNewPosition(position);
     }
 }

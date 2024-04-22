@@ -13,7 +13,7 @@ namespace Inventory.UI
         [SerializeField]
         private RectTransform contentPanel;
 
-        List<UIItem> itemList = new List<UIItem>();
+        List<UIItem> UIItemList = new List<UIItem>();
 
         [SerializeField]
         private UIInventoryDescription inventoryDescription;
@@ -29,6 +29,12 @@ namespace Inventory.UI
 
         public event Action<int, int> OnSwapItems;
 
+        [SerializeField]
+        private ItemActionPanel actionPanel;
+        [SerializeField]
+        private UICardSlotPopUp cardSlotPopUp;
+
+
         private void Awake()
         {
             //Hide();
@@ -41,7 +47,7 @@ namespace Inventory.UI
             {
                 UIItem uiItem = Instantiate(itemPrefab, Vector2.zero, Quaternion.identity);
                 uiItem.transform.SetParent(contentPanel); //add to the UI
-                itemList.Add(uiItem);
+                UIItemList.Add(uiItem);
                 uiItem.OnItemClicked += HandleItemSelection;
                 uiItem.OnItemBeginDrag += HandleBeginDrag;
                 uiItem.OnItemDroppedOn += HandleSwap;
@@ -53,18 +59,20 @@ namespace Inventory.UI
 
         public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
         {
-            if (itemList.Count > itemIndex)
+            if (UIItemList.Count > itemIndex)
             {
-                itemList[itemIndex].SetData(itemImage, itemQuantity);
+                UIItemList[itemIndex].SetData(itemImage, itemQuantity);
             }
         }
         private void HandleShowItemActions(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if(index == -1)
             {
                 return;
             }
+            HandleItemSelection(item);
+            OnItemActionRequested?.Invoke(index);
         }
 
         private void HandleEndDrag(UIItem item)
@@ -74,7 +82,7 @@ namespace Inventory.UI
 
         private void HandleSwap(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if (index == -1)
             {
                 return;
@@ -92,7 +100,7 @@ namespace Inventory.UI
 
         private void HandleBeginDrag(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if (index == -1)
                 return;
 
@@ -109,7 +117,7 @@ namespace Inventory.UI
 
         private void HandleItemSelection(UIItem item)
         {
-            int index = itemList.IndexOf(item);
+            int index = UIItemList.IndexOf(item);
             if (index == -1)
                 return;
             OnDescriptionRequested?.Invoke(index);
@@ -122,12 +130,31 @@ namespace Inventory.UI
             DeselectAllItems();
         }
 
+        public void AddAction(string actionName, Action performAction)
+        {
+            actionPanel.AddButton(actionName, performAction);
+        }
+
+        public void ShowItemAction(int itemIndex)
+        {
+            actionPanel.Toggle(true);
+            actionPanel.transform.position = UIItemList[itemIndex].transform.position;
+        }
+
+        public void HideItemAction()
+        {
+            actionPanel.Toggle(false);
+        }
+
+        
+
         private void DeselectAllItems()
         {
-            foreach (UIItem item in itemList)
+            foreach (UIItem item in UIItemList)
             {
                 item.Deselect();
             }
+            actionPanel.Toggle(false);
         }
         public void Show()
         {
@@ -137,6 +164,8 @@ namespace Inventory.UI
 
         public void Hide()
         {
+            actionPanel.Toggle(false);
+            cardSlotPopUp.Toggle(false);
             gameObject.SetActive(false);
             ResetDraggedItem();
         }
@@ -145,12 +174,12 @@ namespace Inventory.UI
         {
             inventoryDescription.SetDescription(itemImage, itemName, description);
             DeselectAllItems();
-            itemList[itemIndex].Select();
+            UIItemList[itemIndex].Select();
         }
 
         internal void ResetAllItems()
         {
-            foreach(var item in itemList)
+            foreach(var item in UIItemList)
             {
                 item.ResetData();
                 item.Deselect();

@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadNextScene(int sceneIndex, Vector2 position) 
     {
-        Debug.Log("Save");
+        //Debug.Log("Save");
         SaveSceneData(position);
         StartCoroutine(LoadLevel(sceneIndex, position));
     }
@@ -56,7 +56,7 @@ public class SceneController : MonoBehaviour
         else
         {
             yield return null;
-            Debug.Log("Load");
+            //Debug.Log("Load");
 
 
             //float HP = PlayerPrefs.GetFloat("HP");
@@ -66,7 +66,7 @@ public class SceneController : MonoBehaviour
             Vector2 newPosition = new Vector2(PlayerPrefs.GetFloat("pos_x"), PlayerPrefs.GetFloat("pos_y"));
             //Debug.Log(newPosition);
             //player.InitPlayerData(HP, SP, EX, newPosition);
-            player.MovePosition(newPosition);
+            player.MoveToNewPosition(newPosition);
 
             PlayerPrefs.DeleteAll();
         }
