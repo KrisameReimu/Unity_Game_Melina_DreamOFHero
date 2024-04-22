@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <isStackable>k__BackingField: 1
   <maxStackSize>k__BackingField: 99
-  <itemName>k__BackingField: Slime
+  <itemName>k__BackingField: Slime card
   description: summon a slime
   itemImage: {fileID: 21300000, guid: 48444662f7919d74fafc9df555e80ee6, type: 3}
   <defaultParametersList>k__BackingField:

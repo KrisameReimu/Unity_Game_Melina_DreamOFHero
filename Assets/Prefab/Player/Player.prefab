@@ -188,10 +188,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c691639bdeb46547aa5c1201e46dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  tempCard: {fileID: 0}
+  tempInventoryItem:
+    item: {fileID: 0}
+    quantity: 0
+    itemState: []
   inventoryData: {fileID: 11400000, guid: 6d92938f243920249b0cff5c24742ff6, type: 2}
-  parametersToModify: []
-  itemCurrentState: []
+  cards: []
+  UI: {fileID: 0}
+  cardSlotPopUp: {fileID: 0}
 --- !u!1001 &1076285776066780549
 PrefabInstance:
   m_ObjectHideFlags: 0

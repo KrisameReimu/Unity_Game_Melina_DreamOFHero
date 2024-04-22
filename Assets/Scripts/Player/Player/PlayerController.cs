@@ -132,6 +132,8 @@ public class PlayerController : MonoBehaviour
         if (isClimbing)
         {
             anim.SetBool("climbing", false);
+            anim.SetBool("isJump", false);
+
 
             x_movement = Input.GetAxis("Horizontal");
             y_movement = Input.GetAxis("Vertical");
