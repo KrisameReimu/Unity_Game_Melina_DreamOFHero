@@ -18,6 +18,8 @@ namespace Inventory
 
         public List<InventoryItem> initItems = new List<InventoryItem>();
 
+        
+
         private void Awake()
         {
             inventoryUI = GameObject.Find("UI").GetComponentInChildren<UIItemInventory>();
@@ -104,17 +106,54 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
+
             IItemAction itemAction = inventoryItem.item as IItemAction;
-            if(itemAction != null) // cast successfully
+            if (itemAction != null) // cast successfully
             {
-                itemAction.PerformAction(gameObject, null);//player
+                inventoryUI.ShowItemAction(itemIndex);
+                inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
             }
+
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
             if (destroyableItem != null) // cast successfully
             {
-                inventoryData.RemoveItem(itemIndex, 1);//consume
+                inventoryUI.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
             }
         }
+
+        private void DropItem(int itemIndex, int quantity)
+        {
+            inventoryData.RemoveItem(itemIndex, quantity);
+            inventoryUI.ResetSelection();
+        }
+
+        public void PerformAction(int itemIndex)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
+
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null) // cast successfully
+            {
+                if (!(inventoryItem.item is CardItemSO))//no consume if is Card
+                    inventoryData.RemoveItem(itemIndex, 1);//consume
+            }
+
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null) // cast successfully
+            {                            //player
+                itemAction.PerformAction(gameObject, inventoryItem);//active effect
+                if(inventoryData.GetItemAt(itemIndex).IsEmpty)
+                {
+                    inventoryUI.ResetSelection();
+                }
+            }
+
+            inventoryUI.HideItemAction();
+        }
+
+
 
         private void Update()
         {

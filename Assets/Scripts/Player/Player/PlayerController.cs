@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-    [Range(0, 10f)]
-    private int direction = 1;
+    [field: SerializeField]
+    public int direction { get; private set; } = 1;
 
     [field: SerializeField]
     public float originalSpeed { get; private set; } = 5;
@@ -51,12 +51,16 @@ public class PlayerController : MonoBehaviour
     public float playerAtk { get; private set; }
     public float playerDef { get; private set; } = 0;
 
+    [field: SerializeField]
+    public GameObject boltPrefab { get; private set; }
+    [field: SerializeField]
+    public GameObject burstImpulsePrefab { get; private set; }
+    [field: SerializeField]
+    public GameObject barrierPrefab { get; private set; }
 
-    public GameObject boltPrefab;
-    public GameObject burstImpulsePrefab;
-    public GameObject barrierPrefab;
     [SerializeField]
-    private GameObject summonSlime;
+    private AgentCard cardSystem;
+
 
     private bool initialized = false;
 
@@ -77,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        cardSystem = GetComponent<AgentCard>();
         HP = maxHP;
         speed = originalSpeed;
         SP = maxSP;
@@ -229,18 +234,27 @@ public class PlayerController : MonoBehaviour
         CardSkill();
     }
 
+    /*
+    public void ActiveCardSkill()
+    {
+        anim.SetTrigger("summon");
+        isAttacking = true;
+        attackTimer = 0.6f;
+    }
+    */
     private void CardSkill()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
-            GameObject slime = Instantiate(summonSlime, rb.position + new Vector2(direction, 0.8f), Quaternion.identity);
+            cardSystem.ActiveCardSkill();
+
             anim.SetTrigger("summon");
             isAttacking = true;
             attackTimer = 0.6f;
         }
-
-
     }
+    
+
 
     private void Status()
     {

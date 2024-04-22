@@ -10,6 +10,9 @@ public class PickUpSystem : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag != "Item")
+            return;
+
         Item item = collision.gameObject.GetComponent<Item>();
         if(item != null )
         {

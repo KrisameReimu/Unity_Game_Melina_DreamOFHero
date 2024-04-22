@@ -68,7 +68,6 @@ namespace Inventory.UI
             }
             else
             {
-                Debug.Log("Clicked");
                 OnItemClicked?.Invoke(this);
             }
         }

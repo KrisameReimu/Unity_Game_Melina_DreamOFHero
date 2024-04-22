@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Inventory.Model
 {
-    [CreateAssetMenu(menuName = "ItemSO/Inventory")]
+    [CreateAssetMenu(menuName = "ItemSO/InventorySO")]
     public class InventorySO : ScriptableObject
     {
         [SerializeField]
@@ -25,6 +25,12 @@ namespace Inventory.Model
             {
                 inventoryItems.Add(InventoryItem.GetEmptyItem());
             }
+        }
+
+        public int GetInventoryIndex(InventoryItem item)
+        {
+            int index = inventoryItems.IndexOf(item);
+            return index;
         }
 
         public InventoryItem GetItemAt(int index)

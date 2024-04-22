@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PlayerStatModifierSO/PlayerStatHealthModifierSO")]
+[CreateAssetMenu(menuName = "ItemEffectSO/PlayerStatHealthModifierSO")]
 public class PlayerStatHealthModifierSO : PlayerStatModifierSO
 {
     public override void ItemEffect(GameObject character, float val)
