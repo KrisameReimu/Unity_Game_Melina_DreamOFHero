@@ -8,10 +8,9 @@ using UnityEngine.UI;
 
 public class AgentCard : MonoBehaviour
 {
+    /*
     [SerializeField]
     private CardItemSO card;//current equiping card
-    [SerializeField]
-    private InventorySO inventoryData;
     [SerializeField]
     private List<ItemParameter> parametersToModify, itemCurrentState;
     [SerializeField]
@@ -22,39 +21,68 @@ public class AgentCard : MonoBehaviour
     private Sprite slotDefaultImage;
     [SerializeField]
     private int currentIndex;
-    
+    */
+
+    [SerializeField]
+    private InventorySO inventoryData;
+    [SerializeField]
+    private List<UICardSlot> cards;
+    [SerializeField]
+    private GameObject UI;
+
+
 
 
     private void Awake()
     {
-        GameObject UI = GameObject.Find("UI");
-        cardImage = UI.transform.Find("CardArea").Find("card1").GetComponent<Image>();
-        inventoryData.OnInventoryUpdated += UpdateCardSlots;
+        if (UI != null)
+            return;
+
+        inventoryData.OnInventoryUpdated += UpdateAllCardSlots;
+
+        UI = GameObject.Find("UI");
+        Transform cardArea = UI.transform.Find("CardArea");
+        foreach (Transform cardSlot in cardArea)
+        {
+            cards.Add(cardSlot.GetComponent<UICardSlot>());
+        }
     }
 
     public void SetCard(CardItemSO cardSO, InventoryItem inventoryItem)  
     {
+        cards[0].SetCard(cardSO, inventoryItem);
+
+        /*
         this.card = cardSO;
         this.inventoryItem = inventoryItem;
         cardImage.sprite = card.itemImage;
         currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
+        */
     }
 
     public void ActiveCardSkill()
     {
+        cards[0].ActiveCardSkill(gameObject);
+
+        /*
         if (card != null)
         {
-            
             card.ActiveCardEffect(gameObject);//player
             currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
             inventoryData.RemoveItem(currentIndex, 1);//consume
             //call update by Action handler
         }
+        */
     }
 
-    public void UpdateCardSlots(Dictionary<int, InventoryItem> inventoryState)
+    public void UpdateAllCardSlots(Dictionary<int, InventoryItem> inventoryState)
     {
+        foreach (UICardSlot cardSlot in cards)
+        {
+            cardSlot.UpdateCardSlot();
+        }
 
+        /*
         if (card == null)
             return;
         //update
@@ -70,9 +98,10 @@ public class AgentCard : MonoBehaviour
         this.inventoryItem = inventoryData.GetItemAt(currentIndex);
         this.card = (CardItemSO)this.inventoryItem.item;
 
-        Debug.Log(inventoryItem.IsEmpty);
+        //Debug.Log(inventoryItem.IsEmpty);
         if (inventoryItem.IsEmpty)
             cardImage.sprite = slotDefaultImage;//reset
+        */
     }
 
     /*

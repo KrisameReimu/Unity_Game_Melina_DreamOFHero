@@ -10,6 +10,7 @@ namespace Inventory
 {
     public class InventoryController : MonoBehaviour
     {
+        private static InventoryController inventoryControllerInstance;
         [SerializeField]
         private UIItemInventory inventoryUI;
 
@@ -22,6 +23,21 @@ namespace Inventory
 
         private void Awake()
         {
+            if (inventoryControllerInstance == null)
+            {
+                inventoryControllerInstance = this;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
+            if (inventoryUI != null)
+                return;
+
+            //Debug.Log("awake");
+
             inventoryUI = GameObject.Find("UI").GetComponentInChildren<UIItemInventory>();
             PrepareUI();
             PrepareInventoryData();
@@ -51,7 +67,7 @@ namespace Inventory
 
         private void PrepareUI()
         {
-            inventoryUI.InitInventoryUI(inventoryData.size);
+            inventoryUI.InitInventoryUI(inventoryData.size);    
             inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;

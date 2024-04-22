@@ -28,6 +28,7 @@ public class UIStatusBar : MonoBehaviour
         else
         {
             Destroy(transform.root.gameObject);
+            return;
         }
         //burstBar = BurstMask.transform.Find("Burst bar").gameObject.GetComponent<Image>();
         DontDestroyOnLoad(transform.root.gameObject);

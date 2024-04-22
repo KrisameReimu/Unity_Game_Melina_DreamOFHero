@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+            return;
         }
         if (initialized)
             return;
