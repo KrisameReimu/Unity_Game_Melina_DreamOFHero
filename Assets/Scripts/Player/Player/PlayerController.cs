@@ -60,8 +60,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private AgentCard cardSystem;
-
-
+    private AudioSource audioSource;
+    public AudioClip oneShotAudioClip;
+    public AudioClip hpDecreaseAudioClip;
     private bool initialized = false;
 
 
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
         SP = maxSP;
         EX = 0;
         playerAtk = basicAtk;
-
+        audioSource = GetComponent<AudioSource>();
         initialized = true;
 
         DontDestroyOnLoad(this.gameObject);
@@ -233,6 +234,11 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("attack");
             isAttacking = true;
             attackTimer = attackInterval;
+            // Play the one-shot audio clip for the attack sound effect
+            if (oneShotAudioClip != null)
+            {
+                AudioSource.PlayClipAtPoint(oneShotAudioClip, transform.position);
+            }
         }
         CardSkill();
     }
@@ -420,7 +426,11 @@ public class PlayerController : MonoBehaviour
             IncreaseEX(amount, true);
             //PlaySound(damageClip);
         }
-
+        // Play the hpDecreaseAudioClip for HP decrease sound effect
+        if (hpDecreaseAudioClip != null)
+        {
+            AudioSource.PlayClipAtPoint(hpDecreaseAudioClip, transform.position);
+        }
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
