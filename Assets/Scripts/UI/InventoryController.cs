@@ -100,6 +100,12 @@ namespace Inventory
             string description = PrepareDescription(inventoryItem);
             inventoryUI.UpdateDescription(itemIndex,
                 item.itemImage, item.itemName, description);
+            //set description button
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null) // cast successfully
+            {
+                inventoryUI.AddDescriptionBtn(itemAction.ActionName, () => PerformAction(itemIndex));
+            }
         }
 
         private string PrepareDescription(InventoryItem inventoryItem)
@@ -135,7 +141,7 @@ namespace Inventory
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
             if (destroyableItem != null) // cast successfully
             {
-                inventoryUI.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
+                inventoryUI.AddAction("Destroy", () => DropItem(itemIndex, inventoryItem.quantity));
             }
         }
 

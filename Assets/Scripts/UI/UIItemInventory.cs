@@ -154,7 +154,8 @@ namespace Inventory.UI
             {
                 item.Deselect();
             }
-            actionPanel.Toggle(false);
+            inventoryDescription.RemoveOldDescriptionButtons();//reset
+            actionPanel.Toggle(false);//reset
         }
         public void Show()
         {
@@ -175,6 +176,11 @@ namespace Inventory.UI
             inventoryDescription.SetDescription(itemImage, itemName, description);
             DeselectAllItems();
             UIItemList[itemIndex].Select();
+        }
+
+        public void AddDescriptionBtn(string actionName, Action performAction)
+        {
+            inventoryDescription.AddDescriptionButton(actionName, performAction);
         }
 
         internal void ResetAllItems()

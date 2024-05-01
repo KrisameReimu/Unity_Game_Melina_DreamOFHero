@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5754717, g: 0.5302099, b: 0, a: 0.78431374}
+  m_Color: {r: 0.5754717, g: 0.5302099, b: 0, a: 0.9411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1136,6 +1136,7 @@ MonoBehaviour:
   cardImage: {fileID: 0}
   slotDefaultImage: {fileID: 21300000, guid: 5447cd54545ac544e8d4d54ea3c4ab09, type: 3}
   <currentIndex>k__BackingField: 0
+  inventoryUI: {fileID: 0}
 --- !u!1 &7738606635843659346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1663,7 @@ MonoBehaviour:
   cardImage: {fileID: 0}
   slotDefaultImage: {fileID: 21300000, guid: 0309177f404f5454b80eeb02ea651ccd, type: 3}
   <currentIndex>k__BackingField: 0
+  inventoryUI: {fileID: 0}
 --- !u!1 &7738606636467052622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2138,7 @@ MonoBehaviour:
   cardImage: {fileID: 0}
   slotDefaultImage: {fileID: 21300000, guid: cae61b7587525244a80239ca33126bb2, type: 3}
   <currentIndex>k__BackingField: 0
+  inventoryUI: {fileID: 0}
 --- !u!1 &7738606637464148358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,6 +2341,7 @@ MonoBehaviour:
   cardImage: {fileID: 0}
   slotDefaultImage: {fileID: 21300000, guid: 3f552d1ebdde72e43a78b00c78b3a83a, type: 3}
   <currentIndex>k__BackingField: 0
+  inventoryUI: {fileID: 0}
 --- !u!1001 &7738606636794386358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2677,6 +2681,10 @@ PrefabInstance:
       propertyPath: m_FlexibleHeight
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 2733531779820244299, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2733531779909937612, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2703,7 +2711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2733531779909937613, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
       propertyPath: m_MinHeight
-      value: 500
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 2733531779920810249, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
       propertyPath: m_Padding.m_Top
@@ -2753,6 +2761,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4361615102802476821, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
+      propertyPath: descriptionButtonPrefab
+      value: 
+      objectReference: {fileID: 1940138587108107731, guid: 9528c2d7ba9d609459ff4a0269b46ac2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
 --- !u!224 &5659469024129038364 stripped

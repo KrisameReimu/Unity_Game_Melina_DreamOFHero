@@ -1,4 +1,5 @@
 using Inventory.Model;
+using Inventory.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,10 +21,13 @@ public class UICardSlot : MonoBehaviour
     private Sprite slotDefaultImage;
     [field: SerializeField]
     public int currentIndex { get; private set; }
+    [SerializeField]
+    private UIItemInventory inventoryUI;
 
     private void Awake()
     {
         cardImage = GetComponent<Image>();
+        inventoryUI = transform.root.GetComponentInChildren<UIItemInventory>();
     }
     public void SetCard(CardItemSO cardSO, InventoryItem inventoryItem)
     {
@@ -50,10 +54,16 @@ public class UICardSlot : MonoBehaviour
             //Debug.Log("Active");
 
             bool result = card.ActiveCardEffect(player);
-            if(result)
+            if(result)//activated effect
             {
                 currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
                 inventoryData.RemoveItem(currentIndex, 1);//consume
+                if (inventoryData.GetItemAt(currentIndex).IsEmpty)
+                {
+                    inventoryUI.ResetSelection();
+                }
+                
+
                 //call update by Action handler
             }
 
