@@ -425,12 +425,13 @@ public class PlayerController : MonoBehaviour
             ChangeDirection();
             IncreaseEX(amount, true);
             //PlaySound(damageClip);
+            // Play the hpDecreaseAudioClip for HP decrease sound effect
+            if (hpDecreaseAudioClip != null)
+            {
+                AudioSource.PlayClipAtPoint(hpDecreaseAudioClip, transform.position);
+            }
         }
-        // Play the hpDecreaseAudioClip for HP decrease sound effect
-        if (hpDecreaseAudioClip != null)
-        {
-            AudioSource.PlayClipAtPoint(hpDecreaseAudioClip, transform.position);
-        }
+        
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
