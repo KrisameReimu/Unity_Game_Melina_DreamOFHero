@@ -38,14 +38,16 @@ public class PlayerController : MonoBehaviour
     public float EX { get; private set; }
 
 
-    bool isAttacking;
-    float attackInterval = 0.5f;
-    float attackTimer = 0f;
+    private bool isAttacking;
+    private float attackInterval = 0.5f;
+    private float attackTimer = 0f;
     private float invincibleTimer;
 
-    bool isJumping = false;
-    bool isGettingHurt = false;
-    float gettingHurtTimer = 0.3f;
+    private bool isJumping = false;
+    private bool isGettingHurt = false;
+    private float gettingHurtTimer = 0.3f;
+    private bool alive = true;
+
 
     public float basicAtk { get; private set; } = 5;
     public float playerAtk { get; private set; }
@@ -64,6 +66,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip oneShotAudioClip;
     public AudioClip hpDecreaseAudioClip;
     private bool initialized = false;
+
+    public event Action OnPlayerDown;//notify if hp < 0
 
 
     private void Awake()
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
         EX = 0;
         playerAtk = basicAtk;
         audioSource = GetComponent<AudioSource>();
+        OnPlayerDown += PlayerDown;
         initialized = true;
 
         DontDestroyOnLoad(this.gameObject);
@@ -98,6 +103,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!alive) 
+            return;
         Jump();
         Move();
         Attack();
@@ -404,6 +411,8 @@ public class PlayerController : MonoBehaviour
         //can be calculated by the following code in the enemyController script
         //int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
 
+        if(!alive) return;
+
         if (amount < 0) //damage
         {
             if (isInvincible)
@@ -434,6 +443,8 @@ public class PlayerController : MonoBehaviour
         
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
+        if (HP <= 0)
+            OnPlayerDown?.Invoke();
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
         //Debug.Log("HP: " + HP + "/" + maxHP);
     }
@@ -452,6 +463,12 @@ public class PlayerController : MonoBehaviour
         //else
         ChangeSP(amount * -1);
         return true;
+    }
+
+    private void PlayerDown()
+    {
+        anim.SetTrigger("die");
+        alive = false;
     }
 
 
