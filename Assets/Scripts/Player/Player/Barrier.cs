@@ -11,6 +11,7 @@ public class Barrier : MonoBehaviour
     {
         playerObject = GameObject.Find("Player");
         player = playerObject.GetComponent<PlayerController>();
+        DontDestroyOnLoad(gameObject);
     }
     // Update is called once per frame
     void Update()

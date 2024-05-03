@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DoorTest : MonoBehaviour
 {
-    public int sceneIndex;
+    [field: SerializeField]
+    public string sceneName {  get; private set; }
     public Vector2 position;
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -13,7 +14,7 @@ public class DoorTest : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 //Debug.Log("Enter");
-                SceneController.Instance.LoadNextScene(sceneIndex, position);
+                SceneController.Instance.LoadNextScene(sceneName, position);
             }
         }
     }

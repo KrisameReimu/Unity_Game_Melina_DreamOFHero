@@ -49,7 +49,12 @@ public class AgentCard : MonoBehaviour
         Transform cardArea = UI.transform.Find("CardArea");
         foreach (Transform cardSlot in cardArea)
         {
-            cards.Add(cardSlot.GetComponent<UICardSlot>());
+            UICardSlot cardSlotObject = cardSlot.GetComponent<UICardSlot>();
+            if (cardSlotObject != null)
+            {
+                cards.Add(cardSlotObject);
+            }
+            
         }
         cardSlotPopUp = UI.GetComponentInChildren<UICardSlotPopUp>();
         cardSlotPopUp.OnSlotChosen += SetCard;

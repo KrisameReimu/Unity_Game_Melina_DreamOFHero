@@ -469,6 +469,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = 0;
             speed = 2;
+            anim.SetBool("squatDown", false);
+            anim.SetBool("isLookUp", false);
             anim.SetBool("climb", true);
         }
         else

@@ -8,31 +8,66 @@ public class SceneController : MonoBehaviour
     public static SceneController Instance { get; private set; }
     [SerializeField] Animator transitionAnim;
     private PlayerController player;
-
+    [SerializeField]
+    private bool isSceneChanging = false;
     
     private void Awake()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
-        Instance = this;
-        transform.Find("CrossFade").gameObject.SetActive(true);
+        if (!Instance)
+        {
+            Instance = this;
+            player = GameObject.Find("Player").GetComponent<PlayerController>();
+            DontDestroyOnLoad(transform.root.gameObject);
+            transform.Find("CrossFade").gameObject.SetActive(true);
+        }
+        else
+        {
+            Destroy(transform.root.gameObject);
+        }
 
-        StartCoroutine(LoadSceneData());
+
+        //StartCoroutine(LoadSceneData());
     }
 
-    public void LoadNextScene(int sceneIndex, Vector2 position) 
+    public void LoadNextScene(string sceneName, Vector2 position) 
     {
         //Debug.Log("Save");
+        /*
         SaveSceneData(position);
         StartCoroutine(LoadLevel(sceneIndex, position));
+        */
+        if(!isSceneChanging) 
+        {
+            isSceneChanging = true;
+            StartCoroutine(ChangeSceneTask(sceneName,position));
+        }
     }
 
+    /*
     IEnumerator LoadLevel(int sceneIndex, Vector2 position)
     {
         transitionAnim.SetTrigger("Start");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(sceneIndex);
     }
+    */
 
+    IEnumerator ChangeSceneTask(string sceneName, Vector2 position)
+    {
+        var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        //start loading animation
+        transitionAnim.SetTrigger("Start");
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        transitionAnim.SetTrigger("End");
+
+        player.MoveToNewPosition(position);
+        isSceneChanging = false;
+    }
+
+    /*
     private void SaveSceneData(Vector2 position) 
     {
         //PlayerPrefs.SetFloat("HP", player.HP);
@@ -71,4 +106,5 @@ public class SceneController : MonoBehaviour
             PlayerPrefs.DeleteAll();
         }
     }
+    */
 }

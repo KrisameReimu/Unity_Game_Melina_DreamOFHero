@@ -15,9 +15,21 @@ public class LedderTest : MonoBehaviour
                 return;
             if(Input.GetKeyDown(KeyCode.F))
             {
+                Debug.Log("F");
                 player = collision.gameObject.GetComponent<PlayerController>();
                 player.ToggleClimbing(!player.isClimbing);
-                interval = 1;
+                interval = 0.5f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.S))
+            {
+                Debug.Log("W");
+                if (player.isClimbing)
+                    return;
+
+                player = collision.gameObject.GetComponent<PlayerController>();
+                player.ToggleClimbing(true);
+                interval = 0.5f;
             }
         }
     }
@@ -37,9 +49,11 @@ public class LedderTest : MonoBehaviour
             interval -= Time.deltaTime;
 
         //for test
+        /*
         if (Input.GetKeyDown(KeyCode.O))
         {
             player.ChangeHP(-1,1);
         }
+        */
     }
 }
