@@ -11,8 +11,8 @@ public class UICardSlot : MonoBehaviour
     private CardItemSO card;//current equiping card
     [SerializeField]
     private InventorySO inventoryData;
-    [SerializeField]
-    private List<ItemParameter> parametersToModify, itemCurrentState;
+    //[SerializeField]
+    //private List<ItemParameter> parametersToModify, itemCurrentState;
     [SerializeField]
     private InventoryItem inventoryItem;
     [field: SerializeField]
@@ -23,6 +23,9 @@ public class UICardSlot : MonoBehaviour
     public int currentIndex { get; private set; }
     [SerializeField]
     private UIItemInventory inventoryUI;
+    [SerializeField]
+    private Image popUpSlotImage;
+
 
     private void Awake()
     {
@@ -37,11 +40,13 @@ public class UICardSlot : MonoBehaviour
         if (inventoryItem.IsEmpty)
         {
             cardImage.sprite = slotDefaultImage;//reset
+            popUpSlotImage.sprite = slotDefaultImage;
             currentIndex = -1;
         }
         else
         {
             cardImage.sprite = card.itemImage;
+            popUpSlotImage.sprite = card.itemImage;
             currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
         }
   
@@ -92,6 +97,10 @@ public class UICardSlot : MonoBehaviour
 
         //Debug.Log(inventoryItem.IsEmpty);
         if (inventoryItem.IsEmpty)
+        {
             cardImage.sprite = slotDefaultImage;//reset
+            popUpSlotImage.sprite = slotDefaultImage;
+        }
+
     }
 }

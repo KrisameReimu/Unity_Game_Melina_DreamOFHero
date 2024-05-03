@@ -1413,8 +1413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 6d92938f243920249b0cff5c24742ff6, type: 2}
-  parametersToModify: []
-  itemCurrentState: []
   inventoryItem:
     item: {fileID: 0}
     quantity: 0
@@ -1423,6 +1421,7 @@ MonoBehaviour:
   slotDefaultImage: {fileID: 21300000, guid: 5447cd54545ac544e8d4d54ea3c4ab09, type: 3}
   <currentIndex>k__BackingField: 0
   inventoryUI: {fileID: 0}
+  popUpSlotImage: {fileID: 1120595850}
 --- !u!1 &7738606635843659346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,8 +1939,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 6d92938f243920249b0cff5c24742ff6, type: 2}
-  parametersToModify: []
-  itemCurrentState: []
   inventoryItem:
     item: {fileID: 0}
     quantity: 0
@@ -1950,6 +1947,7 @@ MonoBehaviour:
   slotDefaultImage: {fileID: 21300000, guid: 0309177f404f5454b80eeb02ea651ccd, type: 3}
   <currentIndex>k__BackingField: 0
   inventoryUI: {fileID: 0}
+  popUpSlotImage: {fileID: 2010576802}
 --- !u!1 &7738606636467052622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,8 +2481,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 6d92938f243920249b0cff5c24742ff6, type: 2}
-  parametersToModify: []
-  itemCurrentState: []
   inventoryItem:
     item: {fileID: 0}
     quantity: 0
@@ -2493,6 +2489,7 @@ MonoBehaviour:
   slotDefaultImage: {fileID: 21300000, guid: cae61b7587525244a80239ca33126bb2, type: 3}
   <currentIndex>k__BackingField: 0
   inventoryUI: {fileID: 0}
+  popUpSlotImage: {fileID: 1826803586}
 --- !u!1 &7738606637464148358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,8 +2683,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 6d92938f243920249b0cff5c24742ff6, type: 2}
-  parametersToModify: []
-  itemCurrentState: []
   inventoryItem:
     item: {fileID: 0}
     quantity: 0
@@ -2696,6 +2691,7 @@ MonoBehaviour:
   slotDefaultImage: {fileID: 21300000, guid: 3f552d1ebdde72e43a78b00c78b3a83a, type: 3}
   <currentIndex>k__BackingField: 0
   inventoryUI: {fileID: 0}
+  popUpSlotImage: {fileID: 1524579858}
 --- !u!1 &9171880020574986538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2871,10 @@ PrefabInstance:
     - target: {fileID: 2733531778795188697, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733531778854553648, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
+      propertyPath: m_Size
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 2733531778854553655, guid: e31ddaff646f4074f95fdfc426b21a3e, type: 3}
       propertyPath: m_SizeDelta.x

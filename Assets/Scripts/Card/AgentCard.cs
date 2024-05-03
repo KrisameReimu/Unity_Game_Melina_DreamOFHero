@@ -78,7 +78,7 @@ public class AgentCard : MonoBehaviour
 
     public void SetCard(int index)
     {
-        //check duplicate
+        //check if same card in other slots
         foreach (UICardSlot cardSlot in cards)
         {
             if (cardSlot.currentIndex == inventoryData.GetInventoryIndex(tempInventoryItem))

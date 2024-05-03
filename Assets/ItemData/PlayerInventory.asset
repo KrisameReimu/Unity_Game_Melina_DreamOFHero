@@ -13,24 +13,124 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   inventoryItems:
+  - item: {fileID: 11400000, guid: 8a11ee28cbe539246b0464f827d88c17, type: 2}
+    quantity: 2
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
+    itemState: []
   - item: {fileID: 0}
     quantity: 0
-  <size>k__BackingField: 10
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  - item: {fileID: 0}
+    quantity: 0
+    itemState: []
+  <size>k__BackingField: 42
