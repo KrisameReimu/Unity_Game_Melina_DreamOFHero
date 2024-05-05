@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LedderTest : MonoBehaviour
+public class LadderTest : MonoBehaviour
 {
     private PlayerController player;
     private float interval;

@@ -14,7 +14,7 @@ public class Knight : Enemy
     [SerializeField]
     private Vector2 patrolPointEnd;
     [SerializeField]
-    private Vector2 targetPostion;
+    private Vector2 targetPosition;
     [SerializeField]
     private bool chase = false;
     [SerializeField]
@@ -41,7 +41,7 @@ public class Knight : Enemy
         anim = GetComponent<Animator>();
         patrolPointStart = transform.position; 
         patrolPointEnd = patrolPointStart + Vector2.right * 10;
-        targetPostion = patrolPointEnd;
+        targetPosition = patrolPointEnd;
     }
 
     // Update is called once per frame
@@ -75,12 +75,12 @@ public class Knight : Enemy
        
 
 
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPostion.x, transform.position.y), speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPosition.x, transform.position.y), speed * Time.deltaTime);
 
         if (chase)
         {
             //check distance between player
-            if (Vector2.Distance(transform.position, targetPostion) < 2)
+            if (Vector2.Distance(transform.position, targetPosition) < 2)
             {
                 isAttacking = true;
                 anim.SetTrigger("Attack");            //attack
@@ -108,7 +108,7 @@ public class Knight : Enemy
         patrolPointEnd = patrolPointStart;
         patrolPointStart = tempPosition;
 
-        targetPostion = patrolPointEnd;
+        targetPosition = patrolPointEnd;
     }
 
     private void Attack()
@@ -152,7 +152,7 @@ public class Knight : Enemy
         if (c.gameObject.tag != "Player")
             return;
         PlayerController player = c.gameObject.GetComponent<PlayerController>();
-        targetPostion = player.transform.position;
+        targetPosition = player.transform.position;
         chase = true;
     }
 
@@ -160,14 +160,14 @@ public class Knight : Enemy
     {
         if (c.gameObject.tag != "Player")
             return;
-        targetPostion = patrolPointEnd;
+        targetPosition = patrolPointEnd;
         chase = false;
     }
     
 
     private void ChangeDirection()
     {
-        if (transform.position.x <= targetPostion.x)
+        if (transform.position.x <= targetPosition.x)
             transform.rotation = Quaternion.Euler(0, 0, 0);
         else
             transform.rotation = Quaternion.Euler(0, 180, 0);

@@ -68,9 +68,18 @@ public class SummonShieldKnight : Summon
                 r.material.SetColor("_Color", Color.yellow);
                 r.material.DOColor(Color.white, 0.5f);
                 lifetime -= enemy.damage*0.1f;
+                ChangeDirection(other.transform.position);
             }
         }
 
+    }
+
+    private void ChangeDirection(Vector2 targetPosition)
+    {
+        if (transform.position.x <= targetPosition.x)
+            transform.localScale = new Vector3(1 * System.Math.Abs(transform.localScale.x), transform.localScale.y, 1f);
+        else
+            transform.localScale = new Vector3(-1 * System.Math.Abs(transform.localScale.x), transform.localScale.y, 1f);
     }
 
     private void SetGuardCounter()

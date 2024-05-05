@@ -8,7 +8,7 @@ public class Slime : Enemy
     private float speed = 3f;
     private Animator anim;
     public Vector2 originalPosition;
-    private Vector2 targetPostion;
+    private Vector2 targetPosition;
     private bool chase = false;
     private float maxHP = 20f;
     public float HP;
@@ -21,7 +21,7 @@ public class Slime : Enemy
         isAttacking = false;
         anim = GetComponent<Animator>();
         originalPosition = transform.position;
-        targetPostion = originalPosition;
+        targetPosition = originalPosition;
     }
 
     // Update is called once per frame
@@ -34,12 +34,12 @@ public class Slime : Enemy
     private void Move()
     {
         //attack motion
-        if (chase && Vector2.Distance(transform.position, targetPostion) != 0)            
+        if (chase && Vector2.Distance(transform.position, targetPosition) != 0)            
             anim.SetTrigger("Attack");
         
         //move
         if(isAttacking)
-            transform.position = Vector2.MoveTowards(transform.position,new Vector2(targetPostion.x, transform.position.y), speed*Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position,new Vector2(targetPosition.x, transform.position.y), speed*Time.deltaTime);
     }
 
 
@@ -48,7 +48,7 @@ public class Slime : Enemy
         if (c.gameObject.tag != "Player" || isAttacking)
             return;
         PlayerController player = c.gameObject.GetComponent<PlayerController>();
-        targetPostion = player.transform.position;
+        targetPosition = player.transform.position;
         chase = true;
     }
 
@@ -56,13 +56,13 @@ public class Slime : Enemy
     {
         if (c.gameObject.tag != "Player")
             return;
-        targetPostion = originalPosition;
+        targetPosition = originalPosition;
         chase = false;
     }
 
     private void ChangeDirection()
     {
-        if (transform.position.x <= targetPostion.x)
+        if (transform.position.x <= targetPosition.x)
             transform.rotation = Quaternion.Euler(0, 0, 0);
         else
             transform.rotation = Quaternion.Euler(0, 180, 0);

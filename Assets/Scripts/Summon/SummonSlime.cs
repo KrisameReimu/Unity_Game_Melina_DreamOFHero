@@ -6,7 +6,7 @@ public class SummonSlime : Summon
 {
     private float speed = 4f;
     private Animator anim;
-    private Vector2 targetPostion;
+    private Vector2 targetPosition;
     private GameObject targetObject;
 
     // Start is called before the first frame update
@@ -36,16 +36,16 @@ public class SummonSlime : Summon
         //Debug.Log(targetObject == null);
 
         if (targetObject == null)//no targrt
-            targetPostion = player.transform.position;
+            targetPosition = player.transform.position;
         else
-            targetPostion = targetObject.transform.position;
+            targetPosition = targetObject.transform.position;
         //attack motion
-        if (Vector2.Distance(transform.position, targetPostion) > (targetObject == null ? 2 : 0) )
+        if (Vector2.Distance(transform.position, targetPosition) > (targetObject == null ? 2 : 0) )
             anim.SetTrigger("Attack");
 
         //move
         if (isAttacking)
-            transform.position = Vector2.MoveTowards(transform.position, targetPostion, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 
 
@@ -63,7 +63,7 @@ public class SummonSlime : Summon
 
     private void ChangeDirection()
     {
-        if (transform.position.x <= targetPostion.x)
+        if (transform.position.x <= targetPosition.x)
             transform.rotation = Quaternion.Euler(0, 0, 0);
         else
             transform.rotation = Quaternion.Euler(0, 180, 0);
