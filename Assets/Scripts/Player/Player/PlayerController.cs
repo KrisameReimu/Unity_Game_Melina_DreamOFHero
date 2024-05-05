@@ -6,7 +6,7 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
-    private static PlayerController playerInstance;
+    public static PlayerController playerInstance {  get; private set; }
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -469,6 +469,8 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetTrigger("die");
         alive = false;
+        x_movement = 0;
+        y_movement = 0;
     }
 
 

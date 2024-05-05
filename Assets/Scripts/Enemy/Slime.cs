@@ -39,7 +39,7 @@ public class Slime : Enemy
         
         //move
         if(isAttacking)
-            transform.position = Vector2.MoveTowards(transform.position,targetPostion, speed*Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position,new Vector2(targetPostion.x, transform.position.y), speed*Time.deltaTime);
     }
 
 

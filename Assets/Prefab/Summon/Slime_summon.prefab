@@ -75,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -9074539206338946419, guid: c80534141f80d28489b1ef92f8ff7d99, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.992157, a: 0.5019608}
+  m_Color: {r: 1, g: 0, b: 0.992157, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   damage: 0
   isAttacking: 1
   lifetime: 10
+  player: {fileID: 0}
 --- !u!1 &4018609489997902773
 GameObject:
   m_ObjectHideFlags: 0

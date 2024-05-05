@@ -34,12 +34,25 @@ public class AgentCard : MonoBehaviour
     private GameObject UI;
     [SerializeField]
     private UICardSlotPopUp cardSlotPopUp;
+    [SerializeField]
+    private static AgentCard acInstance;
 
 
 
 
     private void Awake()
     {
+        if (acInstance == null)
+        {
+            acInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
         if (UI != null)
             return;
 
@@ -56,6 +69,7 @@ public class AgentCard : MonoBehaviour
             }
             
         }
+
         cardSlotPopUp = UI.GetComponentInChildren<UICardSlotPopUp>();
         cardSlotPopUp.OnSlotChosen += SetCard;
     }

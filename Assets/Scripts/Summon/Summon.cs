@@ -10,9 +10,11 @@ public class Summon : MonoBehaviour
     //may set it to false if attack animation is not playing
     public float lifetime = 5;
     private bool timeoutTrigger = false;
+    public PlayerController player;
 
     public void Update()
     {
+        //Debug.Log(lifetime);
         lifetime -= Time.deltaTime;
         if (lifetime < 0 && !timeoutTrigger)
         {
@@ -22,11 +24,11 @@ public class Summon : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D c)
+    public void OnCollisionEnter2D(Collision2D c)
     {
         AttackEnemy(c);
     }
-    private void OnCollisionStay2D(Collision2D c)
+    public void OnCollisionStay2D(Collision2D c)
     {
         AttackEnemy(c);
     }
@@ -46,4 +48,18 @@ public class Summon : MonoBehaviour
     }
 
     public virtual void TimeOut() { }
+
+    public void SetPlayer(PlayerController player)
+    {
+        this.player = player;
+    }
+
+    public void GetPlayer()
+    {
+        player = PlayerController.playerInstance;
+        if(player == null)
+        {
+            player = GameObject.Find("Player").GetComponent<PlayerController>();
+        }
+    }
 }

@@ -15,28 +15,33 @@ public class Enemy : MonoBehaviour
 
 
 
-    public virtual void ChangeHP(float amount) { }//negative value to decrease HP
+    public virtual void ChangeHP(float amount) { }//pass a negative value to decrease HP
     private void OnCollisionEnter2D(Collision2D c)
     {
-        AttackPlayer(c);
+        if (isAttacking)
+            AttackPlayer(c);
     }
     private void OnCollisionStay2D(Collision2D c)
     {
-        AttackPlayer(c);
+        if (isAttacking)
+            AttackPlayer(c);
     }
     public void AttackPlayer(Collision2D other)
     {
-        if (!isAttacking)
-            return;
         if (other.gameObject.tag == "Player")
         {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
-                int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
-                player.ChangeHP(-1 * damage, playerDirection);
+                ChangePlayerHP(player);
             }
         }
+    }
+
+    public void ChangePlayerHP(PlayerController player)
+    {
+        int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
+        player.ChangeHP(-1 * damage, playerDirection);
     }
 
     public void Knockback(float force, int direction)

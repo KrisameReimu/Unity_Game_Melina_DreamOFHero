@@ -7,18 +7,20 @@ public class SummonSlime : Summon
     private float speed = 4f;
     private Animator anim;
     private Vector2 targetPostion;
-    private PlayerController player;
     private GameObject targetObject;
 
     // Start is called before the first frame update
     void Awake()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
-        damage = player.playerAtk*3;
+        //player = GameObject.Find("Player").GetComponent<PlayerController>();
+        //use parent function to set player
+        GetPlayer();
+        damage = player.playerAtk * 3;
+
         lifetime = 20;
         isAttacking = false;
         anim = GetComponent<Animator>();
-        GameObject targetObject = null;
+        targetObject = null;
     }
 
     // Update is called once per frame
