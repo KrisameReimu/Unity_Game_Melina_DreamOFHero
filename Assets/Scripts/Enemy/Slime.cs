@@ -83,9 +83,11 @@ public class Slime : Enemy
         isAttacking = false;
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
+        ShowDamageText(amount);
+
+
         if (HP > 0)
             anim.SetTrigger("Hurt");
-
         else
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();

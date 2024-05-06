@@ -191,9 +191,10 @@ public class Knight : Enemy
         Renderer r = gameObject.GetComponent<Renderer>();
         r.material.SetColor("_Color", Color.red);
         r.material.DOColor(Color.white, 0.5f);
+        ShowDamageText(amount);
+
         if (HP > 0)
             anim.SetTrigger("Hurt");
-
         else
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();

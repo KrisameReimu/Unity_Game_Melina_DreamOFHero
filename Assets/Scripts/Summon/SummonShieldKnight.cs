@@ -8,11 +8,9 @@ public class SummonShieldKnight : Summon
     private Animator anim;
     [SerializeField]
     private float guardCounter = 0;
-    
 
-    // Start is called before the first frame update
     void Awake()
-    {
+    {    
         damage = 0;
         lifetime = 10;
         isAttacking = true;

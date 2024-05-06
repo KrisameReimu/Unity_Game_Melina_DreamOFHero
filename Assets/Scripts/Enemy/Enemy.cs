@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     public bool isAttacking = true;//default
     //may set it to false if attack animation is not playing
     public GameObject cardPrefab;
+    [SerializeField]
+    private GameObject damageTextPrefab;
 
 
 
@@ -75,4 +77,24 @@ public class Enemy : MonoBehaviour
 
         }
     }
+
+    public void ShowDamageText(float amount)
+    {
+        amount = Mathf.Abs(amount);
+        if (amount == 0)
+            return;
+        InitDamageTxt(amount.ToString());
+    }
+
+    public void ShowDamageText(string text)
+    {
+        InitDamageTxt(text);
+    }
+
+    private void InitDamageTxt(string text)
+    {
+        GameObject damageText = Instantiate(damageTextPrefab, transform.position + Vector3.up*1.5f, Quaternion.identity);
+        damageText.GetComponent<DamageText>().SetText(text);
+    }
+
 }

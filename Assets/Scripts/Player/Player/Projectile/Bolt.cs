@@ -6,7 +6,10 @@ public class Bolt : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
+    [field: SerializeField]
     public float damage { get; private set; } // = playerAtk
+    [SerializeField]
+    private Vector2 initPosition;
 
     // Start is called before the first frame update
     void Awake()
@@ -14,12 +17,13 @@ public class Bolt : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         //damage = 5f;
+        initPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.magnitude > 10.0f)
+        if (Vector2.Distance(transform.position, initPosition) > 10)
         {
             Destroy(gameObject);
         }
