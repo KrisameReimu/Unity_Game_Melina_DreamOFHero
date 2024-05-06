@@ -518,4 +518,14 @@ public class PlayerController : MonoBehaviour
         IncreaseEX(0, false);
         MoveToNewPosition(position);
     }
+
+    public static PlayerController GetPlayerInstance()
+    {
+        PlayerController pc = playerInstance;
+        if (pc == null)
+        {
+            pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        }
+        return pc;
+    }
 }

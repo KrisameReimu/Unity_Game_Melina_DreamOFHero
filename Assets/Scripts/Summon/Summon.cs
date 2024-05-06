@@ -56,10 +56,6 @@ public class Summon : MonoBehaviour
 
     public void GetPlayer()
     {
-        player = PlayerController.playerInstance;
-        if(player == null)
-        {
-            player = GameObject.Find("Player").GetComponent<PlayerController>();
-        }
+        player = PlayerController.GetPlayerInstance();
     }
 }
