@@ -25,12 +25,15 @@ public class UICardSlot : MonoBehaviour
     private UIItemInventory inventoryUI;
     [SerializeField]
     private Image popUpSlotImage;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI quantityText;
 
 
     private void Awake()
     {
         cardImage = GetComponent<Image>();
         inventoryUI = transform.root.GetComponentInChildren<UIItemInventory>();
+        quantityText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
     public void SetCard(CardItemSO cardSO, InventoryItem inventoryItem)
     {
@@ -41,6 +44,7 @@ public class UICardSlot : MonoBehaviour
         {
             cardImage.sprite = slotDefaultImage;//reset
             popUpSlotImage.sprite = slotDefaultImage;
+            quantityText.text = "";
             currentIndex = -1;
         }
         else
@@ -48,6 +52,7 @@ public class UICardSlot : MonoBehaviour
             cardImage.sprite = card.itemImage;
             popUpSlotImage.sprite = card.itemImage;
             currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
+            quantityText.text = inventoryItem.quantity.ToString();
         }
   
     }
@@ -94,12 +99,15 @@ public class UICardSlot : MonoBehaviour
 
         this.inventoryItem = inventoryData.GetItemAt(currentIndex);
         this.card = (CardItemSO)this.inventoryItem.item;
+        quantityText.text = inventoryItem.quantity.ToString();
+
 
         //Debug.Log(inventoryItem.IsEmpty);
         if (inventoryItem.IsEmpty)
         {
             cardImage.sprite = slotDefaultImage;//reset
             popUpSlotImage.sprite = slotDefaultImage;
+            quantityText.text = "";
         }
 
     }

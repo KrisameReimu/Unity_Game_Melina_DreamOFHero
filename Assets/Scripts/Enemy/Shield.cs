@@ -7,9 +7,7 @@ public class Shield : Enemy
 {
     [SerializeField]
     private ShieldKnight knight;
-    private void Awake()
-    {
-    }
+    
     private void Update()
     {
         damage = knight.damage;
