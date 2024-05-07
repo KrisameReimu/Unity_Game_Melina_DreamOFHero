@@ -11,6 +11,10 @@ public class Summon : MonoBehaviour
     public float lifetime = 5;
     private bool timeoutTrigger = false;
     public PlayerController player;
+    [SerializeField]
+    private GameObject summonEffectPrefab;
+    [SerializeField]
+    private GameObject disappearEffectPrefab;
 
     public void Update()
     {
@@ -57,5 +61,21 @@ public class Summon : MonoBehaviour
     public void GetPlayer()
     {
         player = PlayerController.GetPlayerInstance();
+    }
+
+    public void Vanish()
+    {
+        Destroy(gameObject);
+        ActiveDisappearEffect();
+    }
+
+    public void ActiveSummonEffect()
+    {
+        Instantiate(summonEffectPrefab, transform.position, Quaternion.identity);
+    }
+
+    public void ActiveDisappearEffect()
+    {
+        Instantiate(disappearEffectPrefab, transform.position, Quaternion.identity);
     }
 }

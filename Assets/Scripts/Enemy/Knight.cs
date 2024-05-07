@@ -31,6 +31,8 @@ public class Knight : Enemy
     private float attackRange;
     [SerializeField]
     private LayerMask charactersLayer;
+    [SerializeField]
+    private GameObject hitEffectPrefab;
 
     // Start is called before the first frame update
     void Awake()
@@ -121,7 +123,10 @@ public class Knight : Enemy
             PlayerController player = character.GetComponent<PlayerController>();
             if(player != null)
             {
+                if (player.isInvincible) 
+                    return;
                 ChangePlayerHP(player);
+                Instantiate(hitEffectPrefab, attackPoint.transform.position + Vector3.right * 0.5f, Quaternion.identity);
             }
         }
     }
@@ -192,6 +197,12 @@ public class Knight : Enemy
         r.material.SetColor("_Color", Color.red);
         r.material.DOColor(Color.white, 0.5f);
         ShowDamageText(amount);
+        if (!chase)
+        {
+            chase = true;
+            PlayerController player = PlayerController.GetPlayerInstance();
+            targetPosition = player.transform.position;
+        }
 
         if (HP > 0)
             anim.SetTrigger("Hurt");

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -97,4 +98,10 @@ public class Enemy : MonoBehaviour
         damageText.GetComponent<DamageText>().SetText(text);
     }
 
+    public void ShowDamageText(string text, Color _color)
+    {
+        GameObject damageText = Instantiate(damageTextPrefab, transform.position + Vector3.up * 1.5f, Quaternion.identity);
+        damageText.GetComponent<DamageText>().SetText(text);
+        damageText.GetComponent<TMP_Text>().color = _color;
+    }
 }

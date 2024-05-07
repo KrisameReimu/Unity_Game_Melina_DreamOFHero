@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     float x_movement;
     float y_movement;
     public float timeInvincible = 0.5f;
-    private bool isInvincible;
+    [field: SerializeField]
+    public bool isInvincible { get; private set; }
     private bool isUsingBurst = false;
 
     public bool isClimbing { get; private set; } = false;

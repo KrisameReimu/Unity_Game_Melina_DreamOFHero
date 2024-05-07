@@ -169,6 +169,8 @@ MonoBehaviour:
   isAttacking: 1
   lifetime: 10
   player: {fileID: 0}
+  summonEffectPrefab: {fileID: 7860799375051836344, guid: f0cc706422e7da74fa9be30e05b68af1, type: 3}
+  disappearEffectPrefab: {fileID: 5742624077911595313, guid: 30f24bb9cd6a330498c5b48b6eb757a5, type: 3}
 --- !u!1 &4018609489997902773
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +183,7 @@ GameObject:
   - component: {fileID: 1082553942745867989}
   m_Layer: 11
   m_Name: PlayerDetecter
-  m_TagString: Enemy
+  m_TagString: Summon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

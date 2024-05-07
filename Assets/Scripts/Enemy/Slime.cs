@@ -84,6 +84,12 @@ public class Slime : Enemy
         HP += amount;
         HP = Mathf.Clamp(HP, 0, maxHP);
         ShowDamageText(amount);
+        if (!chase)
+        {
+            chase = true;
+            PlayerController player = PlayerController.GetPlayerInstance();
+            targetPosition = player.transform.position;
+        }
 
 
         if (HP > 0)

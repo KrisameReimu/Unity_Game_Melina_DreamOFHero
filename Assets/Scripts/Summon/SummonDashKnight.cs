@@ -15,7 +15,8 @@ public class SummonDashKnight : Summon
     [SerializeField]
     private int direction;
     private Rigidbody2D rb;
-    
+    [SerializeField]
+    private GameObject hitEffectPrefab;
 
 
 
@@ -23,6 +24,7 @@ public class SummonDashKnight : Summon
     // Start is called before the first frame update
     void Awake()
     {
+        ActiveSummonEffect();
         isAttacking = false;
         GetPlayer();
         damage = player.playerAtk * 5;
@@ -38,7 +40,7 @@ public class SummonDashKnight : Summon
 
     private void Jump()
     {
-        Debug.Log("Jump");
+        //Debug.Log("Jump");
         rb.velocity += Vector2.up * 10;
     }
 
@@ -47,7 +49,7 @@ public class SummonDashKnight : Summon
         attackRound -= 1;
         if(attackRound <= 0)
         {
-            Destroy(gameObject);
+            Vanish();
         }
     }
 
@@ -63,6 +65,7 @@ public class SummonDashKnight : Summon
                 enemy.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
                 int knockbackDirection = transform.position.x > enemy.transform.position.x ? 1 : -1;
                 enemy.Knockback(25f, knockbackDirection);
+                Instantiate(hitEffectPrefab, attackPoint.transform.position + Vector3.right * 0.5f, Quaternion.identity);
             }
         }
     }

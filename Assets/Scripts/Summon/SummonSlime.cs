@@ -12,6 +12,7 @@ public class SummonSlime : Summon
     // Start is called before the first frame update
     void Awake()
     {
+        ActiveSummonEffect();
         //player = GameObject.Find("Player").GetComponent<PlayerController>();
         //use parent function to set player
         GetPlayer();
@@ -81,14 +82,14 @@ public class SummonSlime : Summon
 
     public override void TimeOut()
     {
+        /*
         isAttacking = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.simulated = false;
         anim.SetTrigger("Die");
+        */
+        Vanish();
     }
 
-    private void Vanish()
-    {
-        Destroy(gameObject);
-    }
+
 }

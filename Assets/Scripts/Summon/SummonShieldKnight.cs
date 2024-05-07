@@ -10,7 +10,8 @@ public class SummonShieldKnight : Summon
     private float guardCounter = 0;
 
     void Awake()
-    {    
+    {
+        ActiveSummonEffect();
         damage = 0;
         lifetime = 10;
         isAttacking = true;
@@ -94,5 +95,6 @@ public class SummonShieldKnight : Summon
         rb.simulated = false;
         anim.SetTrigger("Die");
         */
+        Vanish();
     }
 }

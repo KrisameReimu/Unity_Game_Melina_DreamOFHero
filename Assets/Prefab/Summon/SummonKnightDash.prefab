@@ -159,6 +159,8 @@ MonoBehaviour:
   isAttacking: 1
   lifetime: 5
   player: {fileID: 0}
+  summonEffectPrefab: {fileID: 7860799375051836344, guid: f0cc706422e7da74fa9be30e05b68af1, type: 3}
+  disappearEffectPrefab: {fileID: 5742624077911595313, guid: 30f24bb9cd6a330498c5b48b6eb757a5, type: 3}
   attackRound: 3
   attackPoint: {fileID: 176944157866962183}
   attackRange: 0.6
@@ -166,6 +168,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   direction: 0
+  hitEffectPrefab: {fileID: 7625425541325210663, guid: 3fd585ba74d3cd540bed55febcc775e5, type: 3}
 --- !u!1 &176944157866962183
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +180,7 @@ GameObject:
   - component: {fileID: 176944157866962180}
   m_Layer: 13
   m_Name: AttackPoint
-  m_TagString: Untagged
+  m_TagString: Summon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
