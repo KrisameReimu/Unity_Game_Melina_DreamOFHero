@@ -328,6 +328,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SimulatedToggle()
     {
+        rb.velocity = Vector2.zero;
         rb.simulated = false;
         yield return new WaitForSeconds(0.9f);
         rb.simulated = true;
@@ -354,7 +355,7 @@ public class PlayerController : MonoBehaviour
 
         float hight = anim.GetBool("squatDown") ? 1f : 0f;
         float upperAngle = anim.GetBool("isLookUp") ? 1f : 0f;
-        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction * (1 + 0.4f * hight), 1 - 0.6f * hight + 0.4f * upperAngle), Quaternion.Euler(new Vector3(0, 0, 90 + (90 + upperAngle * 30) * direction)));
+        GameObject boltObject = Instantiate(boltPrefab, rb.position + new Vector2(direction * (0.7f + 0.4f * hight), 1 - 0.6f * hight + 0.4f * upperAngle), Quaternion.Euler(new Vector3(0, 0, 90 + (90 + upperAngle * 30) * direction)));
         Bolt bolt = boltObject.GetComponent<Bolt>();
         bolt.Shoot(new Vector2(direction, upperAngle * 0.4f), 300, playerAtk);
     }

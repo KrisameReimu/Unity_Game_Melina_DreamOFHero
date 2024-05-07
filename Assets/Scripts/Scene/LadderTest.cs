@@ -15,7 +15,7 @@ public class LadderTest : MonoBehaviour
                 return;
             if(Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("F");
+                //Debug.Log("F");
                 player = collision.gameObject.GetComponent<PlayerController>();
                 player.ToggleClimbing(!player.isClimbing);
                 interval = 0.5f;
@@ -23,11 +23,11 @@ public class LadderTest : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.S))
             {
-                Debug.Log("W");
+                player = collision.gameObject.GetComponent<PlayerController>();
+                //Debug.Log("W");
                 if (player.isClimbing)
                     return;
 
-                player = collision.gameObject.GetComponent<PlayerController>();
                 player.ToggleClimbing(true);
                 interval = 0.5f;
             }

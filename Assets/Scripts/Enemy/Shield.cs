@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : Enemy
+public class Shield : Enemy, INonDamagableObject
 {
     [SerializeField]
     private ShieldKnight knight;
@@ -19,4 +19,8 @@ public class Shield : Enemy
         r.material.SetColor("_Color", Color.yellow);
         r.material.DOColor(Color.white, 0.5f);
     }
+}
+
+public interface INonDamagableObject
+{
 }

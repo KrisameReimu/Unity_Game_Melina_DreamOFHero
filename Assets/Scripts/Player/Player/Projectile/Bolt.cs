@@ -1,3 +1,4 @@
+using Inventory.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,8 +50,12 @@ public class Bolt : MonoBehaviour
             int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
             e.Knockback(25f, knockbackDirection);
 
-            PlayerController player = FindObjectOfType<PlayerController>();
-            player.IncreaseEX(damage, false);
+            INonDamagableObject nonDamagableObject = e as INonDamagableObject;
+            if (nonDamagableObject == null) // can obtain damage i.e. not shield
+            {
+                PlayerController player = PlayerController.GetPlayerInstance();
+                player.IncreaseEX(damage, false);
+            }    
         }
     }
 
