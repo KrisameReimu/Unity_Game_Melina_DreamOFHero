@@ -29,7 +29,8 @@ public class EnemyMaleZombie : Enemy
     {
         myAnim = GetComponent<Animator>();
         originPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        myPlayer = GameObject.Find("Player");
+        //myPlayer = GameObject.Find("Player");
+        myPlayer = PlayerController.GetPlayerInstance().gameObject;
         mySr = GetComponent<SpriteRenderer>();
         myAudioSource = GetComponent<AudioSource>();
 
@@ -98,6 +99,7 @@ public class EnemyMaleZombie : Enemy
     {
         //Debug.Log("HP: " + enemyLife);
         enemyLife += (int)amount;
+        ShowDamageText(amount);
         myAudioSource.PlayOneShot(myAudioClip[0]);
         {
             enemyLife--;

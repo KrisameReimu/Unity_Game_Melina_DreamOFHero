@@ -23,7 +23,8 @@ public class EnemyPumpkin : Enemy
     }
     private void Awake()
     {
-        player = GameObject.Find("Player");
+        //player = GameObject.Find("Player");
+        player = PlayerController.GetPlayerInstance().gameObject;
         isAlive = true;
         isIdle = true;
         jumpAttact = false;
@@ -130,7 +131,9 @@ public class EnemyPumpkin : Enemy
     {
         //Debug.Log("HP: " + enemyLife);
         Life += (int)amount;
-        
+        ShowDamageText(amount);
+
+
         {
             Life--;
             if (Life >= 1)

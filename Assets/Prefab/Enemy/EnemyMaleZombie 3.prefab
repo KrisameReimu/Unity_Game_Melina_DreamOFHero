@@ -149,6 +149,7 @@ MonoBehaviour:
   damage: 0
   isAttacking: 1
   cardPrefab: {fileID: 0}
+  damageTextPrefab: {fileID: 6920685066339774909, guid: bd66145e03bafb44aa2fb33f0bb32a0d, type: 3}
   targetPosition: {x: -3, y: -2.7, z: 0}
   mySpeed: 1
   enemyLife: 0

@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  isAttacking: 1
+  cardPrefab: {fileID: 0}
+  damageTextPrefab: {fileID: 6920685066339774909, guid: bd66145e03bafb44aa2fb33f0bb32a0d, type: 3}
   targetPosition: {x: 0, y: -3, z: 0}
   mySpeed: 1
   enemyLife: 0
