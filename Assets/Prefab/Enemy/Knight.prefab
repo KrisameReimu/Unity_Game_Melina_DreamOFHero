@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   isAttacking: 1
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 1058469617191451466, guid: b7e0ba99895d9b44a83942834454b27c, type: 3}
   damageTextPrefab: {fileID: 6920685066339774909, guid: bd66145e03bafb44aa2fb33f0bb32a0d, type: 3}
   speed: 1.5
   patrolPointStart: {x: 0, y: 0}

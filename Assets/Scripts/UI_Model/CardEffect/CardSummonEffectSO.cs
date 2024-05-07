@@ -10,7 +10,7 @@ public class CardSummonEffectSO : CardEffectSO
         PlayerController player = character.GetComponent<PlayerController>();
         if (player != null)
         {
-            GameObject summonObject = Instantiate(prefab, (Vector2)player.transform.position + new Vector2(player.direction, 0.8f), Quaternion.identity);
+            GameObject summonObject = Instantiate(prefab, (Vector2)player.transform.position + new Vector2(player.direction, 1.5f), Quaternion.identity);
         }
     }
 }

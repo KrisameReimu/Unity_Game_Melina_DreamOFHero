@@ -7,7 +7,7 @@ public class ShieldKnight : Enemy
 {
     private Animator anim;
     [SerializeField]
-    private float maxHP = 35f;
+    private float maxHP = 50f;
     [field: SerializeField]
     public float HP { get; private set; }
     [SerializeField]

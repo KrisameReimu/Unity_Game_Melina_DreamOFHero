@@ -170,9 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   isAttacking: 1
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 1058469617191451466, guid: f2c14b73eacd9444d96f0ab6700c9731, type: 3}
   damageTextPrefab: {fileID: 6920685066339774909, guid: bd66145e03bafb44aa2fb33f0bb32a0d, type: 3}
-  maxHP: 35
+  maxHP: 50
   <HP>k__BackingField: 0
   targetPosition: {x: 0, y: 0}
 --- !u!61 &8883373728777605039
