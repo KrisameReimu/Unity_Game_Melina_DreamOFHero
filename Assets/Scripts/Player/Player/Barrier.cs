@@ -1,12 +1,17 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.XR;
 
 public class Barrier : MonoBehaviour
 {
     GameObject playerObject;
     PlayerController player;
+    
+    
+
     private void Awake()
     {
         playerObject = GameObject.Find("Player");
@@ -31,8 +36,10 @@ public class Barrier : MonoBehaviour
             e.ChangeHP(0); //call the function to decrease enemies' HP
             int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
             e.Knockback(5f, knockbackDirection);
+
+            Renderer r = gameObject.GetComponent<Renderer>();
+            r.material.SetColor("_Color", Color.yellow);
+            r.material.DOColor(Color.white, 0.3f);
         }
     }
-
-
 }

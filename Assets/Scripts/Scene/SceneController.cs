@@ -77,6 +77,8 @@ public class SceneController : MonoBehaviour
 
     public void LoadPlayer()
     {
+        player = PlayerController.GetPlayerInstance();
+
         //load data and set
         PlayerData data = SaveSystem.LoadPlayer();
 
@@ -90,6 +92,9 @@ public class SceneController : MonoBehaviour
 
         InventoryController inventoryController = player.GetComponent<InventoryController>();
         inventoryController.LoadInventoryData(data.inventoryData);
+
+        AgentCard ac = player.GetComponent<AgentCard>();
+        ac.LoadAndEquipAllCards(data.equipingCardsIndex);
         Debug.Log("Data Loaded");
     }
 

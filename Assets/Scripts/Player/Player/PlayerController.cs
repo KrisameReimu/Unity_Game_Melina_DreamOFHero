@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public float speed { get; private set; }
     float x_movement;
     float y_movement;
-    public float timeInvincible = 0.5f;
+    public float timeOfInvincible = 0.5f;
     [field: SerializeField]
     public bool isInvincible { get; private set; }
     private bool isUsingBurst = false;
@@ -40,8 +40,11 @@ public class PlayerController : MonoBehaviour
 
 
     private bool isAttacking;
-    private float attackInterval = 0.5f;
-    private float attackTimer = 0f;
+    private float attackInterval = 0.6f;//time cannot move starting from attack
+    private float attackTimer = 0f;//use with attackInterval
+    private float normalAttackCooldownInterval = 1.4f;
+    private float normalAttackCooldown = 0f;
+    private bool isNormalAttackReady = true;
     private float invincibleTimer;
 
     private bool isJumping = false;
@@ -236,17 +239,25 @@ public class PlayerController : MonoBehaviour
         Burst();//highest priority
         if (isAttacking || isGettingHurt || isClimbing)
             return;
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))
+
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))//normal attack
         {
+            if (!isNormalAttackReady)//not ready
+                return;
+
             Invoke("ShootBolt", 0.3f);
             anim.SetTrigger("attack");
             isAttacking = true;
             attackTimer = attackInterval;
+            normalAttackCooldown = normalAttackCooldownInterval;
+            ConsumeSP(1);
             // Play the one-shot audio clip for the attack sound effect
             if (oneShotAudioClip != null)
             {
                 AudioSource.PlayClipAtPoint(oneShotAudioClip, transform.position);
             }
+
+            return;
         }
         CardSkill();
     }
@@ -322,17 +333,20 @@ public class PlayerController : MonoBehaviour
             attackTimer = 1.2f;
             isUsingBurst = true;
             ToggleClimbing(false);
-            StartCoroutine(SimulatedToggle());
+
+            StartCoroutine(FreezePlayerPosition());
         }
     }
 
-    IEnumerator SimulatedToggle()
+    IEnumerator FreezePlayerPosition()
     {
         rb.velocity = Vector2.zero;
-        rb.simulated = false;
-        yield return new WaitForSeconds(0.9f);
-        rb.simulated = true;
+        //rb.simulated = false;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 
+        yield return new WaitForSeconds(1.2f);
+        //rb.simulated = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.None;
     }
 
 
@@ -360,7 +374,7 @@ public class PlayerController : MonoBehaviour
         bolt.Shoot(new Vector2(direction, upperAngle * 0.4f), 300, playerAtk);
     }
 
-    private void Cooldown()
+    private void Cooldown()//called in fixed update
     {
         if (isInvincible)
         {
@@ -381,6 +395,13 @@ public class PlayerController : MonoBehaviour
             attackTimer -= Time.fixedDeltaTime;
             if (attackTimer <= 0)
                 isAttacking = false;
+        }
+
+        if (!isNormalAttackReady)
+        {
+            normalAttackCooldown -= Time.fixedDeltaTime;
+            if(normalAttackCooldown <= 0)
+                isNormalAttackReady = true;
         }
 
     }
@@ -423,7 +444,7 @@ public class PlayerController : MonoBehaviour
             int upperForce = anim.GetBool("isJump") ? 0 : 1;
             anim.SetTrigger("hurt");
             isInvincible = true;
-            invincibleTimer = timeInvincible;
+            invincibleTimer = timeOfInvincible;
             isGettingHurt = true;
             gettingHurtTimer = 0.3f;
             isAttacking = false;
@@ -451,13 +472,13 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("HP: " + HP + "/" + maxHP);
     }
 
-    public void ChangeSP(int amount)
+    public void ChangeSP(int amount)//receive +/- value
     {
         SP += amount;
         SP = Mathf.Clamp(SP, 0, maxSP);
         UIStatusBar.instance.SetSPValue(SP / (float)maxSP);
     }
-    public bool ConsumeSP(int amount)
+    public bool ConsumeSP(int amount)//receive a positive value
     {
         if(SP - amount <= 0) 
             return false; //not enough SP to consume

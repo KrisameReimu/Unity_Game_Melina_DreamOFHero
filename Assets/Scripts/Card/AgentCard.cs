@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -90,12 +91,12 @@ public class AgentCard : MonoBehaviour
         */
     }
 
-    public void SetCard(int index)
+    public void SetCard(int index) // index = 0, 1, 2, 3
     {
         //check if same card in other slots
         foreach (UICardSlot cardSlot in cards)
         {
-            if (cardSlot.currentIndex == inventoryData.GetInventoryIndex(tempInventoryItem))
+            if (cardSlot.GetCurrentIndex() == inventoryData.GetInventoryIndex(tempInventoryItem))
                 cardSlot.SetCard(null, InventoryItem.GetEmptyItem());
         }
 
@@ -144,6 +145,35 @@ public class AgentCard : MonoBehaviour
         if (inventoryItem.IsEmpty)
             cardImage.sprite = slotDefaultImage;//reset
         */
+    }
+
+    //For save & load
+    public int[] GetAllCurrentIndex()
+    {
+        int[] indexes = new int[cards.Count];//4
+        for (int i = 0; i < cards.Count; i++)
+        {
+            indexes[i] = cards[i].GetCurrentIndex();
+        }
+        Debug.Log(indexes.Length);
+        return indexes;
+    }
+    public void LoadAndEquipAllCards(int[] indexes)
+    {
+        for (int i = 0; i < indexes.Length; i++) 
+        {
+            if (indexes[i] == -1)//empty
+            {
+                this.tempInventoryItem = InventoryItem.GetEmptyItem();
+            }
+            else
+            {
+                this.tempInventoryItem = inventoryData.GetItemAt(indexes[i]);
+            }
+            this.tempCard = (CardItemSO)tempInventoryItem.item;
+
+            SetCard(i);
+        }
     }
 
     /*

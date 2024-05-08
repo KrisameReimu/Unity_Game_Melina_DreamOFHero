@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c58a23b7d78fa54e882c27ba9b4dca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6181756507964000183}
+  effectColor: {r: 1, g: 0.34901962, b: 0.2784314, a: 0}
 --- !u!50 &-2308947187874096251
 Rigidbody2D:
   serializedVersion: 4

@@ -19,8 +19,7 @@ public class UICardSlot : MonoBehaviour
     private Image cardImage;
     [field: SerializeField]
     private Sprite slotDefaultImage;
-    [field: SerializeField]
-    public int currentIndex { get; private set; }
+    private int currentIndex = -1;
     [SerializeField]
     private UIItemInventory inventoryUI;
     [SerializeField]
@@ -110,5 +109,10 @@ public class UICardSlot : MonoBehaviour
             quantityText.text = "";
         }
 
+    }
+
+    public int GetCurrentIndex()
+    {
+        return currentIndex;
     }
 }
