@@ -44,4 +44,12 @@ public class PausingMenu : MonoBehaviour
         pauseBtnImage.sprite = pauseImage;
         isPausing = false;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnPauseButtonClicked();
+        }
+    }
 }
