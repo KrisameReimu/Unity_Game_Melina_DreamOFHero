@@ -1,3 +1,4 @@
+using Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
-    [SerializeField] Animator transitionAnim;
+    [SerializeField] 
+    Animator transitionAnim;
+    [SerializeField]
     private PlayerController player;
     [SerializeField]
     private bool isSceneChanging = false;
@@ -16,7 +19,6 @@ public class SceneController : MonoBehaviour
         if (!Instance)
         {
             Instance = this;
-            player = GameObject.Find("Player").GetComponent<PlayerController>();
             DontDestroyOnLoad(transform.root.gameObject);
             transform.Find("CrossFade").gameObject.SetActive(true);
         }
@@ -25,6 +27,7 @@ public class SceneController : MonoBehaviour
             Destroy(transform.root.gameObject);
         }
 
+        player = PlayerController.GetPlayerInstance();
 
         //StartCoroutine(LoadSceneData());
     }
@@ -65,6 +68,29 @@ public class SceneController : MonoBehaviour
 
         player.MoveToNewPosition(position);
         isSceneChanging = false;
+    }
+
+    public void SavePlayer() 
+    {
+        SaveSystem.SavePlayer(player);
+    }
+
+    public void LoadPlayer()
+    {
+        //load data and set
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        player.SetHP(data.HP);
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+
+        player.MoveToNewPosition(position);
+
+        InventoryController inventoryController = player.GetComponent<InventoryController>();
+        inventoryController.LoadInventoryData(data.inventoryData);
+        Debug.Log("Data Loaded");
     }
 
     /*

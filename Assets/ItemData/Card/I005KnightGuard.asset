@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1170a7839530fd2469bde83949f0ceaf, type: 3}
-  m_Name: SlimeCard
+  m_Name: I005KnightGuard
   m_EditorClassIdentifier: 
+  <itemID>k__BackingField: 5
   <isStackable>k__BackingField: 1
   <maxStackSize>k__BackingField: 99
-  <itemName>k__BackingField: Slime
-  description: summon a slime
-  itemImage: {fileID: 21300000, guid: bf09fbf05fe18534f9a3c7735c7b962e, type: 3}
+  <itemName>k__BackingField: Knight (Guard)
+  description: summon a knight (guard)
+  itemImage: {fileID: 21300000, guid: 3ee1c7b5418baeb4897091aa4df636a2, type: 3}
   <defaultParametersList>k__BackingField:
   - itemParameter: {fileID: 11400000, guid: 307ab33f73924e747a2c5f8b2bf9237f, type: 2}
     value: 5
   cardEffectList:
   - cardEffect: {fileID: 11400000, guid: 707856bcba3e1d74a8a22f66c6ed9a05, type: 2}
-    prefab: {fileID: 1078137484417146823, guid: 87d912f96dd152045ab59505dd8e94de, type: 3}
+    prefab: {fileID: 4282900301599933151, guid: ca38d5cd05b28ce4ba65a12fea72cfa5, type: 3}
     cost: 5

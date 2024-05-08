@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryItems:
   - item: {fileID: 11400000, guid: 8a11ee28cbe539246b0464f827d88c17, type: 2}
-    quantity: 2
+    quantity: 6
+    itemState: []
+  - item: {fileID: 11400000, guid: 608f1de5d75bce24fa9c5b7d8df1db96, type: 2}
+    quantity: 5
+    itemState:
+    - itemParameter: {fileID: 11400000, guid: 307ab33f73924e747a2c5f8b2bf9237f, type: 2}
+      value: 5
+  - item: {fileID: 11400000, guid: 6e5e78769be2f6342a59e8977a55f114, type: 2}
+    quantity: 1
     itemState: []
   - item: {fileID: 0}
     quantity: 0
@@ -134,3 +142,4 @@ MonoBehaviour:
     quantity: 0
     itemState: []
   <size>k__BackingField: 42
+  itemWarehouse: {fileID: 11400000, guid: c30c27749e893644f95255d792e376c9, type: 2}

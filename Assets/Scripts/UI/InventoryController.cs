@@ -177,6 +177,16 @@ namespace Inventory
             inventoryUI.HideItemAction();
         }
 
+        //for save & load
+        public Dictionary<int, InventoryItem> GetPlayerInventoryContent()
+        {
+            return inventoryData.GetCurrentInventoryState();
+        }
+
+        public void LoadInventoryData(int[,] invenotryDataArray)
+        {
+            inventoryData.LoadInventoryData(invenotryDataArray);
+        }
 
 
         private void Update()

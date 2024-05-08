@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d94a246a9fa21f47a94f9eb50cc9ee7, type: 3}
-  m_Name: HP Potion
+  m_Name: I002HP Potion
   m_EditorClassIdentifier: 
+  <itemID>k__BackingField: 2
   <isStackable>k__BackingField: 1
   <maxStackSize>k__BackingField: 99
   <itemName>k__BackingField: HP Potion
   description: Restores 30 HP
   itemImage: {fileID: 21300000, guid: c2e882058c776c244adf87fa24d5282f, type: 3}
+  <defaultParametersList>k__BackingField: []
   modifiersData:
   - statModifier: {fileID: 11400000, guid: bb32c29b7f381244fa242ec668ca9c94, type: 2}
     value: 30

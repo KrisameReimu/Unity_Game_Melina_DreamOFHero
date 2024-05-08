@@ -61,10 +61,10 @@ public class ShieldKnight : Enemy
             anim.SetTrigger("Hurt");
         else
         {
-            /*
+            
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.simulated = false;
-            */
+            
             isAttacking = false;
             anim.SetTrigger("Die");
             DropCard();

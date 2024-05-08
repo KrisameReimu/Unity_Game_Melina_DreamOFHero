@@ -12,6 +12,9 @@ namespace Inventory.Model
         public int ID => GetInstanceID();
 
         [field: SerializeField]
+        public int itemID { get; set; }
+
+        [field: SerializeField]
         public bool isStackable { get; set; }
 
 

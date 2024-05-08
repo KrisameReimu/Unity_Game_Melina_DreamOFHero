@@ -530,4 +530,10 @@ public class PlayerController : MonoBehaviour
         }
         return pc;
     }
+
+    public void SetHP(float value)
+    {
+        HP = value;
+        UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
+    }
 }

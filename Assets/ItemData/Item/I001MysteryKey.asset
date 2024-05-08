@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07422eda5e2ccdf4ebd1286a41c847eb, type: 3}
-  m_Name: MysteryKey
+  m_Name: I001MysteryKey
   m_EditorClassIdentifier: 
+  <itemID>k__BackingField: 1
   <isStackable>k__BackingField: 0
   <maxStackSize>k__BackingField: 1
   <itemName>k__BackingField: Mystery Key

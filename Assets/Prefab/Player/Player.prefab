@@ -147,8 +147,8 @@ MonoBehaviour:
   <burstImpulsePrefab>k__BackingField: {fileID: 829670003038648496, guid: 39ccfa229c6060e4cbb8326a57e02fd2, type: 3}
   <barrierPrefab>k__BackingField: {fileID: 6181756507964000180, guid: 7366292e773b82b438dc9d113da4ee6a, type: 3}
   cardSystem: {fileID: 1089665757192974860}
-  oneShotAudioClip: {fileID: 8300000, guid: 594e15d24e363ab4e92fbac983460b80, type: 3}
-  hpDecreaseAudioClip: {fileID: 8300000, guid: 63b710d73c29bff4ba90b60ecec53e20, type: 3}
+  oneShotAudioClip: {fileID: 8300000, guid: 63b710d73c29bff4ba90b60ecec53e20, type: 3}
+  hpDecreaseAudioClip: {fileID: 8300000, guid: 594e15d24e363ab4e92fbac983460b80, type: 3}
 --- !u!114 &2588802949052333844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryData: {fileID: 11400000, guid: 6d92938f243920249b0cff5c24742ff6, type: 2}
   obtainedItemPromptPrefab: {fileID: 5693349253235152900, guid: ae5cf25f6ee39ff499d9289f8a337d51, type: 3}
+  collectedObjectList: {fileID: 0}
 --- !u!114 &1089665757192974860
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -144,6 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ae90a87a831ef40b07351099e27ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 215b37cc0673b1a41b0ffd3baeb2ea1b, type: 2}
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 6e5e78769be2f6342a59e8977a55f114, type: 2}
   Quantity: 1
   duration: 0.3

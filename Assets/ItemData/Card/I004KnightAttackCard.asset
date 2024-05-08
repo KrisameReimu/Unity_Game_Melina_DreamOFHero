@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1170a7839530fd2469bde83949f0ceaf, type: 3}
-  m_Name: KnightAttackCard
+  m_Name: I004KnightAttackCard
   m_EditorClassIdentifier: 
+  <itemID>k__BackingField: 4
   <isStackable>k__BackingField: 1
   <maxStackSize>k__BackingField: 99
   <itemName>k__BackingField: Knight (Attack)

@@ -15,6 +15,9 @@ namespace Inventory.Model
         [field: SerializeField]
         public int size { get; private set; } = 40;
 
+        [SerializeField]
+        private ItemWarehouse itemWarehouse;
+
         public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
 
 
@@ -138,6 +141,30 @@ namespace Inventory.Model
             InventoryItem item1 = inventoryItems[currentIndex];
             inventoryItems[currentIndex] = inventoryItems[index];
             inventoryItems[index] = item1;
+            InformAboutChange();
+        }
+
+        public void LoadInventoryData(int[,] inventoryArray)//for Load file
+        {
+            Initialize();//clear all first
+
+            for (int i = 0; i < inventoryArray.GetLength(0); i++)
+            {
+                int backpackIndex = inventoryArray[i, 0];
+                int itemID = inventoryArray[i, 1];
+                int itemQuantity = inventoryArray[i, 2];
+
+                ItemSO itemSO = itemWarehouse.GetItemSO(itemID);
+
+                InventoryItem newItem = new InventoryItem
+                {
+                    item = itemSO,
+                    quantity = itemQuantity,
+                    itemState = new List<ItemParameter>(itemSO.defaultParametersList)
+                };
+
+                inventoryItems[backpackIndex] = newItem;
+            }
             InformAboutChange();
         }
 

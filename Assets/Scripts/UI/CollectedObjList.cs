@@ -11,7 +11,7 @@ public class CollectedObjList : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.SetBool("Show", false);
-        Debug.Log(transform.childCount);
+        //Debug.Log(transform.childCount);
 
     }
     public void InformChange()
@@ -22,7 +22,7 @@ public class CollectedObjList : MonoBehaviour
     IEnumerator StartChecking()
     {
         yield return null;
-        Debug.Log(transform.childCount);
+        //Debug.Log(transform.childCount);
         if (transform.childCount == 1)
         {
             anim.SetBool("Show", false);
