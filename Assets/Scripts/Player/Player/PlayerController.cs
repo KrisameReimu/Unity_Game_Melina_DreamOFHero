@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private bool initialized = false;
 
     public event Action OnPlayerDown;//notify if hp < 0
+    public static bool isGamePause { get; private set; }  = false;
 
 
     private void Awake()
@@ -107,7 +108,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!alive) 
+        if(!alive || isGamePause) 
             return;
         Jump();
         Move();
@@ -117,6 +118,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!alive)
+            return;
         Cooldown();
 
         transform.position = (Vector2)rb.position + new Vector2(x_movement, y_movement) * speed * Time.fixedDeltaTime;
@@ -556,5 +559,10 @@ public class PlayerController : MonoBehaviour
     {
         HP = value;
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
+    }
+
+    public static void SetIsGamePause(bool status)
+    {
+        isGamePause = status;
     }
 }

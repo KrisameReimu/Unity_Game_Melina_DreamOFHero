@@ -29,6 +29,7 @@ namespace Inventory.UI
 
         public event Action<int, int> OnSwapItems;
 
+
         [SerializeField]
         private ItemActionPanel actionPanel;
         [SerializeField]
@@ -159,16 +160,22 @@ namespace Inventory.UI
         }
         public void Show()
         {
+            Time.timeScale = 0f;
+
             gameObject.SetActive(true);
             ResetSelection();
+            PlayerController.SetIsGamePause(true);
         }
 
         public void Hide()
         {
+            Time.timeScale = 1f;
+
             actionPanel.Toggle(false);
             cardSlotPopUp.Toggle(false);
             gameObject.SetActive(false);
             ResetDraggedItem();
+            PlayerController.SetIsGamePause(false);
         }
 
         public void UpdateDescription(int itemIndex, Sprite itemImage, string itemName, string description)
