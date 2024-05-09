@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     private bool isNormalAttackReady = true;
     private float invincibleTimer;
 
-    private bool isJumping = false;
+    public bool isJumping { get; private set; } = false;
     private bool isGettingHurt = false;
     private float gettingHurtTimer = 0.3f;
     private bool alive = true;
@@ -451,8 +451,10 @@ public class PlayerController : MonoBehaviour
             isGettingHurt = true;
             gettingHurtTimer = 0.3f;
             isAttacking = false;
-
-            ToggleClimbing(false);
+            if (isClimbing)
+            {//End climbing
+                ToggleClimbing(false);
+            }
             if (knockBackDirection != 0)
                 direction = knockBackDirection;
 
@@ -564,5 +566,16 @@ public class PlayerController : MonoBehaviour
     public static void SetIsGamePause(bool status)
     {
         isGamePause = status;
+    }
+
+    public void SpeedUp(float effectTime)
+    {
+        StartCoroutine(StartSpeedUp(effectTime));    
+    }
+    IEnumerator StartSpeedUp(float effectTime)
+    {
+        speed *= 1.5f;
+        yield return new WaitForSeconds(effectTime);
+        speed /= 1.5f;
     }
 }

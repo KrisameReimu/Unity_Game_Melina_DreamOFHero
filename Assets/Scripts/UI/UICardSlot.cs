@@ -26,6 +26,8 @@ public class UICardSlot : MonoBehaviour
     private Image popUpSlotImage;
     [SerializeField]
     private TMPro.TextMeshProUGUI quantityText;
+    [SerializeField]
+    private MessagePrompt messagePrompt;
 
 
     private void Awake()
@@ -63,7 +65,7 @@ public class UICardSlot : MonoBehaviour
             //Debug.Log("Active");
 
             bool result = card.ActiveCardEffect(player);
-            if(result)//activated effect
+            if (result)//activated effect
             {
                 currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
                 inventoryData.RemoveItem(currentIndex, 1);//consume
@@ -71,13 +73,19 @@ public class UICardSlot : MonoBehaviour
                 {
                     inventoryUI.ResetSelection();
                 }
-                
+
 
                 //call update by Action handler
+            }
+            else//failed to activate effect due to insufficient SP
+            {
+                messagePrompt.PromptMessage("Insufficient SP!");
             }
 
             return result;
         }
+        //failed to activate effect due to no card in such slot
+        messagePrompt.PromptMessage("No card is equipped in this slot");
         return false;
     }
 

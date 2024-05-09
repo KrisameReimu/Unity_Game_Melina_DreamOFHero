@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7468787571051090414}
   - component: {fileID: 7468787571051090410}
   m_Layer: 12
-  m_Name: Mystery Key
+  m_Name: SP Potion
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7468787571051090411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.95, y: 1.53, z: -7.0423408}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0cb6fd6b39c49b24bba8870773079502, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 929fc87376608644793f1a797ee111ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,14 +102,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.6666667, y: 2.6666667}
+    oldSize: {x: 10.01, y: 10.01}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6666667, y: 2.6666667}
+  m_Size: {x: 10.01, y: 10.01}
   m_EdgeRadius: 0
 --- !u!50 &7468787571051090414
 Rigidbody2D:
@@ -144,6 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ae90a87a831ef40b07351099e27ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 6e5e78769be2f6342a59e8977a55f114, type: 2}
-  Quantity: 1
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 8759d91ffb56b8b44a11298c1776131f, type: 2}
+  Quantity: 3
   duration: 0.3

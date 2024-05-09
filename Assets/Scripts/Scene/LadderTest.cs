@@ -17,21 +17,26 @@ public class LadderTest : MonoBehaviour
             {
                 //Debug.Log("F");
                 player = collision.gameObject.GetComponent<PlayerController>();
-                player.ToggleClimbing(!player.isClimbing);
-                interval = 0.5f;
+ 
+                ToggleClimbing(!player.isClimbing);
             }
 
-            if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 player = collision.gameObject.GetComponent<PlayerController>();
                 //Debug.Log("W");
                 if (player.isClimbing)
                     return;
 
-                player.ToggleClimbing(true);
-                interval = 0.5f;
+                ToggleClimbing(true);
             }
         }
+    }
+
+    private void ToggleClimbing(bool status)
+    {
+        player.ToggleClimbing(status);
+        interval = 0.5f;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
