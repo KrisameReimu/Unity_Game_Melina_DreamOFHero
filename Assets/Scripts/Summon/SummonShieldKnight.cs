@@ -8,6 +8,9 @@ public class SummonShieldKnight : Summon
     private Animator anim;
     [SerializeField]
     private float guardCounter = 0;
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip guardClip;
 
     void Awake()
     {
@@ -16,6 +19,7 @@ public class SummonShieldKnight : Summon
         lifetime = 10;
         isAttacking = true;
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         GetPlayer();
         transform.localScale = new Vector3(player.direction * System.Math.Abs(transform.localScale.x), transform.localScale.y, 1f);
     }
@@ -69,8 +73,8 @@ public class SummonShieldKnight : Summon
                 lifetime -= enemy.damage*0.1f;
                 ChangeDirection(other.transform.position);
             }
+            audioSource.PlayOneShot(guardClip);
         }
-
     }
 
     private void ChangeDirection(Vector2 targetPosition)

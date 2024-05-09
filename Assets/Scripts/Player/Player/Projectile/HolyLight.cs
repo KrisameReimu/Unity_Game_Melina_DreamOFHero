@@ -7,7 +7,7 @@ public class HolyLight : MonoBehaviour
     [SerializeField]
     private int damage = 20;
     private int direction;
-    private int remainingRound = 3;
+    private int remainingRound = 4;
     private List<GameObject> hittedObjects;
 
 
@@ -15,7 +15,7 @@ public class HolyLight : MonoBehaviour
     {
         PlayerController player = PlayerController.GetPlayerInstance();
         direction = player.direction;
-        transform.position = (Vector2)player.transform.position + new Vector2(direction, 1.6f);
+        transform.position = (Vector2)player.transform.position + new Vector2(direction, 1.5f);
         hittedObjects = new List<GameObject>();
     }
 

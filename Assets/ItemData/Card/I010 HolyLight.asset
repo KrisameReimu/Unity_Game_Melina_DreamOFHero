@@ -20,8 +20,8 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: e5c63cdb248aec841a3f82e653d4fac0, type: 3}
   <defaultParametersList>k__BackingField:
   - itemParameter: {fileID: 11400000, guid: 307ab33f73924e747a2c5f8b2bf9237f, type: 2}
-    value: 15
+    value: 18
   cardEffectList:
   - cardEffect: {fileID: 11400000, guid: 707856bcba3e1d74a8a22f66c6ed9a05, type: 2}
     prefab: {fileID: 3100595365859036919, guid: 34e07d9ec25a4744bbd149ff68c3f924, type: 3}
-    cost: 15
+    cost: 18

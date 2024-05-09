@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
+
     [field: SerializeField]
     public int direction { get; private set; } = 1;
 
@@ -69,6 +70,8 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip oneShotAudioClip;
     public AudioClip hpDecreaseAudioClip;
+    [SerializeField] 
+    private AudioClip burstSoundClip;
     private bool initialized = false;
 
     public event Action OnPlayerDown;//notify if hp < 0
@@ -259,7 +262,7 @@ public class PlayerController : MonoBehaviour
             // Play the one-shot audio clip for the attack sound effect
             if (oneShotAudioClip != null)
             {
-                AudioSource.PlayClipAtPoint(oneShotAudioClip, transform.position);
+                audioSource.PlayOneShot(oneShotAudioClip);
             }
 
             return;
@@ -339,6 +342,7 @@ public class PlayerController : MonoBehaviour
             isUsingBurst = true;
             ToggleClimbing(false);
             UIStatusBar.instance.HideBurstIcon();
+            audioSource.PlayOneShot(burstSoundClip);
 
             StartCoroutine(FreezePlayerPosition());
         }
@@ -471,7 +475,8 @@ public class PlayerController : MonoBehaviour
             // Play the hpDecreaseAudioClip for HP decrease sound effect
             if (hpDecreaseAudioClip != null)
             {
-                AudioSource.PlayClipAtPoint(hpDecreaseAudioClip, transform.position);
+                //AudioSource.PlayClipAtPoint(hpDecreaseAudioClip, transform.position);
+                audioSource.PlayOneShot(hpDecreaseAudioClip);
             }
         }
         

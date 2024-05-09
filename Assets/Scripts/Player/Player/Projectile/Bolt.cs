@@ -13,12 +13,16 @@ public class Bolt : MonoBehaviour
     private Vector2 initPosition;
     private PlayerController player;
     private int direction;
+    [SerializeField]
+    private AudioClip hitSound;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         //damage = 5f;
         initPosition = transform.position;
         player = PlayerController.GetPlayerInstance();
@@ -45,6 +49,7 @@ public class Bolt : MonoBehaviour
         //Debug.Log("Bolt Collision with " + other.gameObject);
         anim.SetTrigger("hit");
         rb.simulated = false; //Disable the bolt
+        audioSource.PlayOneShot(hitSound);
         if (other.gameObject.tag != "Enemy")
             return;
         Enemy e = other.collider.GetComponent<Enemy>();
