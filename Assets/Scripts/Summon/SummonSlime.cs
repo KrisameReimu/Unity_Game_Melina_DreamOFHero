@@ -7,6 +7,7 @@ public class SummonSlime : Summon
     private float speed = 4f;
     private Animator anim;
     private Vector2 targetPosition;
+    [SerializeField]
     private GameObject targetObject;
 
     // Start is called before the first frame update
@@ -46,18 +47,31 @@ public class SummonSlime : Summon
 
         //move
         if (isAttacking)
+        {
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        }
     }
 
+    public override void HittedEnemy()
+    {
+        targetObject = null;//reset target
+    }
 
     private void OnTriggerStay2D(Collider2D c)
     {
         if (targetObject)//check if locked on any target
             return;
-        if (c.gameObject.tag != "Enemy" || isAttacking)
+        if (c.transform.root.tag != "Enemy" || isAttacking)
             return;
 
-        targetObject = c.gameObject;
+        IRespawnable enemy = c.transform.root.GetComponent<Enemy>() as IRespawnable;
+        if(enemy != null)
+        {
+            if(enemy.isDead) 
+                return;
+        }
+
+        targetObject = c.transform.root.gameObject;
     }
 
 

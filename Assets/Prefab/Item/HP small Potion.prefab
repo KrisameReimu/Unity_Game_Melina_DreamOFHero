@@ -145,5 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InventoryItem>k__BackingField: {fileID: 11400000, guid: de5b76ffb8045e44e9e317ce4b5f286b, type: 2}
-  Quantity: 3
+  Quantity: 1
   duration: 0.3

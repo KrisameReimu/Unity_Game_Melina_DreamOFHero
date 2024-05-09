@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
     private bool initialized = false;
 
     public event Action OnPlayerDown;//notify if hp < 0
+    public event Action OnGettingHitInvincile;//getting hit during invincible time
+
     public static bool isGamePause { get; private set; }  = false;
 
 
@@ -443,7 +445,10 @@ public class PlayerController : MonoBehaviour
         if (amount < 0) //damage
         {
             if (isInvincible)
+            {
+                OnGettingHitInvincile?.Invoke();
                 return;
+            }
 
             int upperForce = anim.GetBool("isJump") ? 0 : 1;
             anim.SetTrigger("hurt");

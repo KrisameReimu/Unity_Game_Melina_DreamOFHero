@@ -7,21 +7,20 @@ using UnityEngine.XR;
 
 public class Barrier : MonoBehaviour
 {
-    GameObject playerObject;
     PlayerController player;
     
     
 
     private void Awake()
     {
-        playerObject = GameObject.Find("Player");
-        player = playerObject.GetComponent<PlayerController>();
+        player = PlayerController.GetPlayerInstance();
         DontDestroyOnLoad(gameObject);
+        player.OnGettingHitInvincile += BarrierVFX;
     }
     // Update is called once per frame
     void Update()
     {
-        transform.position = (Vector2)playerObject.transform.position + new Vector2(0, 0.8f);
+        transform.position = (Vector2)player.transform.position + new Vector2(0, 0.8f);
         if(player.EX<=0)
             Destroy(gameObject);
     }
@@ -37,9 +36,15 @@ public class Barrier : MonoBehaviour
             int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
             e.Knockback(5f, knockbackDirection);
 
-            Renderer r = gameObject.GetComponent<Renderer>();
-            r.material.SetColor("_Color", Color.yellow);
-            r.material.DOColor(Color.white, 0.3f);
+            BarrierVFX();
         }
     }
+
+    private void BarrierVFX()
+    {
+        Renderer r = gameObject.GetComponent<Renderer>();
+        r.material.SetColor("_Color", Color.yellow);
+        r.material.DOColor(Color.white, 0.3f);
+    }
+
 }

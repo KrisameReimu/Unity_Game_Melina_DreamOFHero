@@ -134,7 +134,10 @@ public class Knight : Enemy
     private void EndAttack()
     {
         isAttacking = false;
+        isGettingHit = false;
         anim.ResetTrigger("Attack");
+        anim.ResetTrigger("Hurt");
+
     }
 
     private void OnDrawGizmos()

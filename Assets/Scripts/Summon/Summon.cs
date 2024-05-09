@@ -47,9 +47,12 @@ public class Summon : MonoBehaviour
             {
                 enemy.ChangeHP(-1 * damage);
                 isAttacking = false;
+                HittedEnemy();
             }
         }
     }
+
+    public virtual void HittedEnemy() { }
 
     public virtual void TimeOut() { }
 
