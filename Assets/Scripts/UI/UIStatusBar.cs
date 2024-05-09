@@ -18,6 +18,8 @@ public class UIStatusBar : MonoBehaviour
     float HPOriginalSize;
     float SPOriginalSize;
     float BurstOriginalSize;
+    [SerializeField]
+    private GameObject BurstIcon;
 
     void Awake()
     {
@@ -41,16 +43,23 @@ public class UIStatusBar : MonoBehaviour
         BurstOriginalSize = BurstMask.rectTransform.rect.width;
     }
 
-    public void changeGaugeColor()
+    public void ChangeGaugeColor()
     {
         if (Mathf.Approximately(BurstMask.rectTransform.rect.width, BurstOriginalSize))
         {
             burstBar.sprite = BurstReady;
+            BurstIcon.SetActive(true);
         }
         else
         {
             burstBar.sprite = BurstNotReady;
+            BurstIcon.SetActive(false);
         }
+    }
+
+    public void HideBurstIcon()
+    {
+        BurstIcon.SetActive(false);
     }
 
 

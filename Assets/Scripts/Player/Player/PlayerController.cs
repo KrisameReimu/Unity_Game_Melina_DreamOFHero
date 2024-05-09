@@ -336,6 +336,7 @@ public class PlayerController : MonoBehaviour
             attackTimer = 1.2f;
             isUsingBurst = true;
             ToggleClimbing(false);
+            UIStatusBar.instance.HideBurstIcon();
 
             StartCoroutine(FreezePlayerPosition());
         }
@@ -421,7 +422,7 @@ public class PlayerController : MonoBehaviour
         EX = Mathf.Clamp(EX, 0, maxEX);
 
         UIStatusBar.instance.SetBurstValue(EX / (float)maxEX);
-        UIStatusBar.instance.changeGaugeColor();
+        UIStatusBar.instance.ChangeGaugeColor();
     }
 
     private void ChangeDirection()
