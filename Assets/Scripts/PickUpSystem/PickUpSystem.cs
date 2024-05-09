@@ -2,6 +2,7 @@ using Inventory.Model;
 using Inventory.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PickUpSystem : MonoBehaviour
@@ -19,13 +20,14 @@ public class PickUpSystem : MonoBehaviour
         if(collectedObjectList == null)
             collectedObjectList = GameObject.Find("UI").transform.Find("CollectedObjectList");
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    string[] collectionTags = { "Item", "ItemDetect" };
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Item")
+        if (!collectionTags.Contains(collision.tag))
             return;
 
-        Item item = collision.gameObject.GetComponent<Item>();
+        Item item = collision.transform.root.gameObject.GetComponent<Item>();
         if(item != null )
         {
             int reminder = inventoryData.AddItem(item.InventoryItem, item.Quantity);

@@ -55,6 +55,8 @@ public class ShieldKnight : Enemy
         
         PlayerController player = PlayerController.GetPlayerInstance();
         targetPosition = player.transform.position;
+
+        //Debug.Log("Hit");
         
 
         if (HP > 0)
@@ -67,7 +69,7 @@ public class ShieldKnight : Enemy
             
             isAttacking = false;
             anim.SetTrigger("Die");
-            DropCard();
+            DropItem();
         }
     }
 

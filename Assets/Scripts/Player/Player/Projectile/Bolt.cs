@@ -11,6 +11,8 @@ public class Bolt : MonoBehaviour
     public float damage { get; private set; } // = playerAtk
     [SerializeField]
     private Vector2 initPosition;
+    private PlayerController player;
+    private int direction;
 
     // Start is called before the first frame update
     void Awake()
@@ -19,6 +21,8 @@ public class Bolt : MonoBehaviour
         anim = GetComponent<Animator>();
         //damage = 5f;
         initPosition = transform.position;
+        player = PlayerController.GetPlayerInstance();
+        direction = player.direction;
     }
 
     // Update is called once per frame
@@ -47,13 +51,11 @@ public class Bolt : MonoBehaviour
         if (e != null)
         {
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
-            int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
-            e.Knockback(25f, knockbackDirection);
+            e.Knockback(25f, -direction);
 
             INonDamagableObject nonDamagableObject = e as INonDamagableObject;
             if (nonDamagableObject == null) // can obtain damage i.e. not shield
             {
-                PlayerController player = PlayerController.GetPlayerInstance();
                 player.IncreaseEX(damage, false);
             }    
         }

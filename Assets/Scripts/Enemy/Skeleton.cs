@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : Enemy, IRespawnable
+public class Skeleton : Enemy, IRespawnable, IUndead
 {
     [SerializeField]
     private float speed = 1.5f;
@@ -36,6 +36,9 @@ public class Skeleton : Enemy, IRespawnable
     private GameObject hitEffectPrefab;
     private bool isDead = false;
     bool IRespawnable.isDead { get => this.isDead; }
+    [SerializeField]
+    private GameObject purifyEffectPrefab;
+
 
 
     // Start is called before the first frame update
@@ -53,7 +56,10 @@ public class Skeleton : Enemy, IRespawnable
     // Update is called once per frame
     void Update()
     {
-        ChangeDirection();
+        if(!isAttacking)
+        {
+            ChangeDirection();
+        }
         Move();
     }
 
@@ -181,10 +187,7 @@ public class Skeleton : Enemy, IRespawnable
         isGettingHit = false;
     }
 
-    private void Vanish()
-    {
-        Destroy(gameObject);
-    }
+
 
     public override void ChangeHP(float amount)
     {
@@ -235,9 +238,22 @@ public class Skeleton : Enemy, IRespawnable
         EndAttack();
         rb.simulated = true;
     }
+
+    public void Purify()
+    {
+        ShowDamageText("Purify",new Color(255, 109, 0));
+        Destroy(gameObject);
+        DropItem();
+        Instantiate(purifyEffectPrefab, transform.position, Quaternion.identity);
+    }
 }
 
 public interface IRespawnable
 {
     public bool isDead { get;}
+}
+
+public interface IUndead
+{
+    public void Purify();
 }

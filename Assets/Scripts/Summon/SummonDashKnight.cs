@@ -74,4 +74,13 @@ public class SummonDashKnight : Summon
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //no effect
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        //no effect
+    }
 }

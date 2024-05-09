@@ -217,7 +217,7 @@ public class Knight : Enemy
             
             isAttacking = false;
             anim.SetTrigger("Die");
-            DropCard();
+            DropItem();
         }
     }
 }

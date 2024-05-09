@@ -101,7 +101,7 @@ public class Slime : Enemy
             
             isAttacking = false;
             anim.SetTrigger("Die");
-            DropCard();
+            DropItem();
         }
     }
 

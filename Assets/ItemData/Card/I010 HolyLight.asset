@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb42925d075c0c48b355048199cf0d4, type: 3}
+  m_Name: I010 HolyLight
+  m_EditorClassIdentifier: 
+  <itemID>k__BackingField: 10
+  <isStackable>k__BackingField: 0
+  <maxStackSize>k__BackingField: 1
+  <itemName>k__BackingField: Holy Light
+  description: "Create light pillars. \nOutstanding effect on undead. "
+  itemImage: {fileID: 21300000, guid: e5c63cdb248aec841a3f82e653d4fac0, type: 3}
+  <defaultParametersList>k__BackingField:
+  - itemParameter: {fileID: 11400000, guid: 307ab33f73924e747a2c5f8b2bf9237f, type: 2}
+    value: 15
+  cardEffectList:
+  - cardEffect: {fileID: 11400000, guid: 707856bcba3e1d74a8a22f66c6ed9a05, type: 2}
+    prefab: {fileID: 3100595365859036919, guid: 34e07d9ec25a4744bbd149ff68c3f924, type: 3}
+    cost: 15

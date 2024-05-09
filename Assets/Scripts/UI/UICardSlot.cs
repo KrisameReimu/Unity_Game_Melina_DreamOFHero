@@ -68,7 +68,13 @@ public class UICardSlot : MonoBehaviour
             if (result)//activated effect
             {
                 currentIndex = inventoryData.GetInventoryIndex(this.inventoryItem);
-                inventoryData.RemoveItem(currentIndex, 1);//consume
+
+                INonDestroyableItem superCard = card as INonDestroyableItem;
+                if (superCard == null)//is not super card
+                {
+                    inventoryData.RemoveItem(currentIndex, 1);//consume
+                }
+
                 if (inventoryData.GetItemAt(currentIndex).IsEmpty)
                 {
                     inventoryUI.ResetSelection();

@@ -141,9 +141,14 @@ namespace Inventory
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
             if (destroyableItem != null) // cast successfully
             {
-                inventoryUI.AddAction("Destroy", () => DropItem(itemIndex, inventoryItem.quantity));
+                INonDestroyableItem superCard = inventoryItem.item as INonDestroyableItem;
+                if (superCard == null)//is not super card
+                {
+                    inventoryUI.AddAction("Destroy", () => DropItem(itemIndex, inventoryItem.quantity));
+                }
             }
         }
+
 
         private void DropItem(int itemIndex, int quantity)
         {

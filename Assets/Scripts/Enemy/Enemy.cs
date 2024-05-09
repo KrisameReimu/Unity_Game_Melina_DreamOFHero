@@ -68,14 +68,12 @@ public class Enemy : MonoBehaviour
     
     */
 
-    public void DropCard()
+    public void DropItem()
     {
         if (cardPrefab != null)
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             GameObject cardItem = Instantiate(cardPrefab, rb.position + new Vector2(0, 0.5f), Quaternion.Euler(new Vector3(0, 0, 30)));
-            rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
-
         }
     }
 
