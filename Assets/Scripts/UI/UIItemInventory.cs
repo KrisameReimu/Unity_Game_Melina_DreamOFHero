@@ -34,6 +34,8 @@ namespace Inventory.UI
         private ItemActionPanel actionPanel;
         [SerializeField]
         private UICardSlotPopUp cardSlotPopUp;
+        [SerializeField]
+        private GameObject pauseButton;
 
 
         private void Awake()
@@ -165,6 +167,7 @@ namespace Inventory.UI
             gameObject.SetActive(true);
             ResetSelection();
             PlayerController.SetIsGamePause(true);
+            pauseButton.SetActive(false);
         }
 
         public void Hide()
@@ -176,6 +179,7 @@ namespace Inventory.UI
             gameObject.SetActive(false);
             ResetDraggedItem();
             PlayerController.SetIsGamePause(false);
+            pauseButton.SetActive(true);
         }
 
         public void UpdateDescription(int itemIndex, Sprite itemImage, string itemName, string description)

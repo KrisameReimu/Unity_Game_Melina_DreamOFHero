@@ -44,6 +44,8 @@ public class LadderTest : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject.GetComponent<PlayerController>();
+            if (!player.isClimbing)
+                return;
             player.ToggleClimbing(false);
         }
     }
