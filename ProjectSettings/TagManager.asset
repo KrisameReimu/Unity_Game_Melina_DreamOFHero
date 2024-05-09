@@ -15,11 +15,13 @@ TagManager:
   - Summon
   - Item
   - Platform
+  - Arc
+  - Bramble
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
   - Character
@@ -36,8 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - platform
-  - Background
+  - 
+  - 
   - 
   - 
   - 
