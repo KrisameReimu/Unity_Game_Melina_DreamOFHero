@@ -463,11 +463,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1076285775521263610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.57
+      value: -9.259
       objectReference: {fileID: 0}
     - target: {fileID: 1076285775521263610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.12
+      value: 0.855
       objectReference: {fileID: 0}
     - target: {fileID: 1076285775521263610, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
       propertyPath: m_LocalPosition.z
@@ -502,9 +502,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3897462973123541106, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
-      propertyPath: <ableToDoubleJump>k__BackingField
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: oneShotAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 17a64018f41d043169872a142113c3dc, type: 3}
     - target: {fileID: 6554978173899653152, guid: 60916a7f507242b4fbb44518d177bb00, type: 3}
       propertyPath: collectedObjectList
       value: 
@@ -1594,7 +1594,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.3915094, g: 1, b: 0.7434059, a: 1}
+  m_Color: {r: 0.39215684, g: 0.7350228, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

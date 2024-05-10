@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip hpDecreaseAudioClip;
     [SerializeField] 
     private AudioClip burstSoundClip;
+
     private bool initialized = false;
 
     public event Action OnPlayerDown;//notify if hp < 0
@@ -81,6 +82,9 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField]
     public bool ableToDoubleJump { get; private set; } = false;
     public bool isDoubleJumping { get; private set; } = false;
+    [SerializeField]
+    private Wings wings;
+    
 
     private void Awake()
     {
@@ -226,6 +230,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isJump", true);
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+            wings.ActiveWings();
         }
     }
 
@@ -280,10 +285,9 @@ public class PlayerController : MonoBehaviour
             normalAttackCooldown = normalAttackCooldownInterval;
             ConsumeSP(1);
             // Play the one-shot audio clip for the attack sound effect
-            if (oneShotAudioClip != null)
-            {
-                audioSource.PlayOneShot(oneShotAudioClip);
-            }
+            
+             audioSource.PlayOneShot(oneShotAudioClip);
+            
 
             return;
         }
@@ -493,11 +497,10 @@ public class PlayerController : MonoBehaviour
             IncreaseEX(amount, true);
             //PlaySound(damageClip);
             // Play the hpDecreaseAudioClip for HP decrease sound effect
-            if (hpDecreaseAudioClip != null)
-            {
-                //AudioSource.PlayClipAtPoint(hpDecreaseAudioClip, transform.position);
-                audioSource.PlayOneShot(hpDecreaseAudioClip);
-            }
+            
+            //AudioSource.PlayClipAtPoint(hpDecreaseAudioClip, transform.position);
+            audioSource.PlayOneShot(hpDecreaseAudioClip);
+            
         }
         
         HP += amount;
