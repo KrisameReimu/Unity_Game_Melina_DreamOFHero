@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SummonSkeleton : Summon
 {
-    private float speed = 1.5f;
+    private float speed = 2f;
     private Animator anim;
     private Vector2 targetPosition;
     [SerializeField]

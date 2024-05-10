@@ -56,7 +56,7 @@ public class Skeleton : Enemy, IRespawnable, IUndead
     // Update is called once per frame
     void Update()
     {
-        if(!isAttacking)
+        if(!isAttacking && !isDead)
         {
             ChangeDirection();
         }

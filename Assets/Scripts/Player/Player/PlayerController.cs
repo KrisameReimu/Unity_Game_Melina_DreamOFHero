@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Objects not for player landing
-    string[] jumpDetectionTags = { "Enemy", "Background" };
+    string[] jumpDetectionTags = { "Enemy", "Background", "Trap" };
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -589,4 +589,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(effectTime);
         speed /= 1.5f;
     }
+
+    
 }
