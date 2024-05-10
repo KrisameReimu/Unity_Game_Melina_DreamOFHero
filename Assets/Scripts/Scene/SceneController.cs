@@ -83,6 +83,7 @@ public class SceneController : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
 
         player.SetHP(data.HP);
+        player.SetEx(data.EX);
         Vector3 position;
         position.x = data.position[0];
         position.y = data.position[1];
@@ -95,6 +96,10 @@ public class SceneController : MonoBehaviour
 
         AgentCard ac = player.GetComponent<AgentCard>();
         ac.LoadAndEquipAllCards(data.equipingCardsIndex);
+
+        player.UnlockDoubleJump(data.ableToDoubleJump);
+
+
         Debug.Log("Data Loaded");
     }
 
