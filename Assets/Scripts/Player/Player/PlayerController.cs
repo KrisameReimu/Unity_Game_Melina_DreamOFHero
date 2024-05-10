@@ -78,7 +78,9 @@ public class PlayerController : MonoBehaviour
     public event Action OnGettingHitInvincile;//getting hit during invincible time
 
     public static bool isGamePause { get; private set; }  = false;
-
+    [field: SerializeField]
+    public bool ableToDoubleJump { get; private set; } = false;
+    public bool isDoubleJumping { get; private set; } = false;
 
     private void Awake()
     {
@@ -199,11 +201,28 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        if (isDoubleJumping)
+            return;
+
+        DoubleJump();
+
         if (isAttacking || isGettingHurt || isJumping || isClimbing)
             return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isJumping = true;
+            anim.SetBool("isJump", true);
+            rb.velocity = Vector2.zero;
+            rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+        }
+    }
+    private void DoubleJump()
+    {
+        if (!isJumping || !ableToDoubleJump) //on ground or not yet unlocked
+            return;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isDoubleJumping = true;
             anim.SetBool("isJump", true);
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
@@ -226,6 +245,7 @@ public class PlayerController : MonoBehaviour
         }
         anim.SetBool("isJump", false);
         isJumping = false;
+        isDoubleJumping = false;
     }
 
 
@@ -574,6 +594,15 @@ public class PlayerController : MonoBehaviour
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
     }
 
+    public void SetEx(float value)
+    {
+        EX = value;
+        EX = Mathf.Clamp(EX, 0, maxEX);
+
+        UIStatusBar.instance.SetBurstValue(EX / (float)maxEX);
+        UIStatusBar.instance.ChangeGaugeColor();
+    }
+
     public static void SetIsGamePause(bool status)
     {
         isGamePause = status;
@@ -590,5 +619,8 @@ public class PlayerController : MonoBehaviour
         speed /= 1.5f;
     }
 
-    
+    public void UnlockDoubleJump(bool status)
+    {
+        ableToDoubleJump = status;
+    }
 }

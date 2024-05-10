@@ -8,13 +8,16 @@ using UnityEngine;
 public class PlayerData 
 {
     public float HP;
+    public float EX;
     public float[] position;
     public int[,] inventoryData; // index, itemID, quantity
     public int[] equipingCardsIndex;
+    public bool ableToDoubleJump;
 
     public PlayerData(PlayerController player) 
     { 
         HP = player.HP;
+        EX = player.EX;
         position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
@@ -48,5 +51,9 @@ public class PlayerData
         AgentCard ac = player.GetComponent<AgentCard>();
         equipingCardsIndex = ac.GetAllCurrentIndex();
         Debug.Log($"{equipingCardsIndex[0]} {equipingCardsIndex[1]} {equipingCardsIndex[2]} {equipingCardsIndex[3]}");
+
+
+        ableToDoubleJump = player.ableToDoubleJump;
+
     }
 }
