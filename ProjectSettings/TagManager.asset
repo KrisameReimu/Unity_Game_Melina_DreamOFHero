@@ -18,6 +18,7 @@ TagManager:
   - Arc
   - Bramble
   - NPC
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -37,8 +38,8 @@ TagManager:
   - ItemDetect
   - Trap
   - EnPlayerDetect
-  - 
-  - 
+  - EnemyProjectile
+  - PrProjectileDetect
   - 
   - 
   - 
