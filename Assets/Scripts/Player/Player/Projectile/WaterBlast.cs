@@ -21,7 +21,7 @@ public class WaterBlast : MonoBehaviour
     {
         PlayerController player = PlayerController.GetPlayerInstance();
         direction = player.direction;
-        transform.position = (Vector2)player.transform.position + new Vector2(direction, 1.5f);
+        transform.position = (Vector2)player.transform.position + new Vector2(direction, 1.7f);
         hittedObjects = new List<GameObject>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -99,7 +99,7 @@ public class WaterBlast : MonoBehaviour
 
         if (collision.tag == "Trap")
         {
-            Trap trap = collision.GetComponent<Trap>();
+            InteractableTrap trap = collision.GetComponent<InteractableTrap>();
             if (trap == null)
                 return;
 

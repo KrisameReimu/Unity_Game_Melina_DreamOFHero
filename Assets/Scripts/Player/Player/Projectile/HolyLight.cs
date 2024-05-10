@@ -9,6 +9,9 @@ public class HolyLight : MonoBehaviour
     private int direction;
     private int remainingRound = 4;
     private List<GameObject> hittedObjects;
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip effectSoundClip;
 
 
     private void Awake()
@@ -17,8 +20,13 @@ public class HolyLight : MonoBehaviour
         direction = player.direction;
         transform.position = (Vector2)player.transform.position + new Vector2(direction, 1.5f);
         hittedObjects = new List<GameObject>();
+        audioSource = GetComponent<AudioSource>();
     }
 
+    private void PlayClip()
+    {
+        audioSource.PlayOneShot(effectSoundClip);
+    }
     private void MoveForward()
     {
         transform.position += Vector3.right * direction*2;

@@ -71,7 +71,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip oneShotAudioClip;
     public AudioClip hpDecreaseAudioClip;
     [SerializeField] 
-    private AudioClip burstSoundClip; 
+    private AudioClip burstSoundClip;
+    //[SerializeField] private AudioClip jumpClip;
     
 
     private bool initialized = false;
@@ -219,6 +220,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isJump", true);
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+            //audioSource.PlayOneShot(jumpClip);
         }
     }
     private void DoubleJump()

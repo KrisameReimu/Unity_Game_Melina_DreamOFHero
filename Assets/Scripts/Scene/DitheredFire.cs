@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static DitheredFire;
 
-public class DitheredFire : Trap, IFlame
+public class DitheredFire : InteractableTrap, IFlame
 {
     [SerializeField]
     private int damage = 15;
