@@ -71,7 +71,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip oneShotAudioClip;
     public AudioClip hpDecreaseAudioClip;
     [SerializeField] 
-    private AudioClip burstSoundClip;
+    private AudioClip burstSoundClip; 
+    
 
     private bool initialized = false;
 
@@ -303,6 +304,7 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("summon");
             isAttacking = true;
             attackTimer = 0.6f;
+            //audioSource.PlayOneShot(cardSkillClip);
         }
     }
     

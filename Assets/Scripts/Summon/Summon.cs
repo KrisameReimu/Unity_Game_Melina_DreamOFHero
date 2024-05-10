@@ -15,6 +15,8 @@ public class Summon : MonoBehaviour
     private GameObject summonEffectPrefab;
     [SerializeField]
     private GameObject disappearEffectPrefab;
+    [SerializeField]
+    private AudioClip summonClip;
 
     public void Update()
     {
@@ -75,6 +77,7 @@ public class Summon : MonoBehaviour
     public void ActiveSummonEffect()
     {
         Instantiate(summonEffectPrefab, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(summonClip, transform.position);
     }
 
     public void ActiveDisappearEffect()

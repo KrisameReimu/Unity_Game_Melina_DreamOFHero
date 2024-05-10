@@ -10,6 +10,7 @@ public class SummonSlime : Summon
     [SerializeField]
     private GameObject targetObject;
 
+
     // Start is called before the first frame update
     void Awake()
     {
