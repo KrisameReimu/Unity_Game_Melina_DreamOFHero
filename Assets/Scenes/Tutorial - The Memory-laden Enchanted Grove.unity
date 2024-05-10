@@ -529,6 +529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1497496325}
   smoothSpeed: 0.125
+  cameraOffset: 2
 --- !u!81 &266461762
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2091,7 +2092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902307140}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: EnemiesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
