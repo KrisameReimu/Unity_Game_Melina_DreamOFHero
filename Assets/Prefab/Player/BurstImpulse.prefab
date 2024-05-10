@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95f0d578deeec14b8bde945fb7c945a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startClip: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
   hitClip: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
 --- !u!212 &829670003038648509
 SpriteRenderer:

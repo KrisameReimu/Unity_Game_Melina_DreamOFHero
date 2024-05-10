@@ -10,7 +10,8 @@ public class BurstImpulse : MonoBehaviour
     private PlayerController player;
     private AudioSource audioSource;
     [SerializeField]
-    private AudioClip hitClip;
+    private AudioClip startClip;
+    //[SerializeField] private AudioClip hitClip;
 
 
 
@@ -22,6 +23,7 @@ public class BurstImpulse : MonoBehaviour
         damage = player.playerAtk * 6;
         offset = transform.position - player.transform.position;
         audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(startClip);
     }
 
     // Update is called once per frame
@@ -40,7 +42,7 @@ public class BurstImpulse : MonoBehaviour
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP
             int knockbackDirection = transform.position.x > e.transform.position.x ? 1 : -1;
             e.Knockback(75f, knockbackDirection);
-            audioSource.PlayOneShot(hitClip);
+            //audioSource.PlayOneShot(hitClip);
         }
     }
     private void Vanish()

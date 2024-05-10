@@ -19,7 +19,8 @@ public class FireBreath : MonoBehaviour
     {
         PlayerController player = PlayerController.GetPlayerInstance();
         direction = player.direction;
-        //transform.position = (Vector2)player.transform.position + new Vector2(direction*2, 1f);
+        transform.position = (Vector2)player.transform.position + new Vector2(direction*2, 1f);
+        transform.localScale = new Vector2(transform.localScale.x * direction, transform.localScale.y);
         hittedObjects = new List<GameObject>();
         audioSource = GetComponent<AudioSource>();
     }
