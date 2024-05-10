@@ -248,6 +248,7 @@ MonoBehaviour:
   isAttacking: 1
   cardPrefab: {fileID: 0}
   damageTextPrefab: {fileID: 6920685066339774909, guid: bd66145e03bafb44aa2fb33f0bb32a0d, type: 3}
+  isActivated: 0
   targetPosition: {x: 0, y: 0}
   maxHP: 500
   <HP>k__BackingField: 0
@@ -262,6 +263,7 @@ MonoBehaviour:
   earthSpellPrefab: {fileID: 7917683532680594805, guid: a7540a06928a07f4e89539c16d981c3d, type: 3}
   meleeClip: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
   jumpClip: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
+  hpBarPrefab: {fileID: 6940905393766450359, guid: f1f3a7409a65bf2448e0fa16fa1b274c, type: 3}
 --- !u!82 &5046787274345837042
 AudioSource:
   m_ObjectHideFlags: 0

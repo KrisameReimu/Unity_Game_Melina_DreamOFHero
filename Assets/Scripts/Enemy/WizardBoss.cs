@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class WizardBoss : Enemy
 {
+    [SerializeField]
+    private string bossName = "Crazy Wizard";
+    [SerializeField]
     private bool isActivated = false;
     private GameObject playerObj;
     //[SerializeField]
@@ -44,6 +47,7 @@ public class WizardBoss : Enemy
     private AudioClip meleeClip;
     [SerializeField]
     private AudioClip jumpClip;
+    private BossHpBar hpBar;
 
     void Awake()
     {
@@ -55,6 +59,8 @@ public class WizardBoss : Enemy
         anim = GetComponent<Animator>(); 
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+
+        ActivateBoss(); //For test only. This function should be called by other event. 
     }
 
     // Update is called once per frame
@@ -231,14 +237,17 @@ public class WizardBoss : Enemy
         r.material.SetColor("_Color", Color.red);
         r.material.DOColor(Color.white, 0.5f);
         ShowDamageText(amount);
-        
+
+        hpBar.SetHPValue(HP / (float)maxHP);
+
+
         /*
         if (HP > 0)
             anim.SetTrigger("Hurt");
         else
         {
         */
-        if(HP <= 0) 
+        if (HP <= 0) 
         { 
             StartCoroutine(Defeat());
             /*
@@ -263,8 +272,8 @@ public class WizardBoss : Enemy
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.simulated = false;
         yield return new WaitForSeconds(3);
+        Destroy(hpBar.gameObject);
         Destroy(gameObject);
-
     }
 
 
@@ -295,5 +304,7 @@ public class WizardBoss : Enemy
     public void ActivateBoss()
     {
         isActivated = true;
+        hpBar = BossHpArea.instance.InitHpBar();
+        hpBar.SetBossName(bossName);
     }
 }
