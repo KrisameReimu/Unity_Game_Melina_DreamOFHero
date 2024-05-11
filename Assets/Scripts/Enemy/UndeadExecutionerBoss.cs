@@ -39,7 +39,7 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     [SerializeField]
     private GameObject summonPrefab;
     Rigidbody2D rb;
-    private bool jumped;
+    private bool faded;
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip meleeClip;
@@ -118,8 +118,11 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
             }
             else if(Vector2.Distance(transform.position, targetPosition) < 8)
             {
+                if(actionCounter <4) // 2 or 3
                 //isAttacking = true;
-                anim.SetTrigger("Summon");            //attack
+                    anim.SetTrigger("Summon");            //attack
+                else
+                    anim.SetTrigger("Teleport");
             }
             else
             {
@@ -167,27 +170,22 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isStaying || isAttacking || jumped)
+        if (isStaying || isAttacking || faded)
             return;
         if (collision.tag == "Projectile")
         {
-            //Jump();
+            StartCoroutine(FadeDodge());
         }
     }
 
-    private void Jump()
-    {
-        anim.SetTrigger("Jump");
-        rb.velocity = Vector2.zero;
-        rb.AddForce(new Vector2(0, 305), ForceMode2D.Impulse);
-        jumped = true;
-        StartCoroutine(ToggleJump());
-    }
+    
 
-    IEnumerator ToggleJump()
+    IEnumerator FadeDodge()
     {
-        yield return new WaitForSeconds(8);
-        jumped = false;
+        faded = true;
+        anim.SetTrigger("Fade");
+        yield return new WaitForSeconds(10);
+        faded = false;
     }
 
     private void EndIsGettingHit()
@@ -284,7 +282,6 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
         if (HP > 0)
             Hurt();
         else
-
         {
             StartCoroutine(Defeat());
         }

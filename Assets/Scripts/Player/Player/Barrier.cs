@@ -21,8 +21,11 @@ public class Barrier : MonoBehaviour
     void Update()
     {
         transform.position = (Vector2)player.transform.position + new Vector2(0, 0.8f);
-        if(player.EX<=0)
+        if (player.EX <= 0)
+        {
             Destroy(gameObject);
+            player.OnGettingHitInvincile -= BarrierVFX;
+        }
     }
 
     void OnCollisionStay2D(Collision2D other)

@@ -1791,6 +1791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UndeadExecutioner Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 109238446576616215, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 109238446576616222, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
       propertyPath: maxHP
       value: 700
