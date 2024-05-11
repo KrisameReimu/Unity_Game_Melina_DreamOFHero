@@ -42,6 +42,9 @@ public class Barrier : MonoBehaviour
 
     private void BarrierVFX()
     {
+        if(gameObject==null) 
+            return;
+
         Renderer r = gameObject.GetComponent<Renderer>();
         r.material.SetColor("_Color", Color.yellow);
         r.material.DOColor(Color.white, 0.3f);

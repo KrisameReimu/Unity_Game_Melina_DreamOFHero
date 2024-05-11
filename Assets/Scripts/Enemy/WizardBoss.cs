@@ -55,6 +55,7 @@ public class WizardBoss : Enemy, IBoss
         damage = 15;//melee damage
         shootingDamage = 10;
         isAttacking = false;
+        isStaying = true;
         anim = GetComponent<Animator>(); 
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
@@ -90,15 +91,15 @@ public class WizardBoss : Enemy, IBoss
     }
     IEnumerator EarthSpellSpawn()
     {
-        Vector3 spawnPoint = transform.position + Vector3.right * direction;
-        for (int i = 0; i < 6; i++)
+        Vector3 spawnPoint = transform.position + Vector3.right * direction*3.5f;
+        for (int i = 0; i < 7; i++)
         {
             EarthSpell spell =
                 Instantiate(earthSpellPrefab, spawnPoint + Vector3.down * 0.6f, Quaternion.identity).GetComponent<EarthSpell>();
             spell.SetDamage(shootingDamage);
             spell.transform.localScale *= new Vector2(direction, 1);
             spawnPoint += Vector3.right * direction * 1;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
     private void PerformAction()
@@ -106,7 +107,8 @@ public class WizardBoss : Enemy, IBoss
         actionCounter -= Time.deltaTime;
         if(actionCounter <= 0)
         {
-            actionCounter = 6;
+            actionCounter = 5; //Reset timer
+
             System.Random rnd = new System.Random();
             //check distance between player
             if (Vector2.Distance(transform.position, targetPosition) < 2.6)
@@ -151,7 +153,12 @@ public class WizardBoss : Enemy, IBoss
         anim.SetBool("Run", true);
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPosition.x, transform.position.y), speed * Time.deltaTime);
 
-        
+        if (!jumped)
+        {
+            bool needJump = (Vector2.Distance(transform.position, targetPosition) > 15) || (Math.Abs(transform.position.y - targetPosition.y) > 3);
+            if (needJump)
+                Jump();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -160,17 +167,23 @@ public class WizardBoss : Enemy, IBoss
             return;
         if (collision.tag == "Projectile")
         {
-            anim.SetTrigger("Jump");
-            rb.velocity = Vector2.zero;
-            rb.AddForce(new Vector2(0, 305), ForceMode2D.Impulse);
-            audioSource.PlayOneShot(jumpClip);
-            StartCoroutine(ToggleJump());
+            Jump();
         }
     }
+
+    private void Jump()
+    {
+        anim.SetTrigger("Jump");
+        rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(0, 305), ForceMode2D.Impulse);
+        audioSource.PlayOneShot(jumpClip);
+        jumped = true;
+        StartCoroutine(ToggleJump());
+    }
+
     IEnumerator ToggleJump()
     {
-        jumped = true;
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(8);
         jumped = false;
     }
 
@@ -207,7 +220,7 @@ public class WizardBoss : Enemy, IBoss
     }
     private void AttackMoveForward()
     {
-        rb.velocity =  Vector2.right * direction * 10;
+        rb.velocity =  Vector2.right * direction * 13;
         audioSource.PlayOneShot(meleeClip);
     }
     private void Hurt()
@@ -302,7 +315,9 @@ public class WizardBoss : Enemy, IBoss
     }
     public void ActivateBoss()
     {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.None;
         isActivated = true;
+        isStaying = false;
         hpBar = BossHpArea.instance.InitHpBar();
         hpBar.SetBossName(bossName);
     }

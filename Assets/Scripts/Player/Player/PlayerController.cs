@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
             isAttacking = true;
             attackTimer = attackInterval;
             normalAttackCooldown = normalAttackCooldownInterval;
-            ConsumeSP(1);
+            //ConsumeSP(1);
             // Play the one-shot audio clip for the attack sound effect
             
              audioSource.PlayOneShot(oneShotAudioClip);
