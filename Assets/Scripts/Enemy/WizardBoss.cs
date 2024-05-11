@@ -107,7 +107,8 @@ public class WizardBoss : Enemy, IBoss
         actionCounter -= Time.deltaTime;
         if(actionCounter <= 0)
         {
-            actionCounter = 5; //Reset timer
+            System.Random rnd = new System.Random();
+            actionCounter = rnd.Next(3, 6); //Reset timer to 3-5s
 
             //System.Random rnd = new System.Random();
             //check distance between player

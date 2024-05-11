@@ -102,7 +102,10 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
         actionCounter -= Time.deltaTime;
         if (actionCounter <= 0)
         {
-            actionCounter = 5; //Reset timer
+
+            //Reset timer
+            System.Random rnd = new System.Random();
+            actionCounter = rnd.Next(2, 5);
 
             rb.velocity = Vector3.zero;
 
