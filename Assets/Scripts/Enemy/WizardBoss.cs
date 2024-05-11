@@ -35,7 +35,7 @@ public class WizardBoss : Enemy
     private int shootingDamage;
     private bool isStaying = false;
     [SerializeField]
-    private float actionCounter =5;
+    private float actionCounter =3;
     private bool isDefeated = false;
     private int hitCounter = 5;
     [SerializeField]
@@ -78,7 +78,7 @@ public class WizardBoss : Enemy
         if (!isActivated) return;
 
         targetPosition = playerObj.transform.position;
-        if (isAttacking)
+        if (isAttacking || isDefeated)
             return;
         ChangeDirection();
         Move();

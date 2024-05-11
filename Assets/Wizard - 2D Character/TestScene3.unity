@@ -1401,10 +1401,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5046787274345837043, guid: 8deed929533c9a74c857a9e88ba3ef9c, type: 3}
-      propertyPath: isActivated
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5046787274345837045, guid: 8deed929533c9a74c857a9e88ba3ef9c, type: 3}
       propertyPath: m_Name
       value: WizardBoss
