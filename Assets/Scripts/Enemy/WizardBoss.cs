@@ -4,11 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardBoss : Enemy
+public class WizardBoss : Enemy, IBoss
 {
     [SerializeField]
     private string bossName = "Crazy Wizard";
-    [SerializeField]
     private bool isActivated = false;
     private GameObject playerObj;
     //[SerializeField]
@@ -60,7 +59,7 @@ public class WizardBoss : Enemy
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
 
-        ActivateBoss(); //For test only. This function should be called by other event. 
+        //ActivateBoss(); //For test only. This function should be called by other event. 
     }
 
     // Update is called once per frame
@@ -307,4 +306,9 @@ public class WizardBoss : Enemy
         hpBar = BossHpArea.instance.InitHpBar();
         hpBar.SetBossName(bossName);
     }
+}
+
+public interface IBoss
+{
+    public void ActivateBoss();
 }

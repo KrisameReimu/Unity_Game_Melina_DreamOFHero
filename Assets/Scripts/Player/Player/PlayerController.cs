@@ -28,8 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isClimbing { get; private set; } = false;
 
-    [field: SerializeField]
-    public float maxHP { get; private set; } = 50;
+    public float maxHP { get; private set; } = 100;
     [field: SerializeField]
     public float HP { get; private set; }
     public float maxSP { get; private set; } = 20;
