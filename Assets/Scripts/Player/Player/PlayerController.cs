@@ -471,7 +471,7 @@ public class PlayerController : MonoBehaviour
         //can be calculated by the following code in the enemyController script
         //int playerDirection = transform.position.x > player.transform.position.x ? 1 : -1;
 
-        if(!alive) return;
+        if(!alive || SceneController.isSceneChanging) return;
 
         if (amount < 0) //damage
         {
@@ -536,6 +536,7 @@ public class PlayerController : MonoBehaviour
         alive = false;
         x_movement = 0;
         y_movement = 0;
+        SceneController.Instance.GameOver();
     }
 
 
@@ -597,7 +598,14 @@ public class PlayerController : MonoBehaviour
     public void SetHP(float value)
     {
         HP = value;
+        HP = Mathf.Clamp(HP, 0, maxHP);
+
         UIStatusBar.instance.SetHPValue(HP / (float)maxHP);
+    }
+    public void SetSP(float value) 
+    {
+        SP = value;
+        SP = Mathf.Clamp(SP, 0, maxSP);
     }
 
     public void SetEx(float value)
@@ -628,5 +636,10 @@ public class PlayerController : MonoBehaviour
     public void UnlockDoubleJump(bool status)
     {
         ableToDoubleJump = status;
+    }
+
+    private void OnDestroy()
+    {
+        OnPlayerDown -= PlayerDown;
     }
 }

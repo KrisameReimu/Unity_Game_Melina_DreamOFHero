@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class SceneController : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     private PlayerController player;
     [SerializeField]
-    private bool isSceneChanging = false;
+    private GameObject gameoverWindow;
+    public static bool isSceneChanging { get; private set; } = false;
     
     private void Awake()
     {
@@ -27,12 +29,13 @@ public class SceneController : MonoBehaviour
             Destroy(transform.root.gameObject);
         }
 
-        player = PlayerController.GetPlayerInstance();
+        if (SceneManager.GetActiveScene().name!="MainMenu")
+            player = PlayerController.GetPlayerInstance();
 
         //StartCoroutine(LoadSceneData());
     }
 
-    public void LoadNextScene(string sceneName, Vector2 position) 
+    public void LoadNextScene(string sceneName, Vector2 position) //pass Vector2.zero to skip changing player position
     {
         //Debug.Log("Save");
         /*
@@ -66,7 +69,12 @@ public class SceneController : MonoBehaviour
         }
         transitionAnim.SetTrigger("End");
 
-        player.MoveToNewPosition(position);
+        if (position != Vector2.zero)
+        {
+            player = PlayerController.GetPlayerInstance();
+            player.MoveToNewPosition(position);
+        }
+        
         isSceneChanging = false;
     }
 
@@ -74,15 +82,51 @@ public class SceneController : MonoBehaviour
     {
         SaveSystem.SavePlayer(player);
     }
+    
+    public void LoadGame() //Continue
+    {
+        if (!isSceneChanging)
+        {
+            isSceneChanging = true;
+            StartCoroutine(PrepareLoadGame());
+        }
+    }
 
-    public void LoadPlayer()
+    IEnumerator PrepareLoadGame()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+
+        var asyncLoad = SceneManager.LoadSceneAsync("PreparationScene");
+        transitionAnim.SetTrigger("Start");
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        transitionAnim.SetTrigger("End");
+
+
+        asyncLoad = SceneManager.LoadSceneAsync(data.currentSceneName);
+        transitionAnim.SetTrigger("Start");
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        transitionAnim.SetTrigger("End");
+
+
+        LoadPlayer(data);
+    }
+
+    public void LoadPlayer(PlayerData data)
     {
         player = PlayerController.GetPlayerInstance();
 
         //load data and set
-        PlayerData data = SaveSystem.LoadPlayer();
+        //PlayerData data = SaveSystem.LoadPlayer();
 
         player.SetHP(data.HP);
+        player.SetSP(data.SP);
         player.SetEx(data.EX);
         Vector3 position;
         position.x = data.position[0];
@@ -99,9 +143,41 @@ public class SceneController : MonoBehaviour
 
         player.UnlockDoubleJump(data.ableToDoubleJump);
 
+        isSceneChanging = false;
+
 
         Debug.Log("Data Loaded");
     }
+
+
+    public void GameOver()
+    {
+        gameoverWindow.SetActive(true);
+    }
+
+    public void RetryStage()
+    {
+        gameoverWindow.SetActive(false);
+        if (PlayerController.playerInstance)//player exist
+            Destroy(PlayerController.playerInstance.gameObject);
+        if (UIStatusBar.instance)
+            Destroy(UIStatusBar.instance.transform.root.gameObject);
+
+        transitionAnim.SetTrigger("Start");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        transitionAnim.SetTrigger("End");
+
+    }
+
+    public void BackToMainMenu()
+    {
+        gameoverWindow.SetActive(false);
+        transitionAnim.SetTrigger("Start");
+        SceneManager.LoadScene("MainMenu");
+        transitionAnim.SetTrigger("End");
+    }
+
+
 
     /*
     private void SaveSceneData(Vector2 position) 

@@ -3,20 +3,24 @@ using Inventory.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PlayerData 
 {
     public float HP;
+    public float SP;
     public float EX;
     public float[] position;
     public int[,] inventoryData; // index, itemID, quantity
     public int[] equipingCardsIndex;
     public bool ableToDoubleJump;
+    public string currentSceneName;
 
     public PlayerData(PlayerController player) 
     { 
         HP = player.HP;
+        SP = player.SP;
         EX = player.EX;
         position = new float[3];
         position[0] = player.transform.position.x;
@@ -54,6 +58,8 @@ public class PlayerData
 
 
         ableToDoubleJump = player.ableToDoubleJump;
+
+        currentSceneName = SceneManager.GetActiveScene().name;
 
     }
 }

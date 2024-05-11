@@ -46,6 +46,7 @@ namespace Inventory.UI
         }
         public void InitInventoryUI(int inventorySize)
         {
+            
             for (int i = 0; i < inventorySize; i++)
             {
                 UIItem uiItem = Instantiate(itemPrefab, Vector2.zero, Quaternion.identity);
@@ -200,6 +201,24 @@ namespace Inventory.UI
             {
                 item.ResetData();
                 item.Deselect();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            OnDescriptionRequested = null;
+            OnItemActionRequested = null;
+            OnStartDragging = null;
+            OnSwapItems = null;
+
+            foreach(UIItem uiItem in UIItemList)
+            {
+             
+                uiItem.OnItemClicked -= HandleItemSelection;
+                uiItem.OnItemBeginDrag -= HandleBeginDrag;
+                uiItem.OnItemDroppedOn -= HandleSwap;
+                uiItem.OnItemEndDrag -= HandleEndDrag;
+                uiItem.OnRightMouseBtnClick -= HandleShowItemActions;
             }
         }
     }

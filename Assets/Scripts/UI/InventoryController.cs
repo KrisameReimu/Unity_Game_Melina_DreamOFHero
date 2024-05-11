@@ -33,6 +33,8 @@ namespace Inventory
                 return;
             }
 
+
+
             if (inventoryUI != null)
                 return;
 
@@ -67,7 +69,8 @@ namespace Inventory
 
         private void PrepareUI()
         {
-            inventoryUI.InitInventoryUI(inventoryData.size);    
+            inventoryUI.InitInventoryUI(inventoryData.size);
+
             inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
@@ -214,6 +217,20 @@ namespace Inventory
             }
         }
 
+        void OnDestroy()
+        {
+            if (inventoryControllerInstance != this)
+                return;
+
+            inventoryUI.OnDescriptionRequested -= HandleDescriptionRequest;
+            inventoryUI.OnSwapItems -= HandleSwapItems;
+            inventoryUI.OnStartDragging -= HandleDragging;
+            inventoryUI.OnItemActionRequested -= HandleItemActionRequest;
+
+            inventoryData.OnInventoryUpdated -= UpdateInventoryUI;
+
+        }
+
         /*
         IEnumerator SetInventoryUI() 
         {
@@ -224,4 +241,6 @@ namespace Inventory
         }
         */
     }
+
+    
 }

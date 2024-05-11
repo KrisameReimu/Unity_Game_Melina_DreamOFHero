@@ -30,7 +30,7 @@ namespace Inventory.UI
         }
 
         public void ResetData()
-        {
+        {  
             itemImage.gameObject.SetActive(false);
             empty = true;
         }
@@ -92,6 +92,15 @@ namespace Inventory.UI
         public void OnDrag(PointerEventData eventData)
         {
             //
+        }
+
+        private void OnDestroy()
+        {
+            OnItemClicked = null;
+            OnItemDroppedOn = null;
+            OnItemBeginDrag = null;
+            OnItemEndDrag = null;
+            OnRightMouseBtnClick = null;
         }
     }
 }

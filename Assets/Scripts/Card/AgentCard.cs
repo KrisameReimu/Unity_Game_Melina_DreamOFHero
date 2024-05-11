@@ -176,6 +176,15 @@ public class AgentCard : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        if (acInstance != this)
+            return;
+
+        inventoryData.OnInventoryUpdated -= UpdateAllCardSlots;
+        cardSlotPopUp.OnSlotChosen -= SetCard;
+    }
+
     /*
     public void SetCard(CardItemSO cardSO, List<ItemParameter> itemState)
     {

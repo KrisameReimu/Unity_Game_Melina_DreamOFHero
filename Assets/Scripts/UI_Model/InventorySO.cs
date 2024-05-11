@@ -20,6 +20,11 @@ namespace Inventory.Model
 
         public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
 
+        private void OnDestroy()
+        {
+            OnInventoryUpdated = null;
+        }
+
 
         public void Initialize()
         {

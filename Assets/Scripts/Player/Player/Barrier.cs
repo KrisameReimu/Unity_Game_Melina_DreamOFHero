@@ -24,8 +24,11 @@ public class Barrier : MonoBehaviour
         if (player.EX <= 0)
         {
             Destroy(gameObject);
-            player.OnGettingHitInvincile -= BarrierVFX;
         }
+    }
+    private void OnDestroy()
+    {
+        player.OnGettingHitInvincile -= BarrierVFX;
     }
 
     void OnCollisionStay2D(Collision2D other)

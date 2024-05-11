@@ -469,7 +469,6 @@ MonoBehaviour:
   <speed>k__BackingField: 0
   timeOfInvincible: 0.5
   <isInvincible>k__BackingField: 0
-  <maxHP>k__BackingField: 50
   <HP>k__BackingField: 0
   <SP>k__BackingField: 0
   <EX>k__BackingField: 0
@@ -504,6 +503,15 @@ MonoBehaviour:
     quantity: 2
     itemState: []
   - item: {fileID: 11400000, guid: 9a674639ab2aec3479978f947343451b, type: 2}
+    quantity: 1
+    itemState: []
+  - item: {fileID: 11400000, guid: 8a11ee28cbe539246b0464f827d88c17, type: 2}
+    quantity: 1
+    itemState: []
+  - item: {fileID: 11400000, guid: 8759d91ffb56b8b44a11298c1776131f, type: 2}
+    quantity: 1
+    itemState: []
+  - item: {fileID: 11400000, guid: eefac7c7f6d8e85449763b6d90760c8b, type: 2}
     quantity: 1
     itemState: []
 --- !u!114 &6554978173899653152
