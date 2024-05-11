@@ -1743,10 +1743,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 109238446576616208, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 109238446576616209, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -1797,15 +1793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 109238446576616222, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
       propertyPath: maxHP
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 109238446576616222, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
-      propertyPath: teleportClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8ff2a2d7e79f81c40ac447512f879374, type: 3}
-    - target: {fileID: 109238446576616222, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
-      propertyPath: <HP>k__BackingField
-      value: 0
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}

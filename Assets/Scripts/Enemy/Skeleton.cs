@@ -239,7 +239,7 @@ public class Skeleton : Enemy, IRespawnable, IUndead
         rb.simulated = true;
     }
 
-    public void Purify()
+    public void Purify(float value)
     {
         ShowDamageText("Purify",new Color(255, 109, 0));
         Destroy(gameObject);
@@ -255,5 +255,5 @@ public interface IRespawnable
 
 public interface IUndead
 {
-    public void Purify();
+    public void Purify(float value);
 }

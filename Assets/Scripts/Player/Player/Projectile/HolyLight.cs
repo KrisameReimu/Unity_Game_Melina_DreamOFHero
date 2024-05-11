@@ -57,7 +57,7 @@ public class HolyLight : MonoBehaviour
             IUndead undead = e as IUndead;
             if (undead != null)
             {
-                undead.Purify();
+                undead.Purify(-damage);
                 return;
             }
             e.ChangeHP(-1 * damage); //call the function to decrease enemies' HP

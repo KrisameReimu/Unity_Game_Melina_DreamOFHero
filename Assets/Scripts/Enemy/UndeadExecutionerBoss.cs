@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UndeadExecutionerBoss : Enemy, IBoss
+public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 {
     private string bossName = "Undead Executioner";
     private bool isActivated = false;
@@ -254,6 +254,11 @@ public class UndeadExecutionerBoss : Enemy, IBoss
         audioSource.PlayOneShot(teleportClip);
     }
 
+    public void Purify(float value)
+    {
+        ChangeHP(value);
+        ShowDamageText("Purify", Color.yellow);
+    }
 
 
     public override void ChangeHP(float amount)
@@ -329,4 +334,6 @@ public class UndeadExecutionerBoss : Enemy, IBoss
         hpBar = BossHpArea.instance.InitHpBar();
         hpBar.SetBossName(bossName);
     }
+
+    
 }

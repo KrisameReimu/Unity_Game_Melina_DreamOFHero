@@ -68,12 +68,12 @@ public class UndeadSummon : Enemy, IEnemyProjectile, IUndead
 
     public void IsGuarded()
     {
-        ChangeHP(10);
+        ChangeHP(-10);
     }
 
-    public void Purify()
+    public void Purify(float value)
     {
-        ChangeHP(10);
+        ChangeHP(value);
     }
 
 
