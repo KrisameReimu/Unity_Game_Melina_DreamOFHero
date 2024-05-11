@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfbdc2d573ddb6408a9f3c339a816b0, type: 3}
+  m_Name: Doug_Dialogue_ 2
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Thanks for talking to me! /line
+  - If you haven't already, you should talk to my friends that're here! /line
+  - I'm sure they have stuff to say! /line
+  - Well...maybe not Dennis. /line
+  - <sml>His writing was lazy!</sml> /lend
