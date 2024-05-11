@@ -103,7 +103,7 @@ public class DialogSystem : MonoBehaviour
                 break;
         }
 
-        dialogueNameNpc = dialogueName; // Update dialogue name display
+        dialogueNameText.text = dialogueName; // Update dialogue name display
 
         // Display one word at a time for each press of "F" key
         int word = 0;

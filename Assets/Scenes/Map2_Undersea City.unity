@@ -1355,7 +1355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 1.5
-  player: {fileID: 0}
+  player: {fileID: 1965885889}
+  backgrounds: []
 --- !u!212 &813616477
 SpriteRenderer:
   m_ObjectHideFlags: 0
