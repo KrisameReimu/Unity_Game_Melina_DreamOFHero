@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EarthSpell;
 
 public class SummonShieldKnight : Summon
 {
@@ -55,6 +56,22 @@ public class SummonShieldKnight : Summon
 
     private void Guard(Collision2D other) 
     {
+        if(other.gameObject.tag == "EnemyProjectile")
+        {
+            IEnemyProjectile enemyProjectile = other.gameObject.GetComponent<IEnemyProjectile>();
+            if(enemyProjectile != null) 
+            {
+                enemyProjectile.IsGuarded();
+                audioSource.PlayOneShot(guardClip);
+                GuardEffect();
+
+                lifetime -= enemyProjectile.damage * 0.1f;
+                ChangeDirection(other.transform.position);
+                return;
+            }
+        }
+
+
         if (!isAttacking)
             return;
         if (other.gameObject.tag == "Enemy")
@@ -66,15 +83,19 @@ public class SummonShieldKnight : Summon
                 int knockbackDirection = transform.position.x > enemy.transform.position.x ? 1 : -1;
                 enemy.Knockback(25f, knockbackDirection);
                 isAttacking = false;
-
-                Renderer r = gameObject.GetComponent<Renderer>();
-                r.material.SetColor("_Color", Color.yellow);
-                r.material.DOColor(Color.white, 0.5f);
-                lifetime -= enemy.damage*0.1f;
+                GuardEffect();
+                lifetime -= enemy.damage * 0.1f;
                 ChangeDirection(other.transform.position);
             }
             audioSource.PlayOneShot(guardClip);
         }
+    }
+
+    private void GuardEffect()
+    {
+        Renderer r = gameObject.GetComponent<Renderer>();
+        r.material.SetColor("_Color", Color.yellow);
+        r.material.DOColor(Color.white, 0.5f);
     }
 
     private void ChangeDirection(Vector2 targetPosition)

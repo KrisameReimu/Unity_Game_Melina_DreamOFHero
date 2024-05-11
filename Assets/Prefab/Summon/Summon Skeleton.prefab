@@ -168,7 +168,7 @@ MonoBehaviour:
   attackRange: 0.6
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1049601
   hitEffectPrefab: {fileID: 7625425541325210663, guid: 3fd585ba74d3cd540bed55febcc775e5, type: 3}
   stay: 0
 --- !u!1 &2301682670640080232

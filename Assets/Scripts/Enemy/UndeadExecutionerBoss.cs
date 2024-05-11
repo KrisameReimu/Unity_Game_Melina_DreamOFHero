@@ -4,21 +4,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardBoss : Enemy, IBoss
+public class UndeadExecutionerBoss : Enemy, IBoss
 {
-    [SerializeField]
-    private string bossName = "Crazy Wizard";
+    private string bossName = "Undead Executioner";
     private bool isActivated = false;
     private GameObject playerObj;
     //[SerializeField]
-    private float speed = 3.5f;
+    private float speed = 3f;
     private Animator anim;
-    
+
     [SerializeField]
     private Vector2 targetPosition;
- 
+
     [SerializeField]
-    private float maxHP = 500f;
+    private float maxHP = 700f;
     [field: SerializeField]
     public float HP { get; private set; }
     [SerializeField]
@@ -31,53 +30,50 @@ public class WizardBoss : Enemy, IBoss
     private LayerMask charactersLayer;
     private int direction = 1;
     [SerializeField]
-    private int shootingDamage;
+    private int summonDamage;
     private bool isStaying = false;
     [SerializeField]
-    private float actionCounter =3;
+    private float actionCounter = 3;
     private bool isDefeated = false;
-    private int hitCounter = 5;
+    private int hitCounter = 4; //no of hit before knockback
     [SerializeField]
-    private GameObject earthSpellPrefab;
+    private GameObject summonPrefab;
     Rigidbody2D rb;
     private bool jumped;
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip meleeClip;
     [SerializeField]
-    private AudioClip jumpClip;
+    private AudioClip teleportClip;
+    
     private BossHpBar hpBar;
+    [SerializeField]
+    private GameObject hitEffectPrefab;
+    
 
     void Awake()
     {
         playerObj = PlayerController.GetPlayerInstance().gameObject;
         HP = maxHP;
-        damage = 15;//melee damage
-        shootingDamage = 10;
+        damage = 20;//melee damage
+        summonDamage = 10;
         isAttacking = false;
         isStaying = true;
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
 
-        //ActivateBoss(); //For test only. This function should be called by other event. 
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        targetPosition = playerObj.transform.position;
-        ChangeDirection();
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            EarthSpellAttack();
-        }
-        return;
-        */
+        //Debug.Log(Vector2.Distance(transform.position, targetPosition));
         if (!isActivated) return;
 
-        targetPosition = playerObj.transform.position;
+        targetPosition = playerObj.transform.position+Vector3.up*0.8f;
+
+
         if (isAttacking || isDefeated)
             return;
         ChangeDirection();
@@ -85,50 +81,53 @@ public class WizardBoss : Enemy, IBoss
         PerformAction();
     }
 
-    private void EarthSpellAttack()
+    private void SummonSpell()
     {
-        StartCoroutine(EarthSpellSpawn());
+        StartCoroutine(SummonSpawn());
     }
-    IEnumerator EarthSpellSpawn()
+    IEnumerator SummonSpawn()
     {
-        Vector3 spawnPoint = transform.position + Vector3.right * direction*3f;
-        for (int i = 0; i < 7; i++)
+        Vector3 spawnPoint = transform.position + Vector3.left * direction  + Vector3.up*3;
+        for (int i = 0; i < 4; i++)
         {
-            EarthSpell spell =
-                Instantiate(earthSpellPrefab, spawnPoint + Vector3.down * 0.6f, Quaternion.identity).GetComponent<EarthSpell>();
-            spell.SetDamage(shootingDamage);
-            spell.transform.localScale *= new Vector2(direction, 1);
-            spawnPoint += Vector3.right * direction * 1;
+            UndeadSummon summon =
+                Instantiate(summonPrefab, spawnPoint, Quaternion.identity).GetComponent<UndeadSummon>();
+            summon.SetDamage(summonDamage);
+            spawnPoint += Vector3.left * direction + Vector3.down;
             yield return new WaitForSeconds(0.1f);
         }
     }
     private void PerformAction()
-    { 
+    {
         actionCounter -= Time.deltaTime;
-        if(actionCounter <= 0)
+        if (actionCounter <= 0)
         {
             actionCounter = 5; //Reset timer
 
+            rb.velocity = Vector3.zero;
+
             //System.Random rnd = new System.Random();
             //check distance between player
-            if (Vector2.Distance(transform.position, targetPosition) < 2.6)
+            if (Vector2.Distance(transform.position, targetPosition) < 5f)
             {
-                isAttacking = true;
+                
                 anim.SetTrigger("Melee");            //attack
             }
-            else //if(Vector2.Distance(transform.position, targetPosition) < 6)
+            else if(Vector2.Distance(transform.position, targetPosition) < 8)
             {
-                isAttacking = true;
-                anim.SetTrigger("Shoot");            //attack
+                //isAttacking = true;
+                anim.SetTrigger("Summon");            //attack
             }
-            /*
             else
             {
-                anim.SetTrigger("Jump");
-            */
+                anim.SetTrigger("Teleport");
+            }
+            
+            isAttacking = true;
+
         }
     }
-    
+
     private void Stay()
     {
         StartCoroutine(StartStaying());
@@ -136,29 +135,31 @@ public class WizardBoss : Enemy, IBoss
 
     IEnumerator StartStaying()
     {
-        anim.SetBool("Run", false);
-        hitCounter = 5;
+        anim.SetBool("Move", false);
+        hitCounter = 4;
         isStaying = true;
         isAttacking = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         isStaying = false;
     }
 
     private void Move()
     {
-        anim.SetBool("Run", false);
+        anim.SetBool("Move", false);
 
         if (isGettingHit || isStaying || isAttacking) return;
 
-        anim.SetBool("Run", true);
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPosition.x, transform.position.y), speed * Time.deltaTime);
+        anim.SetBool("Move", true);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
+        /*
         if (!jumped)
         {
             bool needJump = (Vector2.Distance(transform.position, targetPosition) > 15) || (Math.Abs(transform.position.y - targetPosition.y) > 3);
             if (needJump)
                 Jump();
         }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -167,7 +168,7 @@ public class WizardBoss : Enemy, IBoss
             return;
         if (collision.tag == "Projectile")
         {
-            Jump();
+            //Jump();
         }
     }
 
@@ -176,7 +177,6 @@ public class WizardBoss : Enemy, IBoss
         anim.SetTrigger("Jump");
         rb.velocity = Vector2.zero;
         rb.AddForce(new Vector2(0, 305), ForceMode2D.Impulse);
-        audioSource.PlayOneShot(jumpClip);
         jumped = true;
         StartCoroutine(ToggleJump());
     }
@@ -193,12 +193,14 @@ public class WizardBoss : Enemy, IBoss
         isAttacking = false;
     }
 
+
     private void EndAttack()
     {
         isAttacking = false;
         isGettingHit = false;
         //anim.ResetTrigger("Attack");
         anim.ResetTrigger("Hurt");
+        rb.velocity = Vector2.zero;
     }
 
     private void MeleeAttack()
@@ -214,20 +216,26 @@ public class WizardBoss : Enemy, IBoss
                 if (player.isInvincible)
                     return;
                 ChangePlayerHP(player);
-                //Instantiate(hitEffectPrefab, attackPoint.transform.position + Vector3.right * 0.5f, Quaternion.identity);
+                Instantiate(hitEffectPrefab, attackPoint.transform.position + Vector3.right * 0.5f, Quaternion.identity);
             }
         }
     }
     private void AttackMoveForward()
     {
-        rb.velocity =  Vector2.right * direction * 13;
+        rb.velocity = Vector2.right * direction * 10;
+        PlayMeleeClip();
+    }
+
+    private void PlayMeleeClip()
+    {
         audioSource.PlayOneShot(meleeClip);
+
     }
     private void Hurt()
     {
         if (isAttacking) return;
         hitCounter -= 1;
-        if(hitCounter <= 0)
+        if (hitCounter <= 0)
         {
             hitCounter = 5;
             isGettingHit = true;
@@ -236,10 +244,22 @@ public class WizardBoss : Enemy, IBoss
         }
     }
 
+    private void Teleport()
+    {
+        PlayerController player = playerObj.GetComponent<PlayerController>();
+        transform.position = targetPosition + Vector2.right*player.direction*1.5f+Vector2.up;
+    }
+    private void PlayTeleportClip()
+    {
+        audioSource.PlayOneShot(teleportClip);
+    }
+
+
+
     public override void ChangeHP(float amount)
     {
-        if(isDefeated || !isActivated) 
-            return; 
+        if (isDefeated || !isActivated)
+            return;
 
         //isGettingHit = true;
         HP += amount;
@@ -256,28 +276,18 @@ public class WizardBoss : Enemy, IBoss
         if (HP > 0)
             Hurt();
         else
-        { 
+
+        {
             StartCoroutine(Defeat());
-            /*
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.simulated = false;
-            */
-            /*
-            isAttacking = false;
-            isDefeated = true;
-            anim.SetTrigger("Die");
-            */
-            //DropCard();
         }
     }
 
     IEnumerator Defeat()
     {
         DropItem();
+        anim.SetBool("Die", true);
         isAttacking = false;
         isDefeated = true;
-        anim.ResetTrigger("Hurt");
-        anim.SetTrigger("Die");
         yield return new WaitForSeconds(1);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.simulated = false;
@@ -309,7 +319,7 @@ public class WizardBoss : Enemy, IBoss
             direction = 1;
         else
             direction = -1;
-        transform.localScale = new Vector2(direction* Math.Abs(transform.localScale.x), transform.localScale.y);
+        transform.localScale = new Vector2(direction * Math.Abs(transform.localScale.x), transform.localScale.y);
     }
     public void ActivateBoss()
     {
@@ -319,9 +329,4 @@ public class WizardBoss : Enemy, IBoss
         hpBar = BossHpArea.instance.InitHpBar();
         hpBar.SetBossName(bossName);
     }
-}
-
-public interface IBoss
-{
-    public void ActivateBoss();
 }

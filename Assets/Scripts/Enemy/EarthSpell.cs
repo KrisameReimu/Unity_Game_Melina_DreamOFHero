@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EarthSpell;
 
-public class EarthSpell : MonoBehaviour
+public class EarthSpell : MonoBehaviour, IEnemyProjectile
 {
     [SerializeField]
     private AudioClip soundClip;
     private AudioSource audioSource;
     [SerializeField]
     private int damage;
+    [SerializeField]
+    private GameObject hittedEffect;
+
+    int IEnemyProjectile.damage => damage;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -41,7 +47,22 @@ public class EarthSpell : MonoBehaviour
         if (player != null)
         {
             int direction = transform.localRotation.z == 0f ? -1 : 1;
+            if (!player.isInvincible)
+                Instantiate(hittedEffect, player.transform.position, Quaternion.identity);
             player.ChangeHP(-damage, direction);
         }
     }
+
+    public void IsGuarded()
+    {
+        Destroy(gameObject);
+    }
+
+    
+}
+
+public interface IEnemyProjectile
+{
+    public int damage { get; }
+    public void IsGuarded();
 }
