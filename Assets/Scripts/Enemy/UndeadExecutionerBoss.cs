@@ -264,7 +264,7 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
     public void Purify(float value)
     {
-        ChangeHP(value);
+        ChangeHP(value*2);
         ShowDamageText("Purify", Color.yellow);
     }
 

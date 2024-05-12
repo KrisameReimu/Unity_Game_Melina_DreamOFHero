@@ -62,8 +62,8 @@ public class UndeadSummon : Enemy, IEnemyProjectile, IUndead
 
     private void Vanish()
     {
-        Destroy(gameObject);
         audioSource.PlayOneShot(effectClip);
+        Destroy(gameObject);
     }
 
     public void IsGuarded()
