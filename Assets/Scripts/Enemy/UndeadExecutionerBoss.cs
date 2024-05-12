@@ -71,8 +71,8 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
         playerObj = PlayerController.GetPlayerInstance().gameObject;
         HP = maxHP;
-        damage = 20;//melee damage
-        summonDamage = 10;
+        damage = 15;//melee damage
+        summonDamage = 7;
         isAttacking = false;
         isStaying = true;
         anim = GetComponent<Animator>();
