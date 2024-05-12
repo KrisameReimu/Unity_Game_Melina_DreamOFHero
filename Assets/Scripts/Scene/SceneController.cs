@@ -108,6 +108,7 @@ public class SceneController : MonoBehaviour
         //Game Data
         GameData.isWizardBossDead = data.isWizardBossDead;
         GameData.isUndeadBossDead = data.isUndeadBossDead;
+        GameData.isSeaBoxOpened = data.isSeaBoxOpened;
 
 
 

@@ -30,6 +30,11 @@ public class PickUpSystem : MonoBehaviour
         Item item = collision.transform.parent.gameObject.GetComponent<Item>();
         if(item != null )
         {
+            if (item.isInteracting)
+                return;
+            else
+                item.SetInteracting(true);
+
             int reminder = inventoryData.AddItem(item.InventoryItem, item.Quantity);
             int obtainedQuantity = item.Quantity - reminder;
 
@@ -38,6 +43,7 @@ public class PickUpSystem : MonoBehaviour
             else
                 item.Quantity = reminder;
 
+            item.SetInteracting(false);
             ShowObtainedPrompt(item.InventoryItem.itemImage, item.InventoryItem.itemName, obtainedQuantity);
         }
     }

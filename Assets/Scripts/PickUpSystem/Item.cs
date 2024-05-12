@@ -11,8 +11,17 @@ public class Item : MonoBehaviour
     [field: SerializeField]
     public int Quantity = 1;
 
+    
+
     [SerializeField]    
     private float duration = 0.3f;
+
+    public bool isInteracting {  get; private set; }
+
+    public void SetInteracting(bool status)
+    {
+        isInteracting = status;
+    }
 
     private void Start()
     {

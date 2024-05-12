@@ -22,6 +22,7 @@ public class PlayerData
     //Game Data
     public bool isWizardBossDead;
     public bool isUndeadBossDead;
+    public bool isSeaBoxOpened;
 
     public PlayerData(PlayerController player) 
     { 
@@ -71,6 +72,6 @@ public class PlayerData
 
         isWizardBossDead = GameData.isWizardBossDead;
         isUndeadBossDead = GameData.isUndeadBossDead;
-
+        isSeaBoxOpened = GameData.isSeaBoxOpened;
     }
 }

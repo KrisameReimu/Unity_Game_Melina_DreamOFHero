@@ -7,6 +7,8 @@ public class GameData : MonoBehaviour
     public static bool isWizardBossDead = false;
 
     public static bool isUndeadBossDead = false;
+
+    public static bool isSeaBoxOpened = false;
     
 
 }
