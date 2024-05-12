@@ -21,19 +21,22 @@ public class PickUpSystem : MonoBehaviour
             collectedObjectList = GameObject.Find("UI").transform.Find("CollectedObjectList");
     }
 
-    private string[] collectionTags = { "Item", "ItemDetect" };
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collectionTags.Contains(collision.tag))
+
+        if (collision.tag != "Item")
             return;
 
         Item item = collision.transform.parent.gameObject.GetComponent<Item>();
         if(item != null )
         {
+            Debug.Log(collision.gameObject);
+
             if (item.isInteracting)
                 return;
             else
                 item.SetInteracting(true);
+            
 
             int reminder = inventoryData.AddItem(item.InventoryItem, item.Quantity);
             int obtainedQuantity = item.Quantity - reminder;
