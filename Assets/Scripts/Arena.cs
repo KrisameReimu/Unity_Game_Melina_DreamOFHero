@@ -73,10 +73,18 @@ public class Arena : MonoBehaviour
         else if(lastBossCounter == 0)
         {
             prompt.PromptMessage("Congratulation!");
+            StartCoroutine(BackToMenu());
         }
         else
         {
             Debug.Log("Arena: Unexpected Error");
         }
+    }
+
+    IEnumerator BackToMenu()
+    {
+        prompt.PromptMessage("Going back to main menu in 5 seconds");
+        yield return new WaitForSeconds(5);
+        SceneController.Instance.BackToMainMenu();
     }
 }
