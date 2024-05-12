@@ -1,4 +1,7 @@
 B
+Welcome to the Royal Town! I am DoDo.
+Before we begin, let me help you prepare!
+Head towards the green door ahead. Press 'F' to enter your dreamland. I wish you all the best on your journey!
 You have arrived, my dear Princess of Elven Magic.
 Your presence brings hope in these dark times.
 A
@@ -34,6 +37,3 @@ May the winds carry you safely to your destiny.
 The future of our realm depends on your courage and strength.
 Farewell, and may fortune favor you on your quest.
 
-DoDo: Welcome to the Royal Town! I am DoDo.
-Before we begin, let me help you prepare!
-Head towards the green door ahead. Press 'F' to enter your dreamland. I wish you all the best on your journey!

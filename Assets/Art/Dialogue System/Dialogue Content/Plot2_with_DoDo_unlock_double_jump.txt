@@ -1,0 +1,28 @@
+B
+Welcome to the Royal Town! I am DoDo.
+Before we begin, let me help you prepare!
+Head towards the green door ahead. Press 'F' to enter your dreamland. I wish you all the best on your journey!
+
+A
+You have completed the Tutorial quest, brave Player.
+I am impressed by your progress and determination.
+
+B
+I have a special gift for you, Player.
+I bestow upon you the power of the Double Jump.
+
+A
+The Double Jump ability will allow you to reach new heights.
+To perform a Double Jump, simply press the Space key twice in quick succession.
+
+B
+Go forth, Player, and may your new skill serve you well.
+May your leaps be swift and your adventures grand.
+
+A
+Thank you, DoDo, for your guidance and encouragement.
+I will master the Double Jump and continue my journey with confidence.
+
+B
+Good luck on your future quests, Player.
+May your leaps be daring and your path be clear. Farewell!
