@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6839194003399987454}
   m_Layer: 17
   m_Name: PlayerDetectionArea
-  m_TagString: Enemy
+  m_TagString: EnPlayerDetect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

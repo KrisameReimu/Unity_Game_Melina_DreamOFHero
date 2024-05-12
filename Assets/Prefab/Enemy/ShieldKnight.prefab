@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 8883373729815004366}
   m_Layer: 17
   m_Name: PlayerDetection
-  m_TagString: Enemy
+  m_TagString: EnPlayerDetect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

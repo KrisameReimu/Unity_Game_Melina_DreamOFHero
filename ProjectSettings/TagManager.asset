@@ -19,6 +19,7 @@ TagManager:
   - Bramble
   - NPC
   - EnemyProjectile
+  - EnPlayerDetect
   layers:
   - Default
   - TransparentFX

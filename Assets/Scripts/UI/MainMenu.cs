@@ -71,6 +71,12 @@ public class MainMenu : MonoBehaviour
         }        
     }
 
+    public void Arena() //Boss Run
+    {
+        sceneController = SceneController.Instance;
+        sceneController.LoadNextScene("BossRoom", Vector2.zero);
+    }
+
     public void CloseWindow()
     {
         confirmWindow.SetActive(false);

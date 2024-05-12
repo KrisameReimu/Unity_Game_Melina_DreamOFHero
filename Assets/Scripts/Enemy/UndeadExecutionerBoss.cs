@@ -310,7 +310,7 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
         OnUndeadBossDefeat?.Invoke();
 
-        DropItem();
+        DropBossCard();
         anim.SetBool("Die", true);
         isAttacking = false;
         isDefeated = true;

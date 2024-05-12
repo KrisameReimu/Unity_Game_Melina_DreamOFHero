@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Objects not for player landing
-    string[] jumpDetectionTags = { "Enemy", "Background", "Trap" };
+    string[] jumpDetectionTags = { "Enemy", "Background", "Trap", "EnPlayerDetect" };
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {

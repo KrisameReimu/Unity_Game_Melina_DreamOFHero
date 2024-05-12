@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 116ef0e97d755314783a528eed7b62cc
   - enabled: 1
-    path: Assets/Wizard - 2D Character/PreparationScene.unity
-    guid: 9335b1dc892fd4e4795963126236dc22
-  - enabled: 1
     path: Assets/Scenes/Test/Test.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -20,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Wizard - 2D Character/TestScene2.unity
     guid: 4fe84341c4eb13747b5d0d43034b8878
+  - enabled: 1
+    path: Assets/Wizard - 2D Character/BossRoom.unity
+    guid: e6cebc52c63c1c649b4144ad4304849b
+  - enabled: 1
+    path: Assets/Wizard - 2D Character/PreparationScene.unity
+    guid: 9335b1dc892fd4e4795963126236dc22
   m_configObjects: {}

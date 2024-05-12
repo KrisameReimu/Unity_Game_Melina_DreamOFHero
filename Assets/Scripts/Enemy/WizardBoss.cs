@@ -295,7 +295,7 @@ public class WizardBoss : Enemy, IBoss
         if (!bossRunMode)
             GameData.isWizardBossDead = true;
 
-        DropItem();
+        DropBossCard();
         isAttacking = false;
         isDefeated = true;
         anim.ResetTrigger("Hurt");
@@ -308,6 +308,7 @@ public class WizardBoss : Enemy, IBoss
         Destroy(gameObject);
     }
 
+   
 
     private void OnDrawGizmos()
     {

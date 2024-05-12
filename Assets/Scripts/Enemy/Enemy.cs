@@ -81,6 +81,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void DropBossCard()
+    {
+        if (cardPrefab != null)
+        {
+            PlayerController player = PlayerController.GetPlayerInstance();
+            GameObject cardItem = Instantiate(cardPrefab, player.transform.position, Quaternion.Euler(new Vector3(0, 0, 30)));
+        }
+    }
+
     public void ShowDamageText(float amount)
     {
         amount = Mathf.Abs(amount);

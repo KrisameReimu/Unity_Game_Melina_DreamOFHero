@@ -62,17 +62,17 @@ public class SummonSlime : Summon
     {
         if (targetObject)//check if locked on any target
             return;
-        if (c.transform.root.tag != "Enemy" || isAttacking)
+        if (c.transform.tag != "Enemy" || isAttacking)
             return;
 
-        IRespawnable enemy = c.transform.root.GetComponent<Enemy>() as IRespawnable;
+        IRespawnable enemy = c.transform.GetComponent<Enemy>() as IRespawnable;
         if(enemy != null)
         {
             if(enemy.isDead) 
                 return;
         }
 
-        targetObject = c.transform.root.gameObject;
+        targetObject = c.transform.gameObject;
     }
 
 
