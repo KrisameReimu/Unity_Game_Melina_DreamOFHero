@@ -7,7 +7,7 @@ public class BossStarter : MonoBehaviour
     private IBoss boss;
     private void Awake()
     {
-        boss = transform.root.GetComponent<IBoss>();
+        boss = transform.parent.GetComponent<IBoss>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
