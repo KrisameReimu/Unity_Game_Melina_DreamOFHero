@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         if (cardPrefab != null)
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            GameObject cardItem = Instantiate(cardPrefab, rb.position + new Vector2(0, 0.5f), Quaternion.Euler(new Vector3(0, 0, 30)));
+            Instantiate(cardPrefab, rb.position + new Vector2(0, 0.5f), Quaternion.Euler(new Vector3(0, 0, 30)));
         }
         else
         {
@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
         if (cardPrefab != null)
         {
             PlayerController player = PlayerController.GetPlayerInstance();
-            GameObject cardItem = Instantiate(cardPrefab, player.transform.position, Quaternion.Euler(new Vector3(0, 0, 30)));
+            Instantiate(cardPrefab, player.transform.position + Vector3.up, Quaternion.identity);
         }
     }
 

@@ -15,39 +15,47 @@ public class PickUpSystem : MonoBehaviour
     private Transform collectedObjectList;
 
 
+
     private void Awake()
     {
         if(collectedObjectList == null)
             collectedObjectList = GameObject.Find("UI").transform.Find("CollectedObjectList");
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        
+
         if (collision.tag != "Item")
+        {
             return;
+        }
 
         Item item = collision.transform.parent.gameObject.GetComponent<Item>();
         if(item != null )
         {
-            Debug.Log(collision.gameObject);
-
             if (item.isInteracting)
                 return;
             else
-                item.SetInteracting(true);
+                item.isInteracting = true;
             
 
             int reminder = inventoryData.AddItem(item.InventoryItem, item.Quantity);
             int obtainedQuantity = item.Quantity - reminder;
 
             if (reminder == 0)
+            {
                 item.DestroyItem();
+                Destroy(collision.gameObject);
+            }
             else
                 item.Quantity = reminder;
 
-            item.SetInteracting(false);
             ShowObtainedPrompt(item.InventoryItem.itemImage, item.InventoryItem.itemName, obtainedQuantity);
+
+            item.isInteracting = false;
         }
     }
 

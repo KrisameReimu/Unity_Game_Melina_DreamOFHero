@@ -46,7 +46,7 @@ public class TreasureBox : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F)) 
             {
                 //open
-                Instantiate(itemPrefab, player.transform.position, Quaternion.identity);
+                Instantiate(itemPrefab, player.transform.position+Vector3.up, Quaternion.identity);
                 renderer.sprite = openedImg;
 
                 GameData.isSeaBoxOpened = true;
