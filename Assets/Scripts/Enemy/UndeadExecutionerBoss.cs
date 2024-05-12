@@ -7,6 +7,7 @@ using UnityEngine;
 public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 {
     private string bossName = "Undead Executioner";
+    
     private bool isActivated = false;
     private GameObject playerObj;
     //[SerializeField]
@@ -49,11 +50,19 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     private BossHpBar hpBar;
     [SerializeField]
     private GameObject hitEffectPrefab;
-    
+
+
+    public event Action OnUndeadBossDefeat;
+
+    [SerializeField]
+    private bool bossRunMode = false;
+
+
 
     void Awake()
     {
-        if(GameData.isUndeadBossDead)
+
+        if(GameData.isUndeadBossDead && !bossRunMode)
         {
             Destroy(gameObject);
             return;
@@ -296,7 +305,10 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
     IEnumerator Defeat()
     {
-        GameData.isUndeadBossDead = true;
+        if(!bossRunMode)
+            GameData.isUndeadBossDead = true;
+
+        OnUndeadBossDefeat?.Invoke();
 
         DropItem();
         anim.SetBool("Die", true);
@@ -337,7 +349,7 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     }
     public void ActivateBoss()
     {
-        if (GameData.isUndeadBossDead)
+        if (GameData.isUndeadBossDead && !bossRunMode)
         {
             Destroy(gameObject);
             return;
