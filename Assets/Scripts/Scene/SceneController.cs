@@ -171,9 +171,20 @@ public class SceneController : MonoBehaviour
         if (UIStatusBar.instance)
             Destroy(UIStatusBar.instance.transform.root.gameObject);
 
-        transitionAnim.SetTrigger("Start");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        transitionAnim.SetTrigger("End");
+        if(SceneManager.GetActiveScene().name=="Arena")
+        {
+            transitionAnim.SetTrigger("Start");
+            SceneManager.LoadScene("Arena"); 
+            transitionAnim.SetTrigger("End");
+        }
+        else
+        {
+            //continue
+            LoadGame();
+        }
+
+
+
 
     }
 
