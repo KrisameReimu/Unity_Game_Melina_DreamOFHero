@@ -629,8 +629,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator StartSpeedUp(float effectTime)
     {
         speed *= 1.5f;
+        speed = Mathf.Clamp(speed, 5, 10);
+
         yield return new WaitForSeconds(effectTime);
         speed /= 1.5f;
+        speed = Mathf.Clamp(speed, 5, 10);
     }
 
     public void UnlockDoubleJump(bool status)

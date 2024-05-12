@@ -16,7 +16,7 @@ MonoBehaviour:
   <isStackable>k__BackingField: 1
   <maxStackSize>k__BackingField: 99
   <itemName>k__BackingField: SP Potion (small)
-  description: Restores 7 SP
+  description: Restores 7 (33%) SP
   itemImage: {fileID: 21300000, guid: a32c31f870261084c966ab0ab8bb8dd5, type: 3}
   <defaultParametersList>k__BackingField: []
   modifiersData:
