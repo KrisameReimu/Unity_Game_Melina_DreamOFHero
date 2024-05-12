@@ -239,7 +239,8 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     }
     private void AttackMoveForward()
     {
-        rb.velocity = Vector2.right * direction * 10;
+        //Aim player
+        rb.velocity = (targetPosition - (Vector2)transform.position).normalized * 10;
         PlayMeleeClip();
     }
 
