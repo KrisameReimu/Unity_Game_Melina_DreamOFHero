@@ -37,18 +37,25 @@ public class Arena : MonoBehaviour
         prompt.PromptMessage("Ability: Double Jump is unlocked");
     }
 
-    private void OnWizard1Defeat() 
+    private void OnWizard1Defeat()
     {
-        player.MoveToNewPosition(new Vector2(-80, 13));
         prompt.PromptMessage("Good Job!");
+        StartCoroutine(MoveToNextArea(new Vector2(-80, 13)));
     }
     private void OnUndead1Defeat() 
     {
-        player.MoveToNewPosition(new Vector2(-107, 13));
         prompt.PromptMessage("Keep Fighting!");
+        StartCoroutine(MoveToNextArea(new Vector2(-106, 13)));
     }
 
-    
+    IEnumerator MoveToNextArea(Vector2 position)
+    {
+        yield return new WaitForSeconds(1);
+        prompt.PromptMessage("Moving to next area in 5 seconds...");
+        yield return new WaitForSeconds(5);
+        player.MoveToNewPosition(position);
+    }
+
 
     private void OnLastAreaBossDefeat()
     {
