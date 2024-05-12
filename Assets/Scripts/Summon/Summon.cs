@@ -84,4 +84,15 @@ public class Summon : MonoBehaviour
     {
         Instantiate(disappearEffectPrefab, transform.position, Quaternion.identity);
     }
+
+    private void OnEnable()
+    {
+        player = PlayerController.GetPlayerInstance();
+        player.OnPlayerDown += Vanish;
+    }
+
+    private void OnDestroy()
+    {
+        player.OnPlayerDown -= Vanish;
+    }
 }
