@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class PlayerData 
 {
+    //Player Data
     public float HP;
     public float SP;
     public float EX;
@@ -16,6 +17,11 @@ public class PlayerData
     public int[] equipingCardsIndex;
     public bool ableToDoubleJump;
     public string currentSceneName;
+
+
+    //Game Data
+    public bool isWizardBossDead;
+    public bool isUndeadBossDead;
 
     public PlayerData(PlayerController player) 
     { 
@@ -60,6 +66,11 @@ public class PlayerData
         ableToDoubleJump = player.ableToDoubleJump;
 
         currentSceneName = SceneManager.GetActiveScene().name;
+
+
+
+        isWizardBossDead = GameData.isWizardBossDead;
+        isUndeadBossDead = GameData.isUndeadBossDead;
 
     }
 }

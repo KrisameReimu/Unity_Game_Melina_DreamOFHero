@@ -53,6 +53,13 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
     void Awake()
     {
+        if(GameData.isUndeadBossDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
         playerObj = PlayerController.GetPlayerInstance().gameObject;
         HP = maxHP;
         damage = 20;//melee damage
@@ -289,6 +296,8 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
     IEnumerator Defeat()
     {
+        GameData.isUndeadBossDead = true;
+
         DropItem();
         anim.SetBool("Die", true);
         isAttacking = false;
@@ -328,6 +337,13 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     }
     public void ActivateBoss()
     {
+        if (GameData.isUndeadBossDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.None;
         isActivated = true;
         isStaying = false;

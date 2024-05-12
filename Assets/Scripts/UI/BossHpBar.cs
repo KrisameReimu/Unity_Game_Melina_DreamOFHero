@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BossHpBar : MonoBehaviour
@@ -22,5 +23,19 @@ public class BossHpBar : MonoBehaviour
     public void SetBossName(string name)
     {
         GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
+    }
+    private void OnEnable()
+    {
+        SceneManager.activeSceneChanged += CheckScene;
+    }
+
+    private void CheckScene(Scene s1, Scene s2)
+    {
+        if (s1.buildIndex != s2.buildIndex)  //scene changed
+            Destroy(gameObject);
+    }
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= CheckScene;
     }
 }

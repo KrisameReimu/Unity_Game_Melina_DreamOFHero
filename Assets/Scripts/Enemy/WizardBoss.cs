@@ -50,6 +50,14 @@ public class WizardBoss : Enemy, IBoss
 
     void Awake()
     {
+        if (GameData.isWizardBossDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
+
         playerObj = PlayerController.GetPlayerInstance().gameObject;
         HP = maxHP;
         damage = 15;//melee damage
@@ -274,6 +282,8 @@ public class WizardBoss : Enemy, IBoss
 
     IEnumerator Defeat()
     {
+        GameData.isWizardBossDead = true;
+
         DropItem();
         isAttacking = false;
         isDefeated = true;
@@ -314,6 +324,13 @@ public class WizardBoss : Enemy, IBoss
     }
     public void ActivateBoss()
     {
+        if (GameData.isWizardBossDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.None;
         isActivated = true;
         isStaying = false;

@@ -105,6 +105,13 @@ public class SceneController : MonoBehaviour
         }
         transitionAnim.SetTrigger("End");
 
+        //Game Data
+        GameData.isWizardBossDead = data.isWizardBossDead;
+        GameData.isUndeadBossDead = data.isUndeadBossDead;
+
+
+
+
 
         asyncLoad = SceneManager.LoadSceneAsync(data.currentSceneName);
         transitionAnim.SetTrigger("Start");
@@ -114,7 +121,7 @@ public class SceneController : MonoBehaviour
         }
         transitionAnim.SetTrigger("End");
 
-
+        //Player Data
         LoadPlayer(data);
     }
 

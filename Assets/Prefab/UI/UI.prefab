@@ -1726,6 +1726,7 @@ MonoBehaviour:
   pauseBtnImage: {fileID: 8869839348596305889}
   pauseImage: {fileID: 21300000, guid: 4b26ff287b5ada746847c18bc6cdcf6c, type: 3}
   resumeImage: {fileID: 21300000, guid: 9632d8da0f68fd040abe0ea446a93f30, type: 3}
+  menuText: {fileID: 7350129368602306937}
 --- !u!1 &3322812139308448129
 GameObject:
   m_ObjectHideFlags: 0

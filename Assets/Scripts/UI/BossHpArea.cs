@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHpArea : MonoBehaviour
 {
@@ -25,4 +26,6 @@ public class BossHpArea : MonoBehaviour
     {
         return Instantiate(hpBarPrefab, transform).GetComponent<BossHpBar>();
     }
+
+    
 }

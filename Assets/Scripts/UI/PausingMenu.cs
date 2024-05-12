@@ -14,6 +14,9 @@ public class PausingMenu : MonoBehaviour
     private Sprite pauseImage;
     [SerializeField]
     private Sprite resumeImage;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI menuText;
+  
     
     private bool isPausing = false;
 
@@ -31,6 +34,8 @@ public class PausingMenu : MonoBehaviour
 
     private void Pause()
     {
+        menuText.text = "Pausing";
+
         Time.timeScale = 0f;
         PlayerController.SetIsGamePause(true);
         pauseMenu.SetActive(true);
@@ -59,6 +64,8 @@ public class PausingMenu : MonoBehaviour
     {
         PlayerController player = PlayerController.GetPlayerInstance();
         SaveSystem.SavePlayer(player);
+
+        menuText.text = "Saved";
     }
 
     public void BackToMenu()//Exit Btn
