@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapNameText: {fileID: 998509918}
-  mapName: King's Palace
+  mapName: "\u738B\u4E4B\u59CB\u5BAE King's Palace"
   displayDuration: 4
   fadeDuration: 2
   soundEffect: {fileID: 0}
@@ -2788,7 +2788,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: de6a2150c4b093148a1c540c8486aa19, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2b5931dee13116d4baf6fc9decf3594f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.72
   m_Pitch: 1
