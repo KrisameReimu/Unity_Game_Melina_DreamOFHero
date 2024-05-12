@@ -7,6 +7,7 @@ using UnityEngine;
 public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 {
     private string bossName = "Undead Executioner";
+    
     private bool isActivated = false;
     private GameObject playerObj;
     //[SerializeField]
@@ -49,11 +50,19 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     private BossHpBar hpBar;
     [SerializeField]
     private GameObject hitEffectPrefab;
-    
+
+
+    public event Action OnUndeadBossDefeat;
+
+    [SerializeField]
+    private bool bossRunMode = false;
+
+
 
     void Awake()
     {
-        if(GameData.isUndeadBossDead)
+
+        if(GameData.isUndeadBossDead && !bossRunMode)
         {
             Destroy(gameObject);
             return;
@@ -62,8 +71,8 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
         playerObj = PlayerController.GetPlayerInstance().gameObject;
         HP = maxHP;
-        damage = 20;//melee damage
-        summonDamage = 10;
+        damage = 15;//melee damage
+        summonDamage = 7;
         isAttacking = false;
         isStaying = true;
         anim = GetComponent<Animator>();
@@ -230,7 +239,8 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     }
     private void AttackMoveForward()
     {
-        rb.velocity = Vector2.right * direction * 10;
+        //Aim player
+        rb.velocity = (targetPosition - (Vector2)transform.position).normalized * 10;
         PlayMeleeClip();
     }
 
@@ -296,9 +306,12 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
 
     IEnumerator Defeat()
     {
-        GameData.isUndeadBossDead = true;
+        if(!bossRunMode)
+            GameData.isUndeadBossDead = true;
 
-        DropItem();
+        OnUndeadBossDefeat?.Invoke();
+
+        DropBossCard();
         anim.SetBool("Die", true);
         isAttacking = false;
         isDefeated = true;
@@ -337,7 +350,7 @@ public class UndeadExecutionerBoss : Enemy, IBoss, IUndead
     }
     public void ActivateBoss()
     {
-        if (GameData.isUndeadBossDead)
+        if (GameData.isUndeadBossDead && !bossRunMode)
         {
             Destroy(gameObject);
             return;

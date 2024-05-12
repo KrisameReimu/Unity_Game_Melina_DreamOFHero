@@ -24,7 +24,7 @@ public class Wings : MonoBehaviour
     }
     IEnumerator CreateFeather()
     {
-        int direction = transform.root.localScale.x > 0 ? 1 : -1;
+        int direction = transform.parent.localScale.x > 0 ? 1 : -1;
         GameObject feather = Instantiate(featherPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, 90 + 90 * direction)));
         float animTime = 0;
         Vector2 originalScale = feather.transform.localScale;

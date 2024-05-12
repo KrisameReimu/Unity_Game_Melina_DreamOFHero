@@ -8,6 +8,7 @@ public class WizardBoss : Enemy, IBoss
 {
     [SerializeField]
     private string bossName = "Crazy Wizard";
+    
     private bool isActivated = false;
     private GameObject playerObj;
     //[SerializeField]
@@ -48,9 +49,16 @@ public class WizardBoss : Enemy, IBoss
     private AudioClip jumpClip;
     private BossHpBar hpBar;
 
+    public event Action OnWizardBossDefaet;
+
+
+    [SerializeField]
+    private bool bossRunMode = false;
+
+
     void Awake()
     {
-        if (GameData.isWizardBossDead)
+        if (GameData.isWizardBossDead && !bossRunMode)
         {
             Destroy(gameObject);
             return;
@@ -282,9 +290,12 @@ public class WizardBoss : Enemy, IBoss
 
     IEnumerator Defeat()
     {
-        GameData.isWizardBossDead = true;
+        OnWizardBossDefaet?.Invoke();
 
-        DropItem();
+        if (!bossRunMode)
+            GameData.isWizardBossDead = true;
+
+        DropBossCard();
         isAttacking = false;
         isDefeated = true;
         anim.ResetTrigger("Hurt");
@@ -297,6 +308,7 @@ public class WizardBoss : Enemy, IBoss
         Destroy(gameObject);
     }
 
+   
 
     private void OnDrawGizmos()
     {
@@ -324,7 +336,7 @@ public class WizardBoss : Enemy, IBoss
     }
     public void ActivateBoss()
     {
-        if (GameData.isWizardBossDead)
+        if (GameData.isWizardBossDead && !bossRunMode)
         {
             Destroy(gameObject);
             return;

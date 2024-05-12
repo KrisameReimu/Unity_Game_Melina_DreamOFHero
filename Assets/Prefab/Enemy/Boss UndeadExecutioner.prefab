@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 109238445442860854}
   m_Layer: 19
   m_Name: ProjectileDetection
-  m_TagString: Enemy
+  m_TagString: EnPlayerDetect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,3 +430,4 @@ MonoBehaviour:
   meleeClip: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
   teleportClip: {fileID: 8300000, guid: 8ff2a2d7e79f81c40ac447512f879374, type: 3}
   hitEffectPrefab: {fileID: 7625425541325210663, guid: 3fd585ba74d3cd540bed55febcc775e5, type: 3}
+  bossRunMode: 0

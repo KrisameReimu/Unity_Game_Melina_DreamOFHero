@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Objects not for player landing
-    string[] jumpDetectionTags = { "Enemy", "Background", "Trap" };
+    string[] jumpDetectionTags = { "Enemy", "Background", "Trap", "EnPlayerDetect" };
     //step on ground
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -629,8 +629,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator StartSpeedUp(float effectTime)
     {
         speed *= 1.5f;
+        speed = Mathf.Clamp(speed, 5, 10);
+
         yield return new WaitForSeconds(effectTime);
         speed /= 1.5f;
+        speed = Mathf.Clamp(speed, 5, 10);
     }
 
     public void UnlockDoubleJump(bool status)

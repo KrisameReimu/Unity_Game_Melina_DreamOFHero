@@ -16,7 +16,7 @@ MonoBehaviour:
   <isStackable>k__BackingField: 1
   <maxStackSize>k__BackingField: 99
   <itemName>k__BackingField: HP Potion (small)
-  description: Restores 25 HP
+  description: Restores 25% HP
   itemImage: {fileID: 21300000, guid: 835b0875bcd41ce4499db0c16a9648cf, type: 3}
   <defaultParametersList>k__BackingField: []
   modifiersData:
