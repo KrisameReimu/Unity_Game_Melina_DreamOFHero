@@ -3,7 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+#if UNITY_EDITOR // => Ignore from here to next endif if not in editor
 using UnityEditorInternal.Profiling.Memory.Experimental;
+#endif
+
 using UnityEngine;
 using UnityEngine.UI;
 
