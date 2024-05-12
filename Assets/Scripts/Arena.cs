@@ -32,6 +32,16 @@ public class Arena : MonoBehaviour
         wizard2.OnWizardBossDefaet += OnLastAreaBossDefeat;
         undeadExecutioner2.OnUndeadBossDefeat += OnLastAreaBossDefeat;
 
+
+
+    }
+
+    private void Awake()
+    {
+        if(prompt == null) 
+        {
+            //prompt = GetCOmponentBy
+        }
     }
 
     private void OnWizard1Defeat()

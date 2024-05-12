@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     public bool isJumping { get; private set; } = false;
     private bool isGettingHurt = false;
     private float gettingHurtTimer = 0.3f;
-    private bool alive = true;
+    public bool alive { get; private set; } = true;
 
 
     public float basicAtk { get; private set; } = 5;

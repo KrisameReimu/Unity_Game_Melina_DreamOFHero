@@ -2439,6 +2439,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 7318298371743162111, guid: 962a51d8c406d16439f62f23bbb315fe, type: 3}
+      propertyPath: position.x
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318298371743162111, guid: 962a51d8c406d16439f62f23bbb315fe, type: 3}
+      propertyPath: position.y
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318298371743162111, guid: 962a51d8c406d16439f62f23bbb315fe, type: 3}
+      propertyPath: <sceneName>k__BackingField
+      value: Arena
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 962a51d8c406d16439f62f23bbb315fe, type: 3}
 --- !u!1001 &7468787569720906563

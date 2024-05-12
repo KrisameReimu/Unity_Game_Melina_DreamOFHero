@@ -14,7 +14,6 @@ public class Barrier : MonoBehaviour
     private void Awake()
     {
         player = PlayerController.GetPlayerInstance();
-        DontDestroyOnLoad(gameObject);
         player.OnGettingHitInvincile += BarrierVFX;
     }
     // Update is called once per frame
@@ -28,7 +27,8 @@ public class Barrier : MonoBehaviour
     }
     private void OnDestroy()
     {
-        player.OnGettingHitInvincile -= BarrierVFX;
+        if(player!= null) 
+            player.OnGettingHitInvincile -= BarrierVFX;
     }
 
     void OnCollisionStay2D(Collision2D other)

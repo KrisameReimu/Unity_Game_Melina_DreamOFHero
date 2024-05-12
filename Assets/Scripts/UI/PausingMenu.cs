@@ -28,6 +28,8 @@ public class PausingMenu : MonoBehaviour
         }
         else
         {
+            if (!PlayerController.GetPlayerInstance().alive)
+                return;
             Pause();
         }
     }
