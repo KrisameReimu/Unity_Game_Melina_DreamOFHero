@@ -24,7 +24,6 @@ public class Arena : MonoBehaviour
 
     private void Start()
     {
-        player.UnlockDoubleJump(true);
 
         wizard1.OnWizardBossDefaet += OnWizard1Defeat;
 
@@ -33,15 +32,22 @@ public class Arena : MonoBehaviour
         wizard2.OnWizardBossDefaet += OnLastAreaBossDefeat;
         undeadExecutioner2.OnUndeadBossDefeat += OnLastAreaBossDefeat;
 
-
-        prompt.PromptMessage("Ability: Double Jump is unlocked");
     }
 
     private void OnWizard1Defeat()
     {
         prompt.PromptMessage("Good Job!");
         StartCoroutine(MoveToNextArea(new Vector2(-80, 13)));
+        StartCoroutine(UnlockDoubleJump());
     }
+
+    IEnumerator  UnlockDoubleJump()
+    {
+        yield return new WaitForSeconds(6);
+        player.UnlockDoubleJump(true);
+        prompt.PromptMessage("Ability: Double Jump is unlocked");
+    }
+
     private void OnUndead1Defeat() 
     {
         prompt.PromptMessage("Keep Fighting!");

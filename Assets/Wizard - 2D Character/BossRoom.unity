@@ -17962,6 +17962,10 @@ PrefabInstance:
       propertyPath: maxHP
       value: 700
       objectReference: {fileID: 0}
+    - target: {fileID: 109238446576616222, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
+      propertyPath: bossRunMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
 --- !u!114 &541953202 stripped
@@ -18423,6 +18427,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 459195740}
     m_Modifications:
+    - target: {fileID: 5046787274345837043, guid: 8deed929533c9a74c857a9e88ba3ef9c, type: 3}
+      propertyPath: bossRunMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5046787274345837045, guid: 8deed929533c9a74c857a9e88ba3ef9c, type: 3}
       propertyPath: m_Name
       value: WizardBoss 2
@@ -18566,7 +18574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426378575289919574, guid: 00fff63d71afc584c894cb888edefd6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.16
+      value: -29.56
       objectReference: {fileID: 0}
     - target: {fileID: 6426378575289919574, guid: 00fff63d71afc584c894cb888edefd6e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20529,6 +20537,10 @@ PrefabInstance:
       propertyPath: maxHP
       value: 700
       objectReference: {fileID: 0}
+    - target: {fileID: 109238446576616222, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
+      propertyPath: bossRunMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c5b7d32b374977448a9b7a479cd8737, type: 3}
 --- !u!114 &109238445896357845 stripped
@@ -20549,6 +20561,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 459195740}
     m_Modifications:
+    - target: {fileID: 5046787274345837043, guid: 8deed929533c9a74c857a9e88ba3ef9c, type: 3}
+      propertyPath: bossRunMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5046787274345837045, guid: 8deed929533c9a74c857a9e88ba3ef9c, type: 3}
       propertyPath: m_Name
       value: WizardBoss1
