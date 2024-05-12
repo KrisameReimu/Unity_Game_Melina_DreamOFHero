@@ -23,4 +23,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Wizard - 2D Character/PreparationScene.unity
     guid: 9335b1dc892fd4e4795963126236dc22
+  - enabled: 1
+    path: Assets/Scenes/MAP0.5_City_Town.unity
+    guid: b29fd459a166be946975c900f284bee4
+  - enabled: 1
+    path: Assets/Scenes/MAP0_King's Palace.unity
+    guid: 5d9831ad918014148b37b4f95386d86b
+  - enabled: 1
+    path: Assets/Scenes/Map0.75_Tutorial - The Memory-laden Enchanted Grove.unity
+    guid: 70f754b6a57630c47890ce76580f3eef
+  - enabled: 1
+    path: Assets/Scenes/MAP1_Magma City.unity
+    guid: e48f51f9d52ff49dd930dd95c28b5866
+  - enabled: 1
+    path: Assets/Scenes/Map2_Undersea City.unity
+    guid: 84816a70c1e9e8d42a9898785e25d86b
+  - enabled: 1
+    path: Assets/Scenes/MAP3_Sky City.unity
+    guid: 767bc5f6f83108646925d96151aa5667
+  - enabled: 1
+    path: Assets/Scenes/MAP4_Devil's Sleeping Palace.unity
+    guid: 4e64f7afb9d9b5c42b51a7ebd3d420b6
   m_configObjects: {}
