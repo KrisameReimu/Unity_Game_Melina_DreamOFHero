@@ -1,6 +1,7 @@
 using Inventory;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -82,9 +83,17 @@ public class SceneController : MonoBehaviour
     {
         SaveSystem.SavePlayer(player);
     }
-    
+
+    private string GetFilePath()
+    {
+        return Application.persistentDataPath + "/group4.sdgame";
+
+    }
     public void LoadGame() //Continue
     {
+        if (!File.Exists(GetFilePath()))
+            BackToMainMenu();
+
         if (!isSceneChanging)
         {
             isSceneChanging = true;
@@ -179,6 +188,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
+            
             //continue
             LoadGame();
         }
