@@ -77,7 +77,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &5839418605623917253
 CapsuleCollider2D:
@@ -133,13 +133,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6759dd6615f7b84439cb8214f3cb6fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeInvincible: 0.5
-  basicAtk: 5
-  playerAtk: 0
-  playerDef: 0
-  boltPrefab: {fileID: 1023113784580169632, guid: fb581aa3b890f374e9831bf27c84aa77, type: 3}
-  burstImpulsePrefab: {fileID: 829670003038648496, guid: 39ccfa229c6060e4cbb8326a57e02fd2, type: 3}
-  barrierPrefab: {fileID: 6181756507964000180, guid: 7366292e773b82b438dc9d113da4ee6a, type: 3}
+  <direction>k__BackingField: 1
+  <originalSpeed>k__BackingField: 5
+  <speed>k__BackingField: 0
+  timeOfInvincible: 0.5
+  <isInvincible>k__BackingField: 0
+  <HP>k__BackingField: 0
+  <SP>k__BackingField: 0
+  <EX>k__BackingField: 0
+  <boltPrefab>k__BackingField: {fileID: 0}
+  <burstImpulsePrefab>k__BackingField: {fileID: 0}
+  <barrierPrefab>k__BackingField: {fileID: 0}
+  cardSystem: {fileID: 0}
+  oneShotAudioClip: {fileID: 0}
+  hpDecreaseAudioClip: {fileID: 0}
+  burstSoundClip: {fileID: 0}
+  <ableToDoubleJump>k__BackingField: 0
+  wings: {fileID: 0}
 --- !u!114 &6043877363069786954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 6d92938f243920249b0cff5c24742ff6, type: 2}
+  initItems: []
 --- !u!212 &8074229416409006989
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 public class BackgroundScroll : MonoBehaviour
 {
@@ -12,19 +13,16 @@ public class BackgroundScroll : MonoBehaviour
 
     void Start()
     {
-        if (backgrounds.Length > 0)
-        {
-            backgroundWidth = backgrounds[0].bounds.size.x;
-        }
-        else
-        {
-            Debug.LogError("Backgrounds array is empty. Please assign Renderer objects to the backgrounds array in the Inspector.");
-        }
+        GetPlayerAndBackgrounds();
     }
 
     void Update()
     {
-        // Check if the player object is not null before accessing its position
+        if (player == null || backgrounds == null || backgrounds.Length == 0)
+        {
+            GetPlayerAndBackgrounds();
+        }
+
         if (player != null && backgrounds.Length > 0)
         {
             targetPosition = new Vector3(player.position.x, player.position.y + 1.5f, transform.position.z);
@@ -47,6 +45,27 @@ public class BackgroundScroll : MonoBehaviour
 
                 currentBackgroundIndex = prevBackgroundIndex;
             }
+        }
+    }
+
+    void GetPlayerAndBackgrounds()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+        backgrounds = GameObject.FindGameObjectsWithTag("Background").Select(go => go.GetComponent<Renderer>()).ToArray();
+
+        if (player == null)
+        {
+            Debug.LogError("Player object not found. Make sure the player object is tagged with 'Player'.");
+        }
+
+        if (backgrounds == null || backgrounds.Length == 0)
+        {
+            Debug.LogError("Backgrounds array is empty. Please assign GameObjects with Renderer components and tag them with 'Background'.");
+        }
+
+        if (backgrounds.Length > 0)
+        {
+            backgroundWidth = backgrounds[0].bounds.size.x;
         }
     }
 }

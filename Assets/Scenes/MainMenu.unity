@@ -2489,7 +2489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b3d563573a89a4ebf5bc0c33d230d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newgameSceneName: TestScene1
+  newgameSceneName: MAP0_King's Palace
   continueBtn: {fileID: 1031835400}
   sceneController: {fileID: 235127720}
   confirmWindow: {fileID: 991969425}
