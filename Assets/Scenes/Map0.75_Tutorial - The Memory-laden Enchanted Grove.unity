@@ -2968,7 +2968,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_TargetDisplay: 0
 --- !u!224 &1352555243
 RectTransform:
@@ -4293,7 +4293,7 @@ GameObject:
   - component: {fileID: 1647386442}
   m_Layer: 0
   m_Name: windrise-background
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9534,7 +9534,7 @@ GameObject:
   - component: {fileID: 2089896233}
   m_Layer: 21
   m_Name: BackIMGObjs
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9619,7 +9619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 1.5
   player: {fileID: 1497496325}
-  backgrounds: []
+  backgrounds:
+  - {fileID: 1647386442}
 --- !u!1 &2125446157
 GameObject:
   m_ObjectHideFlags: 0
