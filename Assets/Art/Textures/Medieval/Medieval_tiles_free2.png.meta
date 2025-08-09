@@ -543,7 +543,7 @@ TextureImporter:
       213: 21300358
     second: Medieval_tiles_free2_179
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -560,12 +560,10 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -604,8 +602,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
-  swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -617,7 +613,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -630,46 +625,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -4465,189 +4420,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Medieval_tiles_free2_0: 21300000
-      Medieval_tiles_free2_1: 21300002
-      Medieval_tiles_free2_10: 21300020
-      Medieval_tiles_free2_100: 21300200
-      Medieval_tiles_free2_101: 21300202
-      Medieval_tiles_free2_102: 21300204
-      Medieval_tiles_free2_103: 21300206
-      Medieval_tiles_free2_104: 21300208
-      Medieval_tiles_free2_105: 21300210
-      Medieval_tiles_free2_106: 21300212
-      Medieval_tiles_free2_107: 21300214
-      Medieval_tiles_free2_108: 21300216
-      Medieval_tiles_free2_109: 21300218
-      Medieval_tiles_free2_11: 21300022
-      Medieval_tiles_free2_110: 21300220
-      Medieval_tiles_free2_111: 21300222
-      Medieval_tiles_free2_112: 21300224
-      Medieval_tiles_free2_113: 21300226
-      Medieval_tiles_free2_114: 21300228
-      Medieval_tiles_free2_115: 21300230
-      Medieval_tiles_free2_116: 21300232
-      Medieval_tiles_free2_117: 21300234
-      Medieval_tiles_free2_118: 21300236
-      Medieval_tiles_free2_119: 21300238
-      Medieval_tiles_free2_12: 21300024
-      Medieval_tiles_free2_120: 21300240
-      Medieval_tiles_free2_121: 21300242
-      Medieval_tiles_free2_122: 21300244
-      Medieval_tiles_free2_123: 21300246
-      Medieval_tiles_free2_124: 21300248
-      Medieval_tiles_free2_125: 21300250
-      Medieval_tiles_free2_126: 21300252
-      Medieval_tiles_free2_127: 21300254
-      Medieval_tiles_free2_128: 21300256
-      Medieval_tiles_free2_129: 21300258
-      Medieval_tiles_free2_13: 21300026
-      Medieval_tiles_free2_130: 21300260
-      Medieval_tiles_free2_131: 21300262
-      Medieval_tiles_free2_132: 21300264
-      Medieval_tiles_free2_133: 21300266
-      Medieval_tiles_free2_134: 21300268
-      Medieval_tiles_free2_135: 21300270
-      Medieval_tiles_free2_136: 21300272
-      Medieval_tiles_free2_137: 21300274
-      Medieval_tiles_free2_138: 21300276
-      Medieval_tiles_free2_139: 21300278
-      Medieval_tiles_free2_14: 21300028
-      Medieval_tiles_free2_140: 21300280
-      Medieval_tiles_free2_141: 21300282
-      Medieval_tiles_free2_142: 21300284
-      Medieval_tiles_free2_143: 21300286
-      Medieval_tiles_free2_144: 21300288
-      Medieval_tiles_free2_145: 21300290
-      Medieval_tiles_free2_146: 21300292
-      Medieval_tiles_free2_147: 21300294
-      Medieval_tiles_free2_148: 21300296
-      Medieval_tiles_free2_149: 21300298
-      Medieval_tiles_free2_15: 21300030
-      Medieval_tiles_free2_150: 21300300
-      Medieval_tiles_free2_151: 21300302
-      Medieval_tiles_free2_152: 21300304
-      Medieval_tiles_free2_153: 21300306
-      Medieval_tiles_free2_154: 21300308
-      Medieval_tiles_free2_155: 21300310
-      Medieval_tiles_free2_156: 21300312
-      Medieval_tiles_free2_157: 21300314
-      Medieval_tiles_free2_158: 21300316
-      Medieval_tiles_free2_159: 21300318
-      Medieval_tiles_free2_16: 21300032
-      Medieval_tiles_free2_160: 21300320
-      Medieval_tiles_free2_161: 21300322
-      Medieval_tiles_free2_162: 21300324
-      Medieval_tiles_free2_163: 21300326
-      Medieval_tiles_free2_164: 21300328
-      Medieval_tiles_free2_165: 21300330
-      Medieval_tiles_free2_166: 21300332
-      Medieval_tiles_free2_167: 21300334
-      Medieval_tiles_free2_168: 21300336
-      Medieval_tiles_free2_169: 21300338
-      Medieval_tiles_free2_17: 21300034
-      Medieval_tiles_free2_170: 21300340
-      Medieval_tiles_free2_171: 21300342
-      Medieval_tiles_free2_172: 21300344
-      Medieval_tiles_free2_173: 21300346
-      Medieval_tiles_free2_174: 21300348
-      Medieval_tiles_free2_175: 21300350
-      Medieval_tiles_free2_176: 21300352
-      Medieval_tiles_free2_177: 21300354
-      Medieval_tiles_free2_178: 21300356
-      Medieval_tiles_free2_179: 21300358
-      Medieval_tiles_free2_18: 21300036
-      Medieval_tiles_free2_19: 21300038
-      Medieval_tiles_free2_2: 21300004
-      Medieval_tiles_free2_20: 21300040
-      Medieval_tiles_free2_21: 21300042
-      Medieval_tiles_free2_22: 21300044
-      Medieval_tiles_free2_23: 21300046
-      Medieval_tiles_free2_24: 21300048
-      Medieval_tiles_free2_25: 21300050
-      Medieval_tiles_free2_26: 21300052
-      Medieval_tiles_free2_27: 21300054
-      Medieval_tiles_free2_28: 21300056
-      Medieval_tiles_free2_29: 21300058
-      Medieval_tiles_free2_3: 21300006
-      Medieval_tiles_free2_30: 21300060
-      Medieval_tiles_free2_31: 21300062
-      Medieval_tiles_free2_32: 21300064
-      Medieval_tiles_free2_33: 21300066
-      Medieval_tiles_free2_34: 21300068
-      Medieval_tiles_free2_35: 21300070
-      Medieval_tiles_free2_36: 21300072
-      Medieval_tiles_free2_37: 21300074
-      Medieval_tiles_free2_38: 21300076
-      Medieval_tiles_free2_39: 21300078
-      Medieval_tiles_free2_4: 21300008
-      Medieval_tiles_free2_40: 21300080
-      Medieval_tiles_free2_41: 21300082
-      Medieval_tiles_free2_42: 21300084
-      Medieval_tiles_free2_43: 21300086
-      Medieval_tiles_free2_44: 21300088
-      Medieval_tiles_free2_45: 21300090
-      Medieval_tiles_free2_46: 21300092
-      Medieval_tiles_free2_47: 21300094
-      Medieval_tiles_free2_48: 21300096
-      Medieval_tiles_free2_49: 21300098
-      Medieval_tiles_free2_5: 21300010
-      Medieval_tiles_free2_50: 21300100
-      Medieval_tiles_free2_51: 21300102
-      Medieval_tiles_free2_52: 21300104
-      Medieval_tiles_free2_53: 21300106
-      Medieval_tiles_free2_54: 21300108
-      Medieval_tiles_free2_55: 21300110
-      Medieval_tiles_free2_56: 21300112
-      Medieval_tiles_free2_57: 21300114
-      Medieval_tiles_free2_58: 21300116
-      Medieval_tiles_free2_59: 21300118
-      Medieval_tiles_free2_6: 21300012
-      Medieval_tiles_free2_60: 21300120
-      Medieval_tiles_free2_61: 21300122
-      Medieval_tiles_free2_62: 21300124
-      Medieval_tiles_free2_63: 21300126
-      Medieval_tiles_free2_64: 21300128
-      Medieval_tiles_free2_65: 21300130
-      Medieval_tiles_free2_66: 21300132
-      Medieval_tiles_free2_67: 21300134
-      Medieval_tiles_free2_68: 21300136
-      Medieval_tiles_free2_69: 21300138
-      Medieval_tiles_free2_7: 21300014
-      Medieval_tiles_free2_70: 21300140
-      Medieval_tiles_free2_71: 21300142
-      Medieval_tiles_free2_72: 21300144
-      Medieval_tiles_free2_73: 21300146
-      Medieval_tiles_free2_74: 21300148
-      Medieval_tiles_free2_75: 21300150
-      Medieval_tiles_free2_76: 21300152
-      Medieval_tiles_free2_77: 21300154
-      Medieval_tiles_free2_78: 21300156
-      Medieval_tiles_free2_79: 21300158
-      Medieval_tiles_free2_8: 21300016
-      Medieval_tiles_free2_80: 21300160
-      Medieval_tiles_free2_81: 21300162
-      Medieval_tiles_free2_82: 21300164
-      Medieval_tiles_free2_83: 21300166
-      Medieval_tiles_free2_84: 21300168
-      Medieval_tiles_free2_85: 21300170
-      Medieval_tiles_free2_86: 21300172
-      Medieval_tiles_free2_87: 21300174
-      Medieval_tiles_free2_88: 21300176
-      Medieval_tiles_free2_89: 21300178
-      Medieval_tiles_free2_9: 21300018
-      Medieval_tiles_free2_90: 21300180
-      Medieval_tiles_free2_91: 21300182
-      Medieval_tiles_free2_92: 21300184
-      Medieval_tiles_free2_93: 21300186
-      Medieval_tiles_free2_94: 21300188
-      Medieval_tiles_free2_95: 21300190
-      Medieval_tiles_free2_96: 21300192
-      Medieval_tiles_free2_97: 21300194
-      Medieval_tiles_free2_98: 21300196
-      Medieval_tiles_free2_99: 21300198
-  mipmapLimitGroupName: 
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -114,7 +114,7 @@ TextureImporter:
       213: 21300072
     second: Sprite3_36
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -131,12 +131,10 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -175,8 +173,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
-  swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -188,7 +184,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -201,46 +196,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 8192
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 8192
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 8192
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -1033,46 +988,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Sprite3_0: 21300000
-      Sprite3_1: 21300002
-      Sprite3_10: 21300020
-      Sprite3_11: 21300022
-      Sprite3_12: 21300024
-      Sprite3_13: 21300026
-      Sprite3_14: 21300028
-      Sprite3_15: 21300030
-      Sprite3_16: 21300032
-      Sprite3_17: 21300034
-      Sprite3_18: 21300036
-      Sprite3_19: 21300038
-      Sprite3_2: 21300004
-      Sprite3_20: 21300040
-      Sprite3_21: 21300042
-      Sprite3_22: 21300044
-      Sprite3_23: 21300046
-      Sprite3_24: 21300048
-      Sprite3_25: 21300050
-      Sprite3_26: 21300052
-      Sprite3_27: 21300054
-      Sprite3_28: 21300056
-      Sprite3_29: 21300058
-      Sprite3_3: 21300006
-      Sprite3_30: 21300060
-      Sprite3_31: 21300062
-      Sprite3_32: 21300064
-      Sprite3_33: 21300066
-      Sprite3_34: 21300068
-      Sprite3_35: 21300070
-      Sprite3_36: 21300072
-      Sprite3_4: 21300008
-      Sprite3_5: 21300010
-      Sprite3_6: 21300012
-      Sprite3_7: 21300014
-      Sprite3_8: 21300016
-      Sprite3_9: 21300018
-  mipmapLimitGroupName: 
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

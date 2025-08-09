@@ -147,7 +147,7 @@ TextureImporter:
       213: 5512236270010972044
     second: DungeonSetPieces_47
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -164,12 +164,10 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -208,8 +206,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -221,7 +217,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -234,46 +229,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1297,57 +1252,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      DungeonSetPieces_0: -4543231862878394544
-      DungeonSetPieces_1: -7102920398343392238
-      DungeonSetPieces_10: 4532295377584479037
-      DungeonSetPieces_11: -2910121581065356633
-      DungeonSetPieces_12: 5699179536986347848
-      DungeonSetPieces_13: 1339692420826462053
-      DungeonSetPieces_14: -5665620010394066514
-      DungeonSetPieces_15: 6345158158300296406
-      DungeonSetPieces_16: -1218679847089034958
-      DungeonSetPieces_17: -2428063774464901702
-      DungeonSetPieces_18: -4328173495140674673
-      DungeonSetPieces_19: -5819683300644967245
-      DungeonSetPieces_2: -7047676836991246044
-      DungeonSetPieces_20: -7272795081162102774
-      DungeonSetPieces_21: -8487740341791556163
-      DungeonSetPieces_22: 206685055501325892
-      DungeonSetPieces_23: -2004816481403479553
-      DungeonSetPieces_24: 9185669618115832314
-      DungeonSetPieces_25: 5077470619173935294
-      DungeonSetPieces_26: -7374284975062034032
-      DungeonSetPieces_27: 6639111572758177798
-      DungeonSetPieces_28: -7100827010248446195
-      DungeonSetPieces_29: -1176402403319391678
-      DungeonSetPieces_3: -7641277711422434406
-      DungeonSetPieces_30: 2581812070476367083
-      DungeonSetPieces_31: 3890972753862323249
-      DungeonSetPieces_32: 2105450412363939577
-      DungeonSetPieces_33: -8859649432425992860
-      DungeonSetPieces_34: 8601875087336719291
-      DungeonSetPieces_35: 1096085830000199565
-      DungeonSetPieces_36: 2459556311120746649
-      DungeonSetPieces_37: -7864107245316661655
-      DungeonSetPieces_38: 7240569838466657850
-      DungeonSetPieces_39: -6669232695695272342
-      DungeonSetPieces_4: -2419941612869304650
-      DungeonSetPieces_40: -2085554226664722607
-      DungeonSetPieces_41: -9121452844032832865
-      DungeonSetPieces_42: -2601010092540521868
-      DungeonSetPieces_43: 6143735975270439419
-      DungeonSetPieces_44: 2614941440786178927
-      DungeonSetPieces_45: 2284193127565706296
-      DungeonSetPieces_46: 288751667045002437
-      DungeonSetPieces_47: 5512236270010972044
-      DungeonSetPieces_5: 7096374586258180397
-      DungeonSetPieces_6: -4072191792760466346
-      DungeonSetPieces_7: -2260767517162253891
-      DungeonSetPieces_8: -949551721535387080
-      DungeonSetPieces_9: -7966315002743650648
-  mipmapLimitGroupName: 
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

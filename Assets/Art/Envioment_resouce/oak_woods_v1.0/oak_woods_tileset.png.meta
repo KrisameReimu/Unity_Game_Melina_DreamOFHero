@@ -72,7 +72,7 @@ TextureImporter:
       213: 131085967118225658
     second: oak_woods_tileset_22
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -89,12 +89,10 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -133,8 +131,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -146,7 +142,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -159,46 +154,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -697,32 +652,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      oak_woods_tileset_0: -1766325920876340200
-      oak_woods_tileset_1: -4142551662827736079
-      oak_woods_tileset_10: 4851565688244649845
-      oak_woods_tileset_11: -8108341867080123248
-      oak_woods_tileset_12: -5155832743036986079
-      oak_woods_tileset_13: -2203930861366138201
-      oak_woods_tileset_14: 7249804179231347537
-      oak_woods_tileset_15: -6809671514928667676
-      oak_woods_tileset_16: 8272725524738471605
-      oak_woods_tileset_17: 2448541337373580990
-      oak_woods_tileset_18: 8203744005632143928
-      oak_woods_tileset_19: 1075865809102084802
-      oak_woods_tileset_2: 4158842819825884409
-      oak_woods_tileset_20: -6106635915527383940
-      oak_woods_tileset_21: -4424137602460244048
-      oak_woods_tileset_22: 131085967118225658
-      oak_woods_tileset_3: 2402445211712133950
-      oak_woods_tileset_4: 1911884313120061145
-      oak_woods_tileset_5: 5732688261993899084
-      oak_woods_tileset_6: -4816038732622182268
-      oak_woods_tileset_7: -669630762253234684
-      oak_woods_tileset_8: 8581478052763860308
-      oak_woods_tileset_9: -5845619340545600539
-  mipmapLimitGroupName: 
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
