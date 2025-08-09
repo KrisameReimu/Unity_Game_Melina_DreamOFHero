@@ -291,7 +291,7 @@ TextureImporter:
       213: -9221688526565618745
     second: Fantasy RPG (Toony) 32x32_95
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -308,10 +308,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -350,6 +352,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -361,6 +365,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -373,6 +378,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -385,6 +391,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -397,6 +404,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -409,6 +417,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2440,9 +2449,105 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Fantasy RPG (Toony) 32x32_0: -3244636371597743805
+      Fantasy RPG (Toony) 32x32_1: -4599744972518608196
+      Fantasy RPG (Toony) 32x32_10: 7101071907623715785
+      Fantasy RPG (Toony) 32x32_11: 951107651030327193
+      Fantasy RPG (Toony) 32x32_12: 4438630738020755278
+      Fantasy RPG (Toony) 32x32_13: 3761555771203803835
+      Fantasy RPG (Toony) 32x32_14: -2142802816207924186
+      Fantasy RPG (Toony) 32x32_15: 4101335694925604456
+      Fantasy RPG (Toony) 32x32_16: 6879868978949578763
+      Fantasy RPG (Toony) 32x32_17: -13300628957192637
+      Fantasy RPG (Toony) 32x32_18: 8380975667483922496
+      Fantasy RPG (Toony) 32x32_19: 4198168597869492187
+      Fantasy RPG (Toony) 32x32_2: -2907668498751679264
+      Fantasy RPG (Toony) 32x32_20: -1809557197153554713
+      Fantasy RPG (Toony) 32x32_21: -4495072171776063885
+      Fantasy RPG (Toony) 32x32_22: 727052527819188548
+      Fantasy RPG (Toony) 32x32_23: -6427504426608201862
+      Fantasy RPG (Toony) 32x32_24: 4123621902188035721
+      Fantasy RPG (Toony) 32x32_25: 5760216801795104014
+      Fantasy RPG (Toony) 32x32_26: 2955804176356477249
+      Fantasy RPG (Toony) 32x32_27: 5426569802673785234
+      Fantasy RPG (Toony) 32x32_28: 2143995617702197315
+      Fantasy RPG (Toony) 32x32_29: -5788292239961456815
+      Fantasy RPG (Toony) 32x32_3: 6157572966612456067
+      Fantasy RPG (Toony) 32x32_30: 8546588511374005871
+      Fantasy RPG (Toony) 32x32_31: -5795649309961834426
+      Fantasy RPG (Toony) 32x32_32: -4536683665482631806
+      Fantasy RPG (Toony) 32x32_33: -7170239540113801071
+      Fantasy RPG (Toony) 32x32_34: -8748633173782749015
+      Fantasy RPG (Toony) 32x32_35: 4084020456524554889
+      Fantasy RPG (Toony) 32x32_36: 2114597777016292552
+      Fantasy RPG (Toony) 32x32_37: -5339889650614697026
+      Fantasy RPG (Toony) 32x32_38: -4280491288924745734
+      Fantasy RPG (Toony) 32x32_39: 877395843663832775
+      Fantasy RPG (Toony) 32x32_4: 7466146825987833704
+      Fantasy RPG (Toony) 32x32_40: 6762063674801585288
+      Fantasy RPG (Toony) 32x32_41: 5324095344078357553
+      Fantasy RPG (Toony) 32x32_42: -598737443755269696
+      Fantasy RPG (Toony) 32x32_43: 2528929597185037172
+      Fantasy RPG (Toony) 32x32_44: 3741077908007948368
+      Fantasy RPG (Toony) 32x32_45: -6434636750567147474
+      Fantasy RPG (Toony) 32x32_46: 7299766184850920941
+      Fantasy RPG (Toony) 32x32_47: 1827539480898128982
+      Fantasy RPG (Toony) 32x32_48: -3942124979406571612
+      Fantasy RPG (Toony) 32x32_49: -4728720704448996728
+      Fantasy RPG (Toony) 32x32_5: 1582535206212872226
+      Fantasy RPG (Toony) 32x32_50: 4061724414991837696
+      Fantasy RPG (Toony) 32x32_51: 7534184605922726755
+      Fantasy RPG (Toony) 32x32_52: -6373591518141288887
+      Fantasy RPG (Toony) 32x32_53: -1074728245842564163
+      Fantasy RPG (Toony) 32x32_54: -7229381136630716566
+      Fantasy RPG (Toony) 32x32_55: -9141492551663505031
+      Fantasy RPG (Toony) 32x32_56: 5785238936770670982
+      Fantasy RPG (Toony) 32x32_57: 6528841949595676332
+      Fantasy RPG (Toony) 32x32_58: 940730818848786973
+      Fantasy RPG (Toony) 32x32_59: 8344250928291011161
+      Fantasy RPG (Toony) 32x32_6: -2756404575619030630
+      Fantasy RPG (Toony) 32x32_60: 2262307852326049360
+      Fantasy RPG (Toony) 32x32_61: -4342387471630391835
+      Fantasy RPG (Toony) 32x32_62: 4228974223760713785
+      Fantasy RPG (Toony) 32x32_63: -4511991703358368170
+      Fantasy RPG (Toony) 32x32_64: -106797851668589523
+      Fantasy RPG (Toony) 32x32_65: 4647728207317756147
+      Fantasy RPG (Toony) 32x32_66: 7140051035576636788
+      Fantasy RPG (Toony) 32x32_67: 7894964145814599815
+      Fantasy RPG (Toony) 32x32_68: 6913994841253731581
+      Fantasy RPG (Toony) 32x32_69: 2591602761806727489
+      Fantasy RPG (Toony) 32x32_7: 151443607982310081
+      Fantasy RPG (Toony) 32x32_70: -2821978106076356496
+      Fantasy RPG (Toony) 32x32_71: 4317027179159510440
+      Fantasy RPG (Toony) 32x32_72: 4991869280775908150
+      Fantasy RPG (Toony) 32x32_73: -5394039895660871292
+      Fantasy RPG (Toony) 32x32_74: 1657616350776962472
+      Fantasy RPG (Toony) 32x32_75: -6253730555943498832
+      Fantasy RPG (Toony) 32x32_76: 5395659224427604384
+      Fantasy RPG (Toony) 32x32_77: -8654474524687654961
+      Fantasy RPG (Toony) 32x32_78: 3495560202420984239
+      Fantasy RPG (Toony) 32x32_79: -8922351825051591944
+      Fantasy RPG (Toony) 32x32_8: 3252103946251979339
+      Fantasy RPG (Toony) 32x32_80: 2190421342076904733
+      Fantasy RPG (Toony) 32x32_81: 6804875069654494405
+      Fantasy RPG (Toony) 32x32_82: -3103606413002267593
+      Fantasy RPG (Toony) 32x32_83: 7284204573658813306
+      Fantasy RPG (Toony) 32x32_84: -6741702295801433538
+      Fantasy RPG (Toony) 32x32_85: -765352779598167048
+      Fantasy RPG (Toony) 32x32_86: -8249339650333537442
+      Fantasy RPG (Toony) 32x32_87: -7000535806291151200
+      Fantasy RPG (Toony) 32x32_88: -6522324393204148031
+      Fantasy RPG (Toony) 32x32_89: -2016522644181700896
+      Fantasy RPG (Toony) 32x32_9: 6440939125492223716
+      Fantasy RPG (Toony) 32x32_90: -680992617696077070
+      Fantasy RPG (Toony) 32x32_91: 5135660106254384552
+      Fantasy RPG (Toony) 32x32_92: 5096556759171873462
+      Fantasy RPG (Toony) 32x32_93: -4073596346892852848
+      Fantasy RPG (Toony) 32x32_94: 8140969405277485570
+      Fantasy RPG (Toony) 32x32_95: -9221688526565618745
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

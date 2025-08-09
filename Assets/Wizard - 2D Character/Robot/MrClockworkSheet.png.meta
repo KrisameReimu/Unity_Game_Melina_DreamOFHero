@@ -63,7 +63,7 @@ TextureImporter:
       213: 6446417166712267000
     second: MrClockworkSheet_19
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -80,10 +80,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -122,6 +124,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -133,6 +137,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -145,6 +150,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -157,6 +163,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -169,6 +176,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -181,6 +189,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -616,9 +625,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      MrClockworkSheet_0: 5325455174355562970
+      MrClockworkSheet_1: -1721885687753823957
+      MrClockworkSheet_10: -6776917948848621843
+      MrClockworkSheet_11: -3633181196783428708
+      MrClockworkSheet_12: -2044637534909811349
+      MrClockworkSheet_13: -4259985286393373953
+      MrClockworkSheet_14: -1610584654086336846
+      MrClockworkSheet_15: -3436138825435646282
+      MrClockworkSheet_16: -3574952632413668907
+      MrClockworkSheet_17: 3143446522961267030
+      MrClockworkSheet_18: 6302047433447217028
+      MrClockworkSheet_19: 6446417166712267000
+      MrClockworkSheet_2: 8879829194965339106
+      MrClockworkSheet_3: -2154302389231162529
+      MrClockworkSheet_4: -7433943464092835796
+      MrClockworkSheet_5: -1604563900523290359
+      MrClockworkSheet_6: -7826755367793165044
+      MrClockworkSheet_7: -4754900630399371663
+      MrClockworkSheet_8: -5781392945152212480
+      MrClockworkSheet_9: -394204204867884520
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

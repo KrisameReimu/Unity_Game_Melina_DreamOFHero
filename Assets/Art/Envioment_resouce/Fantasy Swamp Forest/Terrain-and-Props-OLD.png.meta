@@ -69,7 +69,7 @@ TextureImporter:
       213: 7333839183487607350
     second: Terrain-and-Props-OLD_21
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -86,10 +86,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -128,6 +130,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -139,6 +143,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -151,6 +156,46 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -628,9 +673,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Terrain-and-Props-OLD_0: -7992224954921772585
+      Terrain-and-Props-OLD_1: -7997616201358805759
+      Terrain-and-Props-OLD_10: 8931551334190449956
+      Terrain-and-Props-OLD_11: -147320013664619323
+      Terrain-and-Props-OLD_12: 2547290382810393606
+      Terrain-and-Props-OLD_13: -3873395935831530174
+      Terrain-and-Props-OLD_14: -1300178907838893537
+      Terrain-and-Props-OLD_15: -4042829702680680452
+      Terrain-and-Props-OLD_16: 5622726907447154637
+      Terrain-and-Props-OLD_17: -2270498611777888313
+      Terrain-and-Props-OLD_18: -3089262051581250521
+      Terrain-and-Props-OLD_19: 7697025611859972583
+      Terrain-and-Props-OLD_2: -1399955285647906969
+      Terrain-and-Props-OLD_20: -8833612366445715290
+      Terrain-and-Props-OLD_21: 7333839183487607350
+      Terrain-and-Props-OLD_3: 2245365798049727892
+      Terrain-and-Props-OLD_4: -3479947765695458446
+      Terrain-and-Props-OLD_5: -1483014931645043871
+      Terrain-and-Props-OLD_6: 5747893745067006114
+      Terrain-and-Props-OLD_7: -7526140691905688928
+      Terrain-and-Props-OLD_8: 7372839659516090315
+      Terrain-and-Props-OLD_9: 3109324449039020583
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

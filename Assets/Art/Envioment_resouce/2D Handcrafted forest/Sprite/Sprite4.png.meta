@@ -162,7 +162,7 @@ TextureImporter:
       213: 21300104
     second: Sprite4_52
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -179,10 +179,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -221,6 +223,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -232,6 +236,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -244,6 +249,46 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -1372,9 +1417,62 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Sprite4_0: 21300000
+      Sprite4_1: 21300002
+      Sprite4_10: 21300020
+      Sprite4_11: 21300022
+      Sprite4_12: 21300024
+      Sprite4_13: 21300026
+      Sprite4_14: 21300028
+      Sprite4_15: 21300030
+      Sprite4_16: 21300032
+      Sprite4_17: 21300034
+      Sprite4_18: 21300036
+      Sprite4_19: 21300038
+      Sprite4_2: 21300004
+      Sprite4_20: 21300040
+      Sprite4_21: 21300042
+      Sprite4_22: 21300044
+      Sprite4_23: 21300046
+      Sprite4_24: 21300048
+      Sprite4_25: 21300050
+      Sprite4_26: 21300052
+      Sprite4_27: 21300054
+      Sprite4_28: 21300056
+      Sprite4_29: 21300058
+      Sprite4_3: 21300006
+      Sprite4_30: 21300060
+      Sprite4_31: 21300062
+      Sprite4_32: 21300064
+      Sprite4_33: 21300066
+      Sprite4_34: 21300068
+      Sprite4_35: 21300070
+      Sprite4_36: 21300072
+      Sprite4_37: 21300074
+      Sprite4_38: 21300076
+      Sprite4_39: 21300078
+      Sprite4_4: 21300008
+      Sprite4_40: 21300080
+      Sprite4_41: 21300082
+      Sprite4_42: 21300084
+      Sprite4_43: 21300086
+      Sprite4_44: 21300088
+      Sprite4_45: 21300090
+      Sprite4_46: 21300092
+      Sprite4_47: 21300094
+      Sprite4_48: 21300096
+      Sprite4_49: 21300098
+      Sprite4_5: 21300010
+      Sprite4_50: 21300100
+      Sprite4_51: 21300102
+      Sprite4_52: 21300104
+      Sprite4_6: 21300012
+      Sprite4_7: 21300014
+      Sprite4_8: 21300016
+      Sprite4_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
