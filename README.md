@@ -16,7 +16,7 @@ Developed as part of SD3985 Computer Game Development course at The Hong Kong Po
 
 ## 🎥 Video Demo
 
-[![Melina Dream of Hero - Gameplay Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![Melina Dream of Hero - Gameplay Demo](https://youtu.be/3xruB5gEZIs)
 
 
 ---
