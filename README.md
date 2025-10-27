@@ -48,7 +48,7 @@ Developed as part of SD3985 Computer Game Development course at The Hong Kong Po
 
 ## 📚 Project Documentation
 
-**Full Project Report**: [Download PDF](https://github.com/KrisameReimu/Unity_Game_Melina_DreamOFHero/raw/main/SD3985_FinalReport.pdf)
+**My Full Project Report**: [Download PDF](https://github.com/KrisameReimu/Unity_Game_Melina_DreamOFHero/raw/main/ChenChen_Individual_Reflection_REPORT.pdf)
 
 The comprehensive project report includes:
 - Game design document and mechanics breakdown
