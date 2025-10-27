@@ -16,8 +16,9 @@ Developed as part of SD3985 Computer Game Development course at The Hong Kong Po
 
 ## 🎥 Video Demo
 
-[![Melina Dream of Hero - Gameplay Demo](https://youtu.be/3xruB5gEZIs)
+[![Melina Dream of Hero - Gameplay Demo](https://img.youtube.com/vi/3xruB5gEZIs/maxresdefault.jpg)](https://www.youtube.com/watch?v=3xruB5gEZIs)
 
+**Click the image above to watch the full gameplay demo on YouTube**
 
 ---
 
@@ -58,8 +59,39 @@ The comprehensive project report includes:
 
 ---
 
+## 👤 My Contributions
+
+As **Game Map & Scene Designer** and **Programmer**, I was responsible for:
+
+- **Game Map Design**: Designed multi-layered game maps with interconnected areas, hidden secrets, and exploration-driven gameplay mechanics
+- **Scene Design**: Created atmospheric game scenes using Unity, incorporating lighting, particle effects, and environmental storytelling
+- **Puzzle Design**: Developed puzzle structures that integrate seamlessly with the game's narrative and combat mechanics
+- **Visual Design**: Designed GUI elements, character sprites, and environmental assets
+- **Programming**: Implemented movement mechanics, combat systems, and puzzle logic using C# scripting
+
+---
+
+## 🎓 Academic Context
+
+**Course**: SD3985 Computer Game Development  
+**Institution**: The Hong Kong Polytechnic University  
+**Semester**: Spring 2024  
+**Team Size**: 4 members
+
+---
+
+## 📧 Contact
+
+**Chen Chen**
+- 💼 LinkedIn: [linkedin.com/in/chriskkrisame](https://www.linkedin.com/in/chriskkrisame)
+- 🎮 GitHub: [@KrisameReimu](https://github.com/KrisameReimu)
+
+---
+
 <div align="center">
 
 **⭐ If you find this project interesting, please consider giving it a star!**
+
+Made with ❤️ at The Hong Kong Polytechnic University
 
 </div>
